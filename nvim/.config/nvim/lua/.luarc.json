@@ -1,0 +1,22 @@
+{
+    "workspace.library": [
+        "/home/pio/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/pio/.local/share/nvim/lazy/nvim-lspconfig/lua",
+        "/home/pio/.local/share/nvim/lazy/nvim-cmp/lua",
+        "/home/pio/.local/share/nvim/lazy/nvim-web-devicons/lua",
+        "/home/pio/.local/share/nvim/lazy/gruvbox.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/lazy.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/nvim-treesitter/lua",
+        "/home/pio/.local/share/nvim/lazy/telescope-undo.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/telescope.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/cmp-nvim-lsp/lua",
+        "/home/pio/.local/share/nvim/lazy/oil.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/plenary.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/LuaSnip/lua",
+        "/home/pio/.local/share/nvim/lazy/neodev.nvim/lua",
+        "/home/pio/.local/share/nvim/lazy/lsp-zero.nvim/lua",
+        "/home/pio/.config/nvim/lua",
+        "${3rd}/luv/library"
+    ]
+}
