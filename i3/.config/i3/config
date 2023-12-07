@@ -1,74 +1,122 @@
-# --- core
+# --- vars
 set $mod Mod4
-floating_modifier $mod
-tiling_drag modifier titlebar
-focus_follows_mouse no
+set $smod Shift
+set $tmod Mod1
+set $TERMINAL kitty
+set $BROWSER firefox
+set $second_monitor DP-4
+set $first_monitor DP-0
 
-# --- theme
-for_window [class="^.*"] border pixel 1
-gaps inner 5px
-font pango:Iosevka NFM 8
-set $yellow #d79921
-client.focused $yellow $yellow $yellow $yellow $yellow
-client.background       #ffffff
+# --- launch
+bindsym $mod+Return exec $TERMINAL
+bindsym $mod+$smod+Return exec $BROWSER
+bindsym $mod+d exec "rofi -modi drun,run -show drun -show-icons"
+bindsym $mod+$smod+$tmod+l exec betterlockscreen --lock
+bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
+bindsym $mod+$smod+c exec xcolor
 
 # --- autostart
-# $XDG_CONFIG_HOME/autostart - ~/.config/autostart
-# $XDG_CONFIG_DIRS/autostart - /etc/xdg/autostart
-# exec --no-startup-id dex --autostart --environment i3
-exec pipewire
-# exec polybar
-exec picom --backend xrender
-#exec xrandr --output DP-4 --mode 2560x1440 --rate 165 --pos 0x0 --output DP-0 --mode 3440x1440 --rate 144 --pos 2560x0
-#exec xrandr --output HDMI-0 --mode 3440x1440 --rate 144 --pos 2560x0
-exec_always autorandr --change
-exec xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
-exec xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always nitrogen --set-zoom-fill ~/picture/active_wallpaper --head=0
-exec_always nitrogen --set-zoom-fill ~/picture/active_wallpaper --head=1
-exec openrgb -p main-white
-exec setxkbmap -layout us,tr -option grp:win_space_toggle
-exec redshift -l 39.93:32.85 -t 6500:3600 -m randr
-#bindsym $mod+space bumblebee-ctl -b left-mouse -m layout
-
-# --- gtk theming
-# this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
-exec gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-# --- screen lock
-exec betterlockscreen -u ~/picture/active_wallpaper
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
-bindsym $mod+Mod1+l exec betterlockscreen --lock
+exec --no-startup-id picom --backend xrender
+exec --no-startup-id pipewire
+exec --no-startup-id autorandr --change
+exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id openrgb -p main-white
+exec --no-startup-id setxkbmap -layout us,tr -option grp:win_space_toggle
+exec --no-startup-id redshift -l 39.93:32.85 -t 6500:3600 -m randr
+exec --no-startup-id feh --bg-scale ~/picture/active_wallpaper
+# this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
 
-# --- network
-# exec --no-startup-id nm-applet
-
-# --- sound control
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# --- brightness control
+# --- media keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # also can be nvidia_0
 bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight 1%+
 bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 1%-
 
-# --- launchers
-bindsym $mod+Return exec kitty
-bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
-#bindcode $mod+40 exec "rofi"
-bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
-bindsym $mod+Shift+c exec xcolor
+# --- theme
+font pango:Iosevka NFM 8
+#gaps horizontal 16
+#gaps vertical 16
+gaps inner 8
+smart_gaps on
+#default_border pixel 1
+#default_floating_border pixel 1
+smart_borders on
+for_window [class="^.*"] border pixel 1
+set $yellow #d79921
+client.focused $yellow $yellow $yellow $yellow $yellow
+
+# --- workspace
+workspace 1 output $first_monitor
+workspace 2 output $first_monitor
+workspace 3 output $first_monitor
+workspace 4 output $first_monitor
+workspace 5 output $first_monitor
+workspace 11 output $second_monitor
+workspace 12 output $second_monitor
+workspace 13 output $second_monitor
+workspace 14 output $second_monitor
+workspace 15 output $second_monitor
+bindsym $mod+1 workspace number 1 
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+$tmod+1 workspace number 11
+bindsym $mod+$tmod+2 workspace number 12
+bindsym $mod+$tmod+3 workspace number 13
+bindsym $mod+$tmod+4 workspace number 14
+bindsym $mod+$tmod+5 workspace number 15
+bindsym $mod+$smod+1 move container to workspace number 1
+bindsym $mod+$smod+2 move container to workspace number 2
+bindsym $mod+$smod+3 move container to workspace number 3
+bindsym $mod+$smod+4 move container to workspace number 4
+bindsym $mod+$smod+5 move container to workspace number 5
+bindsym $mod+$tmod+$smod+1 move container to workspace number 11
+bindsym $mod+$tmod+$smod+2 move container to workspace number 12
+bindsym $mod+$tmod+$smod+3 move container to workspace number 13 
+bindsym $mod+$tmod+$smod+4 move container to workspace number 14
+bindsym $mod+$tmod+$smod+5 move container to workspace number 15
+
+# --- windowing
+floating_modifier $mod
+focus_follows_mouse no
+bindsym $mod+f fullscreen toggle
+bindsym $mod+$smod+f floating toggle
+bindsym $mod+$smod+q kill
+bindsym $mod+$smod+r restart
+bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+$smod+h move left
+bindsym $mod+$smod+j move down
+bindsym $mod+$smod+k move up
+bindsym $mod+$smod+l move right
+bindsym $mod+r mode "resize"
+mode "resize" {
+    set $resize_amount 2
+    bindsym l resize shrink width $resize_amount px or $resize_amount ppt
+    bindsym j resize grow height $resize_amount px or $resize_amount ppt
+    bindsym k resize shrink height $resize_amount px or $resize_amount ppt
+    bindsym h resize grow width $resize_amount px or $resize_amount ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
 
 # --- bar
 bar {
-	font pango:Iosevka NFM 6
+	font pango:Iosevka NFM 12
 	position top
 	tray_output primary
-
-	#status_command i3status-rs
 
 	status_command bumblebee-status \
 			-t gruvbox-powerline \
@@ -96,94 +144,5 @@ bar {
 		inactive_workspace #504945 #504945 #ebdbb2
 		urgent_workspace   #cc241d #cc241d #504945
 	}
-}
-
-
-# --- windowing bindings 
-bindsym $mod+Shift+q kill
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-#bindsym $mod+h split h
-#bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+Shift+f floating toggle
-#bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-set $sm DP-4
-set $fm DP-0
-workspace 1 output $fm
-workspace 2 output $fm
-workspace 3 output $fm
-workspace 4 output $fm
-workspace 5 output $fm
-workspace 11 output $sm
-workspace 12 output $sm
-workspace 13 output $sm
-workspace 14 output $sm
-workspace 15 output $sm
-bindsym $mod+1 workspace number 1 
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+Mod1+1 workspace number 11
-bindsym $mod+Mod1+2 workspace number 12
-bindsym $mod+Mod1+3 workspace number 13
-bindsym $mod+Mod1+4 workspace number 14
-bindsym $mod+Mod1+5 workspace number 15
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Mod1+Shift+1 move container to workspace number 11
-bindsym $mod+Mod1+Shift+2 move container to workspace number 12
-bindsym $mod+Mod1+Shift+3 move container to workspace number 13 
-bindsym $mod+Mod1+Shift+4 move container to workspace number 14
-bindsym $mod+Mod1+Shift+5 move container to workspace number 15
-#bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+r mode "resize"
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-	set $resize_amount 2
-        bindsym j resize shrink width $resize_amount px or $resize_amount ppt
-        bindsym k resize grow height $resize_amount px or $resize_amount ppt
-        bindsym l resize shrink height $resize_amount px or $resize_amount ppt
-        bindsym semicolon resize grow width $resize_amount px or $resize_amount ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width $resize_amount px or $resize_amount ppt
-        bindsym Down resize grow height $resize_amount px or $resize_amount ppt
-        bindsym Up resize shrink height $resize_amount px or $resize_amount ppt
-        bindsym Right resize grow width $resize_amount px or $resize_amount ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
 }
 
