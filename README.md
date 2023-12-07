@@ -6,6 +6,7 @@ My personal dotfiles for various programs
 - neovim
 - zsh
 - kitty
+- tmux
 - xdg
 
 ## Activate All
