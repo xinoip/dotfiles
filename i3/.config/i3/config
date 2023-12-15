@@ -35,9 +35,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# also can be nvidia_0
-bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight 1%+
-bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 1%-
+bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight 1%+; exec brightnessctl set -d nvidia_0 1%+
+bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 1%-; exec brightnessctl set -d nvidia_0 1%-
 
 # --- theme
 font pango:Iosevka NFM 8
