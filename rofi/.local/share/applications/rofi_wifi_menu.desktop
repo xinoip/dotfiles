@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Rofi Wifi Menu
+Exec=/home/pio/.local/rofi-script/rofi_wifi_menu
+

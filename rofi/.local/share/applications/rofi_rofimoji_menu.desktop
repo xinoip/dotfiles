@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Rofi Emoji Menu
+Exec=/home/pio/.local/rofi-script/rofi_launcher_rofimoji_menu.sh
+

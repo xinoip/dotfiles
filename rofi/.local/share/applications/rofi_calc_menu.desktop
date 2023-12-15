@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Rofi Calculator Menu
+Exec=/home/pio/.local/rofi-script/rofi_launcher_calc_menu.sh
+

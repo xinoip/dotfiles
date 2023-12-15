@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Rofi Bluetooth Menu
+Exec=/home/pio/.local/rofi-script/rofi_bluetooth_menu
+
