@@ -14,6 +14,7 @@ bindsym $mod+d exec "rofi -modi drun,run -show drun -show-icons"
 bindsym $mod+$smod+$tmod+l exec betterlockscreen --lock
 bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
 bindsym $mod+$smod+c exec xcolor
+bindsym $mod+space exec bumblebee-ctl -b left-mouse -m layout
 
 # --- autostart
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
@@ -23,7 +24,7 @@ exec --no-startup-id autorandr --change
 exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id openrgb -p main-white
-exec --no-startup-id setxkbmap -layout us,tr -option grp:win_space_toggle
+exec --no-startup-id setxkbmap -layout us,tr
 exec --no-startup-id redshift-gtk
 exec_always --no-startup-id feh --bg-scale ~/picture/active_wallpaper
 # this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
