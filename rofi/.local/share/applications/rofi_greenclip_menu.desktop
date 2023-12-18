@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Rofi Clipboard Menu
+Exec=/home/pio/.local/rofi-script/rofi_launcher_greenclip_menu.sh
+

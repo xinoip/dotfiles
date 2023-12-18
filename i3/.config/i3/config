@@ -29,6 +29,7 @@ exec_always --no-startup-id feh --bg-scale ~/picture/active_wallpaper
 # this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
+exec --no-startup-id greenclip daemon
 
 # --- media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
