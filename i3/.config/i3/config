@@ -15,6 +15,7 @@ bindsym $mod+$smod+$tmod+l exec betterlockscreen --lock
 bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
 bindsym $mod+$smod+c exec xcolor
 bindsym $mod+space exec bumblebee-ctl -b left-mouse -m layout
+bindsym $mod+v exec --no-startup-id copyq show
 
 # --- autostart
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
@@ -30,7 +31,7 @@ exec_always --no-startup-id feh --bg-scale ~/picture/active_wallpaper
 # this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
-exec --no-startup-id greenclip daemon
+exec --no-startup-id copyq
 
 # --- media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
@@ -52,6 +53,9 @@ smart_borders on
 for_window [class="^.*"] border pixel 1
 set $yellow #d79921
 client.focused $yellow $yellow $yellow $yellow $yellow
+for_window [instance="copyq"] floating enable
+for_window [instance="copyq"] resize set 1000 600
+for_window [instance="copyq"] border pixel 5
 
 # --- workspace
 workspace 1 output $first_monitor
