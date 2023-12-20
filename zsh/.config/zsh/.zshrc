@@ -3,6 +3,7 @@ fpath=(~/3pp/zsh/completions $fpath)
 
 # antigen
 source $HOME/3pp/zsh/antigen.zsh
+export ZSH_TMUX_AUTOSTART=true
 antigen use oh-my-zsh
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -11,6 +12,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle git
 antigen bundle command-not-found
 antigen bundle mfaerevaag/wd
+antigen bundle tmux
 antigen theme romkatv/powerlevel10k
 antigen apply
 
@@ -67,6 +69,7 @@ encrypt_and_upload() {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-colorscript -r
+#colorscript -r
 
-source /home/pio/.config/broot/launcher/bash/br
+#source /home/pio/.config/broot/launcher/bash/br
+
