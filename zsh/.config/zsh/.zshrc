@@ -21,6 +21,9 @@ export HISTFILE=~/.cache/.zsh_history
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/3pp/bin:$PATH
 export EDITOR=nvim
+NPM_PACKAGES="${HOME}/.local/npm-global"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # alias
 alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
