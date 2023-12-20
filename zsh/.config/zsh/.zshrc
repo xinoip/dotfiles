@@ -55,6 +55,7 @@ alias rm="echo 'use del'"
 alias feh="feh --conversion-timeout 1"
 alias du="du -hs"
 alias kimg="kitty +kitten icat"
+alias clear="clear && $HOME/.config/zsh/greeter.sh"
 
 # custom
 chpwd() {
@@ -75,4 +76,6 @@ encrypt_and_upload() {
 #colorscript -r
 
 #source /home/pio/.config/broot/launcher/bash/br
+
+$HOME/.config/zsh/greeter.sh
 
