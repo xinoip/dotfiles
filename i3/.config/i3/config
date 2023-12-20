@@ -126,6 +126,7 @@ bar {
 
 	status_command bumblebee-status \
 			-t gruvbox-powerline \
+            -m title \
 			-m memory -p memory.format="{used} {percent:2.2f}%" \
 			-m disk:home -p home.path="/home" home.format="~ {used} {percent:2.2f}%" home.system="SI" \
 			-m disk:root -p root.path="/" root.format="{path} {used} {percent:2.2f}%" root.system="SI" \
