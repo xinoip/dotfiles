@@ -1,5 +1,6 @@
 # zsh
 fpath=(~/3pp/zsh/completions $fpath)
+fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
 
 # antigen
 source $HOME/3pp/zsh/antigen.zsh
