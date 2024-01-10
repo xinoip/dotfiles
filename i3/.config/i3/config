@@ -110,6 +110,9 @@ floating_modifier $mod
 focus_follows_mouse no
 bindsym $mod+f fullscreen toggle
 bindsym $mod+$smod+f floating toggle
+bindsym $mod+$smod+$tmod+s layout stacking
+bindsym $mod+$smod+$tmod+d layout default
+bindsym $mod+$smod+$tmod+w layout tabbed
 bindsym $mod+$smod+q kill
 bindsym $mod+$smod+r restart
 bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
