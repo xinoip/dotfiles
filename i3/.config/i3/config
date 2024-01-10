@@ -56,6 +56,22 @@ client.focused $yellow $yellow $yellow $yellow $yellow
 for_window [instance="copyq"] floating enable
 for_window [instance="copyq"] resize set 1000 600
 for_window [instance="copyq"] border pixel 5
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^lutris$"] floating enable
+for_window [class="^Lutris$"] floating enable
+for_window [class="^steam$"] floating enable
+for_window [class="^steam$" title="^Friends$"] floating enable
+for_window [class="^steam$" title="Steam - News"] floating enable
+for_window [class="^steam$" title=".* - Chat"] floating enable
+for_window [class="^steam$" title="^Settings$"] floating enable
+for_window [class="^steam$" title=".* - event started"] floating enable
+for_window [class="^steam$" title=".* CD key"] floating enable
+for_window [class="^steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^steam Keyboard$"] floating enable
+for_window [class="^battle.net.exe$"] floating enable
+
 
 # --- workspace
 workspace 1 output $first_monitor
