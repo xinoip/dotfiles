@@ -5,6 +5,7 @@ fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
 # antigen
 source $HOME/3pp/zsh/antigen.zsh
 export ZSH_TMUX_AUTOSTART=true
+export WD_CONFIG=$HOME/.cache/.warprc
 antigen use oh-my-zsh
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -25,6 +26,7 @@ export EDITOR=nvim
 NPM_PACKAGES="${HOME}/.local/npm-global"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+export WGETRC=$HOME/.config/wget/.wgetrc
 
 # alias
 alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
