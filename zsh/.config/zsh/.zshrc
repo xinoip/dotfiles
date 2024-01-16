@@ -1,7 +1,3 @@
-# zsh
-fpath=(~/3pp/zsh/completions $fpath)
-fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
-
 # antigen
 source $HOME/3pp/zsh/antigen.zsh
 export ZSH_TMUX_AUTOSTART=true
@@ -27,13 +23,9 @@ NPM_PACKAGES="${HOME}/.local/npm-global"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export WGETRC=$HOME/.config/wget/.wgetrc
+fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
 
 # alias
-alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
-alias vimconfig="$EDITOR ~/.config/nvim"
-alias i3config="$EDITOR ~/.config/i3/config"
-alias kittyconfig="$EDITOR ~/.config/kitty/kitty.conf"
-alias polybarconfig="$EDITOR ~/.config/polybar/config.ini"
 alias piocopy="xclip -selection clipboard"
 alias gpush="git push --set-upstream origin \$(git_current_branch)"
 alias greset="git reset --hard @{u}"
@@ -75,10 +67,6 @@ encrypt_and_upload() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-#colorscript -r
-
-#source /home/pio/.config/broot/launcher/bash/br
 
 $HOME/.config/zsh/greeter.sh
 
