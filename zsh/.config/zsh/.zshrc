@@ -57,6 +57,10 @@ chpwd() {
   lsd -lAh
 }
 
+xsearch() {
+    xbps-query -Rs "$1" | sort -u | grep -v "*" | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} '
+}
+
 # $1 folder to be encrypted and uploaded
 # $2 gdrive target
 # $3 password

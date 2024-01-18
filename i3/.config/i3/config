@@ -32,6 +32,7 @@ exec_always --no-startup-id feh --bg-scale ~/picture/active_wallpaper
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
 exec --no-startup-id copyq
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 # --- media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
@@ -139,7 +140,7 @@ mode "resize" {
 # --- bar
 bar {
 #	font pango:Iosevka Nerd Font 12
-	font pango:FontAwesome 10
+	font pango:FontAwesome 12
 	position bottom
 	tray_output primary
 
