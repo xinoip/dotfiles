@@ -1,0 +1,45 @@
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
+set hidden true
+set icons true
+set ignorecase true
+set smartcase true
+
+
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+
+    trashy "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd new_file ${{
+    printf "New File: "
+    read ans
+    touch "$ans"
+}}
+
+cmd new_dir ${{
+    printf "New Folder: "
+    read ans
+    mkdir -p "$ans"
+}}
+
+map d
+map x cut
+map p paste
+map y copy
+
+map . set hidden!
+map dd trash
+map af new_file
+map ad new_dir
+map R reload

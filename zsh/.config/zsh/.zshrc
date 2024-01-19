@@ -53,10 +53,15 @@ alias du="du -hs"
 alias kimg="kitty +kitten icat"
 alias clear="clear && $HOME/.config/zsh/greeter.sh"
 
-# custom
 chpwd() {
   lsd -lAh
 }
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
+}
+alias lf=lfcd
 
 xsearch() {
     xbps-query -Rs "$1" | sort -u | grep -v "*" | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} '
