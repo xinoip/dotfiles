@@ -13,7 +13,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv('HOME') .. '/3pp/vim_undodir'
+vim.opt.undodir = os.getenv('HOME') .. '/.cache/vim_undodir'
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
