@@ -43,3 +43,5 @@ map dd trash
 map af new_file
 map ad new_dir
 map R reload
+map <enter> open
+
