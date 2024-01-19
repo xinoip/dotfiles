@@ -27,7 +27,7 @@ exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput 
 exec --no-startup-id openrgb -p main-white
 exec --no-startup-id setxkbmap -layout us,tr
 exec --no-startup-id redshift-gtk
-exec_always --no-startup-id feh --bg-scale ~/picture/active_wallpaper
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/picture/active_wallpaper
 # this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
