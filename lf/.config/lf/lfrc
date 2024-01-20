@@ -5,6 +5,7 @@ set hidden true
 set icons true
 set ignorecase true
 set smartcase true
+set mouse true
 
 
 cmd trash ${{
