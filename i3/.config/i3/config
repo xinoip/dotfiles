@@ -19,7 +19,7 @@ bindsym $mod+v exec --no-startup-id copyq show
 
 # --- autostart
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
-exec --no-startup-id picom --backend xrender
+exec --no-startup-id picom -b
 exec --no-startup-id pipewire
 exec --no-startup-id autorandr --change
 exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
