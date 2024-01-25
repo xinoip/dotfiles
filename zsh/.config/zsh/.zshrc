@@ -65,7 +65,7 @@ lfcd () {
 alias lf=lfcd
 
 xsearch() {
-    xbps-query -Rs "$1" | sort -u | grep -v "*" | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} '
+    xbps-query -Rs "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} '
 }
 
 # $1 folder to be encrypted and uploaded
