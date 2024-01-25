@@ -25,6 +25,8 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export WGETRC=$HOME/.config/wget/.wgetrc
 export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
 
 # alias
