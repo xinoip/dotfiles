@@ -5,9 +5,9 @@ greet_user_cowsay() {
     GREET_USER=$(figlet -f mini "Welcome  back  $USER!")
     DATE_STR=$(date +%a\ %H:%M:%S)
     DATE_STR_RIGHT_ALIGN=$(figlet -f term -r $DATE_STR)
-    echo "$GREET_USER\n$DATE_STR_RIGHT_ALIGN" \
+    echo "$GREET_USER $DATE_STR_RIGHT_ALIGN" \
         | cowsay -f $RANDOM_COW -W80 -n \
-        | lolcat
+        | lolcat -r -b
 }
 
 greet_user_art() {
