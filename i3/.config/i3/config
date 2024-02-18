@@ -148,7 +148,7 @@ bar {
 			-t gruvbox-powerline \
             -m title \
 			-m memory -p memory.format="{used} {percent:2.2f}%" \
-			-m disk:ssd500 -p ssd500.path="/home/pio/ssd500" ssd500.format="ssdx {used} {percent:2.2f}%" ssd500.system="SI" \
+			-m disk:ssd500 -p ssd500.path="/home/pio/ssd500" ssd500.format="x {used} {percent:2.2f}%" ssd500.system="SI" \
 			-m disk:home -p home.path="/home" home.format="~ {used} {percent:2.2f}%" home.system="SI" \
 			-m disk:root -p root.path="/" root.format="{path} {used} {percent:2.2f}%" root.system="SI" \
 			-m layout \
