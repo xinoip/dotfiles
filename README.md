@@ -36,6 +36,16 @@ cd 3pp/pio-xdg
 mkdir Desktop Documents Music Public Templates Videos 
 ```
 
+## emptty
+
+For autologin:
+
+```sh
+# edit /etc/emptty/conf
+sudo groupadd nopasswdlogin
+sudo usermod $USER -aG nopasswdlogin
+```
+
 ## Void Linux
 
 ```sh
