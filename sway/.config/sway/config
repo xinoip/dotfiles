@@ -1,0 +1,150 @@
+# --- vars
+set $mod Mod4
+set $smod Shift
+set $tmod Mod1
+set $TERMINAL kitty
+set $term $TERMINAL
+set $BROWSER firefox
+set $LAUNCHER fuzzel
+set $second_monitor DP-4
+set $first_monitor DP-0
+set $menu $LAUNCHER | dmenu | xargs swaymsg exec --
+
+# --- launch
+bindsym $mod+Return exec $TERMINAL
+bindsym $mod+$smod+Return exec $BROWSER
+bindsym $mod+d exec $LAUNCHER
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+#bindsym $mod+$smod+$tmod+l exec betterlockscreen --lock
+#bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
+#bindsym $mod+$smod+c exec xcolor
+#bindsym $mod+space exec bumblebee-ctl -b left-mouse -m layout
+#bindsym $mod+v exec --no-startup-id copyq show
+
+# --- autostart
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
+#exec --no-startup-id picom -b
+exec --no-startup-id pipewire
+#exec --no-startup-id autorandr --change
+#exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Tapping Enabled" 1
+#exec --no-startup-id xinput set-prop "UNIW0001:00 093A:0255 Touchpad" "libinput Natural Scrolling Enabled" 1
+#exec --no-startup-id openrgb -p main-white
+#exec_always --no-startup-id setxkbmap -layout us,tr
+#exec --no-startup-id redshift-gtk
+#exec_always --no-startup-id feh --no-fehbg --bg-scale ~/picture/active_wallpaper
+# this one is for gtk 4, for gtk 3, see ~/.config/gtk-3.0/settings.ini
+#exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+#exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
+#exec --no-startup-id copyq
+#exec --no-startup-id xrdb -merge ~/.Xresources
+
+# --- display output
+output * bg ~/picture/active_wallpaper stretch
+
+# --- media keys
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight 1%+; exec brightnessctl set -d nvidia_0 1%+
+#bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 1%-; exec brightnessctl set -d nvidia_0 1%-
+
+# --- theme
+font pango:Iosevka NFM 8
+#gaps horizontal 16
+#gaps vertical 16
+gaps inner 8
+smart_gaps on
+#default_border pixel 1
+#default_floating_border pixel 1
+smart_borders on
+for_window [class="^.*"] border pixel 1
+set $yellow #d79921
+client.focused $yellow $yellow $yellow $yellow $yellow
+for_window [instance="copyq"] floating enable
+for_window [instance="copyq"] resize set 1000 600
+for_window [instance="copyq"] border pixel 5
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^lutris$"] floating enable
+for_window [class="^Lutris$"] floating enable
+for_window [class="^steam$"] floating enable
+for_window [class="^steam$" title="^Friends$"] floating enable
+for_window [class="^steam$" title="Steam - News"] floating enable
+for_window [class="^steam$" title=".* - Chat"] floating enable
+for_window [class="^steam$" title="^Settings$"] floating enable
+for_window [class="^steam$" title=".* - event started"] floating enable
+for_window [class="^steam$" title=".* CD key"] floating enable
+for_window [class="^steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^steam Keyboard$"] floating enable
+for_window [class="^battle.net.exe$"] floating enable
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+
+
+# --- workspace
+workspace 1 output $first_monitor
+workspace 2 output $first_monitor
+workspace 3 output $first_monitor
+workspace 4 output $first_monitor
+workspace 5 output $first_monitor
+#workspace 11 output $second_monitor
+#workspace 12 output $second_monitor
+#workspace 13 output $second_monitor
+#workspace 14 output $second_monitor
+#workspace 15 output $second_monitor
+bindsym $mod+1 workspace number 1 
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+$tmod+1 workspace number 11
+bindsym $mod+$tmod+2 workspace number 12
+bindsym $mod+$tmod+3 workspace number 13
+bindsym $mod+$tmod+4 workspace number 14
+bindsym $mod+$tmod+5 workspace number 15
+bindsym $mod+$smod+1 move container to workspace number 1
+bindsym $mod+$smod+2 move container to workspace number 2
+bindsym $mod+$smod+3 move container to workspace number 3
+bindsym $mod+$smod+4 move container to workspace number 4
+bindsym $mod+$smod+5 move container to workspace number 5
+bindsym $mod+$tmod+$smod+1 move container to workspace number 11
+bindsym $mod+$tmod+$smod+2 move container to workspace number 12
+bindsym $mod+$tmod+$smod+3 move container to workspace number 13 
+bindsym $mod+$tmod+$smod+4 move container to workspace number 14
+bindsym $mod+$tmod+$smod+5 move container to workspace number 15
+
+# --- windowing
+floating_modifier $mod
+focus_follows_mouse no
+bindsym $mod+f fullscreen toggle
+bindsym $mod+$smod+f floating toggle
+bindsym $mod+$smod+$tmod+s layout stacking
+bindsym $mod+$smod+$tmod+d layout default
+bindsym $mod+$smod+$tmod+w layout tabbed
+bindsym $mod+$smod+q kill
+bindsym $mod+$smod+r reload
+bindsym $mod+$smod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+$smod+h move left
+bindsym $mod+$smod+j move down
+bindsym $mod+$smod+k move up
+bindsym $mod+$smod+l move right
+bindsym $mod+r mode "resize"
+mode "resize" {
+    set $resize_amount 2
+    bindsym l resize shrink width $resize_amount px or $resize_amount ppt
+    bindsym j resize grow height $resize_amount px or $resize_amount ppt
+    bindsym k resize shrink height $resize_amount px or $resize_amount ppt
+    bindsym h resize grow width $resize_amount px or $resize_amount ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# --- bar
+bar swaybar_command waybar
+
