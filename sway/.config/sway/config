@@ -22,6 +22,7 @@ bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 #bindsym $mod+v exec --no-startup-id copyq show
 
 # --- autostart
+exec_always --no-startup-id gammastep-indicator -l 39.92:32.86
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
 #exec --no-startup-id picom -b
 exec --no-startup-id pipewire
@@ -38,8 +39,12 @@ exec --no-startup-id pipewire
 #exec --no-startup-id copyq
 #exec --no-startup-id xrdb -merge ~/.Xresources
 
-# --- display output
+# --- display output / input
 output * bg ~/picture/active_wallpaper stretch
+input type:keyboard {
+    xkb_layout us,tr
+    xkb_options grp:win_space_toggle
+}
 
 # --- media keys
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
