@@ -1,5 +1,6 @@
 # antigen
-source $HOME/3pp/zsh/antigen.zsh
+export ADOTDIR=~/.cache/antigen
+source .config/zsh/antigen.zsh
 export ZSH_TMUX_AUTOSTART=true
 export WD_CONFIG=$HOME/.cache/.warprc
 antigen use oh-my-zsh
@@ -15,6 +16,8 @@ antigen theme romkatv/powerlevel10k
 antigen apply
 
 # export
+export CARGO_HOME=~/3pp/cargo
+export PATH=$PATH:~/3pp/cargo/bin
 export HISTFILE=~/.cache/.zsh_history
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/3pp/bin:$PATH
@@ -25,7 +28,7 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export WGETRC=$HOME/.config/wget/.wgetrc
 export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
-export GOPATH=$HOME/go
+export GOPATH=$HOME/3pp/go
 export PATH=$PATH:$GOPATH/bin
 fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
 
