@@ -49,7 +49,7 @@ alias vim=nvim
 alias code="code --enable-ozone --ozone-platform=wayland"
 alias foliate="com.github.johnfactotum.Foliate"
 alias open="handlr open"
-alias del=trashy
+alias del=trash
 alias rm="echo 'use del'"
 alias feh="feh --conversion-timeout 1"
 alias du="du -hs"

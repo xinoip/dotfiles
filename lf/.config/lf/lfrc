@@ -17,7 +17,7 @@ cmd trash ${{
   while [ "$files" ]; do
     file=${files%%;*}
 
-    trashy "$(basename "$file")"
+    trash "$(basename "$file")"
     if [ "$files" = "$file" ]; then
       files=''
     else
