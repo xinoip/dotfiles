@@ -59,7 +59,7 @@ xi xpadneo xone
 # software: desktop common
 xi emptty dbus elogind dbus-elogind polkit xorg-fonts gvfs handlr xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs socklog-void
 # software: desktop wayland
-xi sway xdg-desktop-portal-wlr qt5-wayland qt6-wayland
+xi sway xdg-desktop-portal-wlr qt5-wayland qt6-wayland polkit-gnome
 # software: general
 xi vim neovim bottom man-pages-devel man-pages-posix void-repo-nonfree zsh kitty git firefox tealdeer fzf curl wget xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet cowsay lazygit go cargo nerd-fonts openrgb font-awesome font-awesome5 font-awesome6 gammastep gammastep-indicator waybar steam void-repo-multilib void-repo-multilib-nonfree libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit mono grim slurp swappy wdisplays pavucontrol 7zip 7zip-unrar chromium evince nwg-look tree unrar unzip thunar wofi
 fc-cache -fv
