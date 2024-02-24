@@ -5,10 +5,10 @@ set $tmod Mod1
 set $TERMINAL kitty
 set $term $TERMINAL
 set $BROWSER firefox
-set $LAUNCHER fuzzel
+set $LAUNCHER wofi
 set $second_monitor DP-4
 set $first_monitor DP-0
-set $menu $LAUNCHER | dmenu | xargs swaymsg exec --
+set $menu $LAUNCHER
 
 # --- launch
 bindsym $mod+Return exec $TERMINAL
