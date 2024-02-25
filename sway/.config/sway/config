@@ -1,3 +1,4 @@
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 # --- vars
 set $mod Mod4
 set $smod Shift
@@ -22,8 +23,9 @@ bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 #bindsym $mod+v exec --no-startup-id copyq show
 
 # --- autostart
-exec_always --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id gammastep-indicator -l 39.92:32.86
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id gammastep-indicator -l 39.92:32.86
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
 #exec --no-startup-id picom -b
 exec --no-startup-id pipewire
