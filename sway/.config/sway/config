@@ -16,6 +16,9 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+$smod+Return exec $BROWSER
 bindsym $mod+d exec $LAUNCHER
 bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+bindsym $mod+$smod+e exec wlogout
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 #bindsym $mod+$smod+$tmod+l exec betterlockscreen --lock
 #bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
 #bindsym $mod+$smod+c exec xcolor
@@ -41,6 +44,7 @@ exec --no-startup-id pipewire
 #exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
 #exec --no-startup-id copyq
 #exec --no-startup-id xrdb -merge ~/.Xresources
+exec ~/.local/pio-script/welcome_home.sh
 
 # --- display output / input
 output DP-2 {
@@ -137,7 +141,6 @@ bindsym $mod+$smod+$tmod+d layout default
 bindsym $mod+$smod+$tmod+w layout tabbed
 bindsym $mod+$smod+q kill
 bindsym $mod+$smod+r reload
-bindsym $mod+$smod+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
