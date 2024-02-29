@@ -7,8 +7,8 @@ set $TERMINAL kitty
 set $term $TERMINAL
 set $BROWSER firefox
 set $LAUNCHER wofi
-set $second_monitor DP-4
-set $first_monitor DP-0
+set $second_monitor DP-2
+set $first_monitor DP-1
 set $menu $LAUNCHER
 
 # --- launch
@@ -47,11 +47,18 @@ exec --no-startup-id pipewire
 exec ~/.local/pio-script/welcome_home.sh
 
 # --- display output / input
-output DP-2 {
+output DP-1 {
     mode 3440x1440@144hz
-    position 0,0
     bg ~/picture/active_wallpaper fill
-    scale 1.1
+    position 1080 0
+    #scale 1.10
+    #adaptive_sync on
+}
+output DP-2 {
+    mode 1920x1080@164.955hz
+    bg ~/picture/active_wallpaper fill
+    position 0 0
+    transform 270 
 }
 input type:keyboard {
     xkb_layout us,tr
@@ -78,25 +85,11 @@ smart_borders on
 for_window [class="^.*"] border pixel 1
 set $yellow #d79921
 client.focused $yellow $yellow $yellow $yellow $yellow
-for_window [instance="copyq"] floating enable
-for_window [instance="copyq"] resize set 1000 600
-for_window [instance="copyq"] border pixel 5
-for_window [class="^Pavucontrol$"] floating enable
-for_window [class="^lutris$"] floating enable
-for_window [class="^Lutris$"] floating enable
-for_window [class="^steam$"] floating enable
-for_window [class="^steam$" title="^Friends$"] floating enable
-for_window [class="^steam$" title="Steam - News"] floating enable
-for_window [class="^steam$" title=".* - Chat"] floating enable
-for_window [class="^steam$" title="^Settings$"] floating enable
-for_window [class="^steam$" title=".* - event started"] floating enable
-for_window [class="^steam$" title=".* CD key"] floating enable
-for_window [class="^steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-for_window [title="^steam Keyboard$"] floating enable
-for_window [class="^battle.net.exe$"] floating enable
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="Steam"] floating enable
+for_window  [title=".*Steam$"] floating enable
+
+for_window [app_id="thunar"] floating enable
 
 
 # --- workspace
@@ -105,11 +98,11 @@ workspace 2 output $first_monitor
 workspace 3 output $first_monitor
 workspace 4 output $first_monitor
 workspace 5 output $first_monitor
-#workspace 11 output $second_monitor
-#workspace 12 output $second_monitor
-#workspace 13 output $second_monitor
-#workspace 14 output $second_monitor
-#workspace 15 output $second_monitor
+workspace 11 output $second_monitor
+workspace 12 output $second_monitor
+workspace 13 output $second_monitor
+workspace 14 output $second_monitor
+workspace 15 output $second_monitor
 bindsym $mod+1 workspace number 1 
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
