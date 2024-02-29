@@ -46,6 +46,15 @@ sudo groupadd nopasswdlogin
 sudo usermod $USER -aG nopasswdlogin
 ```
 
+## steam
+
+Fix download speeds on steam client. Create `~/.steam/steam/steam_dev.cfg`:
+
+```sh
+@nClientDownloadEnableHTTP2PlatformLinux 0
+@fDownloadRateImprovementToAddAnotherConnection 1.0
+```
+
 ## Void Linux
 
 ```sh
