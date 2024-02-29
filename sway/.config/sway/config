@@ -6,7 +6,7 @@ set $tmod Mod1
 set $TERMINAL kitty
 set $term $TERMINAL
 set $BROWSER firefox
-set $LAUNCHER wofi
+set $LAUNCHER wofi -H 800 -W 800 --show drun
 set $second_monitor DP-2
 set $first_monitor DP-1
 set $menu $LAUNCHER
