@@ -32,7 +32,7 @@ exec_always --no-startup-id feh --no-fehbg --bg-scale ~/picture/active_wallpaper
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
 exec --no-startup-id copyq
-exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id xrdb -merge ~/.config/i3/.Xresources
 
 # --- media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
@@ -139,30 +139,22 @@ mode "resize" {
 
 # --- bar
 bar {
-#	font pango:Iosevka Nerd Font 12
-	font pango:FontAwesome 12
+	font pango:FontAwesome 8
 	position bottom
 	tray_output primary
 
 	status_command bumblebee-status \
-			-t gruvbox-powerline \
-            -m title \
+			-t iceberg-rainbow \
 			-m memory -p memory.format="{used} {percent:2.2f}%" \
-			-m disk:ssd500 -p ssd500.path="/home/pio/ssd500" ssd500.format="x {used} {percent:2.2f}%" ssd500.system="SI" \
-			-m disk:home -p home.path="/home" home.format="~ {used} {percent:2.2f}%" home.system="SI" \
 			-m disk:root -p root.path="/" root.format="{path} {used} {percent:2.2f}%" root.system="SI" \
 			-m layout \
 			-m brightness -p brightness.step=5 \
 			-m pulseout \
 			-m battery \
-			-m datetime -p datetime.format="%a %d/%m %H:%M:%S" \
-
-	#-m pulseout -p pulseout.showdevicename="true" pulseout.alsa_output.pci-0000_01_00.1.hdmi-stereo="Speakers" \
-	#-m pulsein \
+			-m datetime -p datetime.format="%H:%M:%S %d/%m %a" 
 
 	colors {
 		# Whole color settings
-#		background #3c3836
 		background #1d2021
 		statusline #ebdbb2
 		separator  #666666
