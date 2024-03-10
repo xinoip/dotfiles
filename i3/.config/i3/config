@@ -16,7 +16,7 @@ bindsym Print exec flameshot gui --path ~/picture/screenshot --clipboard
 bindsym $mod+$smod+c exec xcolor
 bindsym $mod+space exec bumblebee-ctl -b left-mouse -m layout
 bindsym $mod+v exec --no-startup-id copyq show
-bindsym $mod+$smod+e exec "wlogout"
+bindsym $mod+$smod+e exec wlogout
 
 # --- autostart
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
@@ -45,12 +45,8 @@ bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 1%-; exe
 
 # --- theme
 font pango:Iosevka NFM 8
-#gaps horizontal 16
-#gaps vertical 16
 gaps inner 8
 smart_gaps on
-#default_border pixel 1
-#default_floating_border pixel 1
 smart_borders on
 for_window [class="^.*"] border pixel 1
 set $yellow #d79921
@@ -73,7 +69,6 @@ for_window [class="^steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^steam Keyboard$"] floating enable
 for_window [class="^battle.net.exe$"] floating enable
-
 
 # --- workspace
 workspace 1 output $first_monitor
@@ -117,7 +112,6 @@ bindsym $mod+$smod+$tmod+d layout default
 bindsym $mod+$smod+$tmod+w layout tabbed
 bindsym $mod+$smod+q kill
 bindsym $mod+$smod+r restart
-#bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
