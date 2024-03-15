@@ -72,6 +72,8 @@ sudo xbps-install -Syu xtools
 xi linux-firmware-amd mesa-dri vulkan-loader mesa-vulkan-radeon mesa-vaapi mesa-vdpau 
 # hardware 32bit amd
 xi mesa-dri-32bit vulkan-loader-32bit mesa-vulkan-radeon-32bit
+# hardware intel laptop
+xi tlp tlpui tlp-rdw
 # xbox gamepad
 xi xpadneo xone 
 # steelseries arctis headset

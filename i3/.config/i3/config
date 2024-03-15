@@ -4,8 +4,8 @@ set $smod Shift
 set $tmod Mod1
 set $TERMINAL kitty
 set $BROWSER firefox
-set $second_monitor DP-4
-set $first_monitor DP-0
+set $second_monitor HDMI-0
+set $first_monitor DP-4
 
 # --- launch
 bindsym $mod+Return exec $TERMINAL
