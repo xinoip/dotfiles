@@ -60,6 +60,7 @@ alias code="code --enable-ozone --ozone-platform=wayland"
 alias foliate="com.github.johnfactotum.Foliate"
 alias open="handlr open"
 alias del=trash
+alias delf="/usr/bin/rm -rf"
 alias rm="echo 'use del'"
 alias feh="feh --conversion-timeout 1"
 alias du="du -hs"
