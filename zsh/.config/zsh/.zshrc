@@ -1,8 +1,8 @@
 # antigen
 export ADOTDIR=~/.cache/antigen
-source .config/zsh/antigen.zsh
+source ~/.config/zsh/antigen.zsh
 export ZSH_TMUX_AUTOSTART=true
-export WD_CONFIG=$HOME/.cache/.warprc
+export WD_CONFIG=~/.cache/.warprc
 antigen use oh-my-zsh
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -31,6 +31,13 @@ eval "$(dircolors $HOME/.config/zsh/.dircolors)"
 export GOPATH=$HOME/3pp/go
 export PATH=$PATH:$GOPATH/bin
 fpath=(~/.antigen/bundles/mfaerevaag/wd/wd.sh $fpath)
+
+# function
+force_compinit() {
+    rm ~/.cache/antigen/.zcompdump
+    rm ~/.cache/antigen/.zcompdump.zwc
+    compinit
+}
 
 # alias
 alias piocopy="xclip -selection clipboard"
@@ -82,6 +89,7 @@ encrypt_and_upload() {
 	7z a -mhe=on -p$3 $2 $1 
 	gdrive files upload $2 
 }
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

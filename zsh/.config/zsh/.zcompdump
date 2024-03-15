@@ -1,4 +1,4 @@
-#files: 947	version: 5.9
+#files: 952	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -179,6 +179,7 @@ _comps=(
 'bindkey' '_bindkey'
 'bison' '_bison'
 'bitcoin-cli' '_bitcoin-cli'
+'bluetooth' '_tlp-radio-device'
 'bluetoothctl' '_bluetoothctl'
 'bmake' '_make'
 'bogofilter' '_bogofilter'
@@ -1003,6 +1004,7 @@ _comps=(
 'new' '_mh'
 'newgrp' '_groups'
 'next' '_mh'
+'nfc' '_tlp-radio-device'
 'nft' '_nftables'
 'nginx' '_nginx'
 'ngrep' '_ngrep'
@@ -1253,6 +1255,8 @@ _comps=(
 'ruby' '_ruby'
 'ruby-mri' '_ruby'
 'run-help' '_run-help'
+'run-on-ac' '_tlp-run-on'
+'run-on-bat' '_tlp-run-on'
 'rup' '_hosts'
 'rusage' '_precommand'
 'rview' '_vim'
@@ -1430,6 +1434,9 @@ _comps=(
 'tla' '_tla'
 'tldr' '_tealdeer'
 'tload' '_tload'
+'tlp' '_tlp'
+'tlp-rdw' '_tlp-rdw'
+'tlp-stat' '_tlp-stat'
 'tmux' '_tmux'
 'tmuxinator' '_tmuxinator'
 'tmuxp' '_tmuxp'
@@ -1559,6 +1566,7 @@ _comps=(
 'whoami' '_nothing'
 'whois' '_whois'
 'whom' '_mh'
+'wifi' '_tlp-radio-device'
 'wiggle' '_wiggle'
 'wipefs' '_wipefs'
 'wlogout' '_wlogout'
@@ -1566,6 +1574,7 @@ _comps=(
 'wpa_cli' '_wpa_cli'
 'wpctl' '_wpctl'
 'write' '_users_on'
+'wwan' '_tlp-radio-device'
 'www' '_webbrowser'
 'xargs' '_xargs'
 'xattr' '_attr'
@@ -1849,7 +1858,8 @@ bindkey '^[~' _bash_complete-word
 autoload -Uz _bat _bluetoothctl _btm _busctl _bwrap \
             _cargo _curl _fd _flameshot _handlr \
             _lf _libinput _loginctl _lsd _mpv \
-            _pulseaudio _rg _sv _tealdeer _udisks2 \
+            _pulseaudio _rg _sv _tealdeer _tlp \
+            _tlp-radio-device _tlp-rdw _tlp-run-on _tlp-stat _udisks2 \
             _vkpurge _wlogout _wpctl _xbps _xbps_src \
             _xbps_src.orig _xss-lock _xtools _cdr _all_labels \
             _all_matches _alternative _approximate _arg_compile _arguments \
