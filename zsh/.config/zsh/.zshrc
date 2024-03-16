@@ -97,3 +97,6 @@ encrypt_and_upload() {
 
 $HOME/.config/zsh/greeter.sh
 
+# setup vim bindings
+bindkey -v
+
