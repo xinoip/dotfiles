@@ -1,0 +1,4 @@
+UUID=uuid / ext4 noatime 0 0
+UUID=uuid swap defaults 0 0
+UUID=uuid /boot/efi vfat defaults 0 0
+tmpfs /tmp tmpfs defaults,nosuid,nodev 0 0
