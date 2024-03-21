@@ -21,6 +21,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+-- offset to start scrolling at
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
