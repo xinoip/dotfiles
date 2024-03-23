@@ -68,6 +68,7 @@ alias kimg="kitty +kitten icat"
 alias clear="clear && $HOME/.config/zsh/greeter.sh"
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
 alias disable_ssh="sudo rm -rf /var/service/sshd"
+alias lg=lazygit
 
 chpwd() {
   lsd -lAh
