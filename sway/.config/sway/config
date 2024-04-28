@@ -49,14 +49,14 @@ exec ~/.local/pio-script/welcome_home.sh
 # --- display output / input
 output DP-1 {
     mode 3440x1440@144hz
-    bg ~/picture/active_wallpaper fill
+    bg ~/picture/active_wallpaper_1 fill
     position 1080 0
     #scale 1.10
     #adaptive_sync on
 }
 output DP-2 {
     mode 1920x1080@164.955hz
-    bg ~/picture/active_wallpaper fill
+    bg ~/picture/active_wallpaper_2 fill
     position 0 0
     transform 270 
 }
