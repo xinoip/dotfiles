@@ -16,6 +16,8 @@ antigen theme romkatv/powerlevel10k
 antigen apply
 
 # export
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export CARGO_HOME=~/3pp/cargo
 export PATH=$PATH:~/3pp/cargo/bin
 export HISTFILE=~/.cache/.zsh_history
