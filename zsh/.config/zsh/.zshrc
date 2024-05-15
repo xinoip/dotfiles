@@ -1,12 +1,11 @@
 # antidote
-source ~/.config/zsh/antidote/antidote.zsh
-antidote load ~/.config/zsh/.zsh_plugins.txt
-autoload -Uz compinit && compinit -i
-
 export ZSH_TMUX_AUTOSTART=true
 export WD_CONFIG=~/.cache/.warprc
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 4h
+source ~/.config/zsh/antidote/antidote.zsh
+antidote load ~/.config/zsh/.zsh_plugins.txt
+autoload -Uz compinit && compinit -i
 
 # export
 export LC_CTYPE=en_US.UTF-8
