@@ -1,6 +1,7 @@
 # antidote
 source ~/.config/zsh/antidote/antidote.zsh
 antidote load ~/.config/zsh/.zsh_plugins.txt
+autoload -Uz compinit && compinit -i
 
 export ZSH_TMUX_AUTOSTART=true
 export WD_CONFIG=~/.cache/.warprc
@@ -35,7 +36,7 @@ force_compinit() {
 
 # alias
 alias piocopy="xclip -selection clipboard"
-alias gpush="git push --set-upstream origin \$(git_current_branch)"
+alias gpush="git push --set-upstream origin"
 alias greset="git reset --hard @{u}"
 alias gs="git status -sb"
 alias gc="git commit -v"
