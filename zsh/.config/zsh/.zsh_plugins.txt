@@ -1,0 +1,17 @@
+Aloxaf/fzf-tab
+
+# zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions 
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-completions
+
+ohmyzsh/ohmyzsh path:lib kind:fpath
+ohmyzsh/ohmyzsh path:plugins/git kind:fpath
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/tmux kind:fpath
+ohmyzsh/ohmyzsh path:plugins/ssh-agent
+
+mfaerevaag/wd
+
+romkatv/powerlevel10k
+

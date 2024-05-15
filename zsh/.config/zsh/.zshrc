@@ -1,19 +1,11 @@
-# antigen
-export ADOTDIR=~/.cache/antigen
-source ~/.config/zsh/antigen.zsh
+# antidote
+source ~/.config/zsh/antidote/antidote.zsh
+antidote load ~/.config/zsh/.zsh_plugins.txt
+
 export ZSH_TMUX_AUTOSTART=true
 export WD_CONFIG=~/.cache/.warprc
-antigen use oh-my-zsh
-antigen bundle Aloxaf/fzf-tab
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions 
-antigen bundle zsh-users/zsh-completions
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle mfaerevaag/wd
-antigen bundle tmux
-antigen theme romkatv/powerlevel10k
-antigen apply
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # export
 export LC_CTYPE=en_US.UTF-8
@@ -57,6 +49,7 @@ alias gfetch="git fetch origin"
 alias gprune="git remote prune origin"
 alias bcat=bat
 alias ls=lsd
+alias la="lsd -lAh"
 alias vim=nvim
 alias code="code --enable-ozone --ozone-platform=wayland"
 alias foliate="com.github.johnfactotum.Foliate"
