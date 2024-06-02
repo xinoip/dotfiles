@@ -38,15 +38,19 @@ return {
             opts.desc = "Show buffer diagnostics"
             keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
+            -- TODO: v0.10 default binding is <C-W>d and <C-W><C-D>
             opts.desc = "Show line diagnostics"
             keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
+            -- TODO: v0.10 default binding
             opts.desc = "Go to previous diagnostic"
             keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
+            -- TODO: v0.10 default binding
             opts.desc = "Go to next diagnostic"
             keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
+            -- TODO: v0.10 default binding
             opts.desc = "Show documentation for what is under cursor"
             keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
             keymap.set('n', 'gq', function()
@@ -96,6 +100,9 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
+        -- new in v0.10
+        vim.lsp.inlay_hint.enable()
     end
 
 }

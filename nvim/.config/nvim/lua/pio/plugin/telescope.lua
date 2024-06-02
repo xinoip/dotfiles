@@ -13,6 +13,7 @@ return {
     config = function()
         local telescope = require('telescope')
         local actions = require('telescope.actions')
+        local ignored = { 'node_modules', '.git', '.venv' }
         telescope.setup({
             extensions = {
                 fzf = {
@@ -33,7 +34,14 @@ return {
             },
             pickers = {
                 find_files = {
+                    file_ignore_patterns = ignored,
                     hidden = true
+                },
+                live_grep = {
+                    file_ignore_patterns = ignored,
+                    additional_args = function(_)
+                        return { "--hidden" }
+                    end
                 }
             }
         })
