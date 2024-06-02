@@ -55,6 +55,14 @@ Fix download speeds on steam client. Create `~/.steam/steam/steam_dev.cfg`:
 @fDownloadRateImprovementToAddAnotherConnection 1.0
 ```
 
+## npm global
+
+Fix npm global installations to be used without sudo:
+
+```sh
+npm config set prefix "~/.local/npm-global"
+```
+
 ## Void Linux
 
 ```sh
