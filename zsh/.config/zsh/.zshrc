@@ -34,6 +34,8 @@ force_compinit() {
 }
 
 # alias
+alias sudo="sudo " # make all other aliases available for sudo
+                   # need additional spacing for sudo flags
 alias piocopy="xclip -selection clipboard"
 alias gpush="git push --set-upstream origin"
 alias greset="git reset --hard @{u}"
