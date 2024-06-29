@@ -8,13 +8,17 @@ return {
         require("oil").setup({
             columns = {
                 "icon",
-                "permissions",
-                "size",
-                "mtime",
+                -- "permissions",
+                -- "size",
+                -- "mtime",
             },
             delete_to_trash = true,
             view_options = {
                 show_hidden = true,
+                natural_order = true,
+                is_always_hidden = function(name, _)
+                    return name == '..'
+                end
             },
             keymaps = {
                 ["g?"] = "actions.show_help",
