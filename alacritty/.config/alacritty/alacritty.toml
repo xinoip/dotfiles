@@ -1,6 +1,13 @@
 [window]
 blur = true
 opacity = 0.5
+dynamic_padding = false
+decorations = "none"
+#startup_mode = "fullscreen"
+
+[window.padding]
+x = 0
+y = 0
 
 [font]
 normal = { family = "Iosevka NFM", style = "Regular" }
