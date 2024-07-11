@@ -9,9 +9,11 @@ return {
         local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local keymap = vim.keymap
+        local workspace_diagnostics = require('workspace-diagnostics')
 
         local opts = { noremap = true, silent = true }
         local on_attach = function(client, bufnr)
+            workspace_diagnostics.populate_workspace_diagnostics(client, bufnr)
             opts.buffer = bufnr
 
             opts.desc = "Show LSP references"
