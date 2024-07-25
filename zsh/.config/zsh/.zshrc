@@ -8,6 +8,8 @@ antidote load ~/.config/zsh/.zsh_plugins.txt
 autoload -Uz compinit && compinit -i
 
 # export
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export CARGO_HOME=~/3pp/cargo
