@@ -2,7 +2,7 @@
 blur = true
 opacity = 1
 dynamic_padding = false
-decorations = "none"
+#decorations = "none"
 #startup_mode = "fullscreen"
 
 [window.padding]
