@@ -9,6 +9,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.showmode = false
 vim.opt.termguicolors = true
+vim.opt.cmdheight = 0
 
 --# Indentation
 vim.opt.breakindent = true
@@ -24,7 +25,7 @@ vim.schedule(function()
 end)
 
 --# History
-vim.opt.undodir = os.getenv('HOME') .. '/.cache/vim_undodir'
+vim.opt.undodir = os.getenv 'HOME' .. '/.cache/vim_undodir'
 vim.opt.undofile = true
 
 --# Searching
@@ -43,7 +44,7 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.completeopt = 'menuone,noselect'
-vim.g.python3_host_prog = os.getenv('HOME') .. "/3pp/pio-py/bin/python3"
+vim.g.python3_host_prog = os.getenv 'HOME' .. '/3pp/pio-py/bin/python3'
 
 --# Highlight when copying text
 vim.api.nvim_create_autocmd('TextYankPost', {
