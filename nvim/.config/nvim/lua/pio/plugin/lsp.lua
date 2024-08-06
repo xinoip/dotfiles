@@ -43,7 +43,8 @@ return {
                     )
                     map('<leader>r', vim.lsp.buf.rename, '[R]e[n]ame')
                     map('<leader>.', vim.lsp.buf.code_action, '[C]ode [A]ction')
-                    map('K', vim.lsp.buf.hover, 'Hover info') -- show documentation for what is under cursor
+                    map('K', vim.lsp.buf.hover, 'Hover info')
+                    map('<leader>d', vim.diagnostic.open_float, 'Line [D]iagnostics')
 
                     -- Highlight under cursor / Clear when moved out
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
