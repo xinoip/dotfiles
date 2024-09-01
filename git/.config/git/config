@@ -1,0 +1,5 @@
+[user]
+	name = placeholder name
+	email = placeholder mail
+[init]
+	defaultBranch = main
