@@ -20,3 +20,22 @@ conflictstyle = diff3
 [diff]
 colorMoved = default
 
+[delta]
+features = decorations
+dark = true
+syntax-theme = gruvbox-dark
+side-by-side = true
+line-numbers = true
+line-numbers-left-format = "{nm:>4}┊"
+line-numbers-right-format = "{np:>4}│"
+line-numbers-left-style = blue
+line-numbers-right-style = blue
+keep-plus-minus-markers = false
+commit-decoration-style = blue ol
+commit-style = raw
+file-style = omit
+hunk-header-decoration-style = blue box
+hunk-header-file-style = red
+hunk-header-line-number-style = "#067a00"
+hunk-header-style = file line-number syntax
+
