@@ -21,12 +21,14 @@ greet_user_art() {
 }
 
 greet_fetch() {
-    ufetch
+    local fetchers=("ufetch" "fastfetch")
+    local index=$(( RANDOM % 2 ))
+    local fetch=${fetchers[$index]}
+    $fetch
 }
 
-greeters=("greet_user_cowsay" "greet_user_art" "greet_fetch")
-
 greet() {
+    local greeters=("greet_user_cowsay" "greet_user_art" "greet_fetch")
     local random_number=$(( RANDOM % 3 ))
     local index=$random_number
     local greeter=${greeters[$index]}
