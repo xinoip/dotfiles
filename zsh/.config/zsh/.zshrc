@@ -17,6 +17,7 @@ export PATH=$PATH:~/3pp/cargo/bin
 export HISTFILE=~/.cache/.zsh_history
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/3pp/bin:$PATH
+export PATH=$HOME/3pp/flutter/bin:$PATH
 export EDITOR=nvim
 NPM_PACKAGES="${HOME}/.local/npm-global"
 export PATH="$PATH:$NPM_PACKAGES/bin"
