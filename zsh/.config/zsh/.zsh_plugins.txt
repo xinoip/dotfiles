@@ -15,3 +15,5 @@ romkatv/powerlevel10k
 Aloxaf/fzf-tab
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions 
+
+jeffreytse/zsh-vi-mode
