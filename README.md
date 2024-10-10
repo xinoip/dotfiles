@@ -133,4 +133,28 @@ xi file-devel
 go install github.com/doronbehar/pistol/cmd/pistol@latest
 # trash bin program
 cargo install trashy
+
+```
+
+## Gnome Extensions
+
+Get installed extensions with: `gnome-extensions list --enabled`
+
+```sh
+dash-to-panel@jderose9.github.com
+just-perfection-desktop@just-perfection
+appindicatorsupport@rgcjonas.gmail.com
+blur-my-shell@aunetx
+quick-settings-tweaks@qwreey
+quick-settings-avatar@d-go
+PrivacyMenu@stuarthayhurst
+custom-accent-colors@demiskp
+gSnap@micahosborne
+quicksettings-audio-devices-renamer@marcinjahn.com
+quicksettings-audio-devices-hider@marcinjahn.com
+AlphabeticalAppGrid@stuarthayhurst
+applications-overview-tooltip@RaphaelRochet
+click-to-close-overview@l3nn4rt.github.io
+clipboard-indicator@tudmotu.com
+user-theme@gnome-shell-extensions.gcampax.github.com
 ```
