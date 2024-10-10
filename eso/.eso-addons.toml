@@ -1,0 +1,176 @@
+addonDir = "/home/pio/.steam/steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online/live/AddOns"
+
+[[addons]]
+name = "MapPins"
+url = "https://www.esoui.com/downloads/download1881"
+dependency = false
+
+[[addons]]
+name = "QuestMap"
+url = "https://www.esoui.com/downloads/download1022"
+dependency = false
+
+[[addons]]
+name = "LibMapData"
+url = "https://www.esoui.com/downloads/download3353"
+dependency = false
+
+[[addons]]
+name = "LibQuestData"
+url = "https://www.esoui.com/downloads/download2625"
+dependency = false
+
+[[addons]]
+name = "LibGPS"
+url = "https://www.esoui.com/downloads/download601"
+dependency = false
+
+[[addons]]
+name = "LoreBooks"
+url = "https://www.esoui.com/downloads/download288"
+dependency = false
+
+[[addons]]
+name = "PerfectPixel"
+url = "https://www.esoui.com/downloads/download2103"
+dependency = false
+
+[[addons]]
+name = "LibMapPing"
+url = "https://www.esoui.com/downloads/download1302"
+dependency = false
+
+[[addons]]
+name = "LibDebugLogger"
+url = "https://www.esoui.com/downloads/download2275"
+dependency = false
+
+[[addons]]
+name = "LibChatMessage"
+url = "https://www.esoui.com/downloads/download2382"
+dependency = false
+
+[[addons]]
+name = "LibAddonMenu-2.0"
+url = "https://www.esoui.com/downloads/download7"
+dependency = false
+
+[[addons]]
+name = "LibMapPins-1.0"
+url = "https://www.esoui.com/downloads/download563"
+dependency = false
+
+[[addons]]
+name = "CustomCompassPins"
+url = "https://www.esoui.com/downloads/download185"
+dependency = false
+
+[[addons]]
+name = "LibCustomMenu"
+url = "https://www.esoui.com/downloads/download1146"
+dependency = false
+
+[[addons]]
+name = "JournalQuestLog"
+url = "https://www.esoui.com/downloads/download1785"
+dependency = false
+
+[[addons]]
+name = "LibUespQuestData"
+url = "https://www.esoui.com/downloads/download2484"
+dependency = false
+
+[[addons]]
+name = "AutoCategory"
+url = "https://www.esoui.com/downloads/download1798"
+dependency = false
+
+[[addons]]
+name = "TamrielTradeCentre"
+url = "https://www.esoui.com/downloads/download1245"
+dependency = false
+
+[[addons]]
+name = "DolgubonsLazyWritCreator"
+url = "https://www.esoui.com/downloads/download1346"
+dependency = false
+
+[[addons]]
+name = "CraftStoreFixedAndImproved"
+url = "https://www.esoui.com/downloads/download1590"
+dependency = false
+
+[[addons]]
+name = "LibBinaryEncode"
+url = "https://www.esoui.com/downloads/download1647"
+dependency = false
+
+[[addons]]
+name = "HarvestMap"
+url = "https://www.esoui.com/downloads/download57"
+dependency = false
+
+[[addons]]
+name = "AccountSettings"
+url = "https://www.esoui.com/downloads/download3418"
+dependency = false
+
+[[addons]]
+name = "LibChatMenuButton"
+url = "https://www.esoui.com/downloads/download3805"
+dependency = false
+
+[[addons]]
+name = "BeamMeUp"
+url = "https://www.esoui.com/downloads/download2143"
+dependency = false
+
+[[addons]]
+name = "LibZone"
+url = "https://www.esoui.com/downloads/download2171"
+dependency = false
+
+[[addons]]
+name = "LuiExtended"
+url = "https://www.esoui.com/downloads/download818"
+dependency = false
+
+[[addons]]
+name = "LibMediaProvider-1.0"
+url = "https://www.esoui.com/downloads/download56"
+dependency = false
+
+[[addons]]
+name = "LibLazyCrafting"
+url = "https://www.esoui.com/downloads/download1594"
+dependency = false
+
+[[addons]]
+name = "LibMainMenu-2.0"
+url = "https://www.esoui.com/downloads/download2118"
+dependency = false
+
+[[addons]]
+name = "DarkUI"
+url = "https://www.esoui.com/downloads/download1576"
+dependency = false
+
+[[addons]]
+name = "VotansMiniMap"
+url = "https://www.esoui.com/downloads/download1399"
+dependency = false
+
+[[addons]]
+name = "LibHarvensAddonSettings"
+url = "https://www.esoui.com/downloads/download584"
+dependency = false
+
+[[addons]]
+name = "LibAsync"
+url = "https://www.esoui.com/downloads/download2125"
+dependency = false
+
+[[addons]]
+name = "NTakDialog"
+url = "https://www.esoui.com/downloads/download2290"
+dependency = false
