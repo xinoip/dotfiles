@@ -112,5 +112,11 @@ encrypt_and_upload() {
 	gdrive files upload $2 
 }
 
+# $1 in
+# $2 pass
+pio_encrypt() {
+    7z a -mhe=on -p$2 $1.7z $1
+}
+
 # setup correct colors for ls output
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
