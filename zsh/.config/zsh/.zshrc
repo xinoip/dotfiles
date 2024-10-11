@@ -77,6 +77,7 @@ alias gprune="git remote prune origin"
 # alias convenience
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
 alias disable_ssh="sudo rm -rf /var/service/sshd"
+alias xrm="sudo xbps-remove -ROo"
 
 # shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
