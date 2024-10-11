@@ -115,7 +115,14 @@ encrypt_and_upload() {
 # $1 in
 # $2 pass
 pio_encrypt() {
+    setopt NO_HIST
     7z a -mhe=on -p$2 $1.7z $1
+    unsetopt NO_HIST
+}
+
+# $1 in
+pio_compress() {
+    tar -cJf $1.tar.xz $1
 }
 
 # setup correct colors for ls output
