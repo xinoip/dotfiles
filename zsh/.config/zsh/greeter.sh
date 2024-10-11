@@ -21,15 +21,19 @@ greet_user_art() {
 }
 
 greet_fetch() {
-    local fetchers=("ufetch" "fastfetch")
-    local index=$(( RANDOM % 2 ))
-    local fetch=${fetchers[$index]}
-    $fetch
+    # local fetchers=("ufetch" "fastfetch")
+    # local index=$(( RANDOM % 2 ))
+    # local fetch=${fetchers[$index]}
+    # $fetch
+    ufetch
+    GREET_STR="Welcome back $USER!"
+    DATE_STR=$(date +%a\ %H:%M:%S)
+    echo -e "$DATE_STR\n$GREET_STR" | lolcat -r -b
 }
 
 greet() {
-    local greeters=("greet_user_cowsay" "greet_user_art" "greet_fetch")
-    local random_number=$(( RANDOM % 3 ))
+    local greeters=("greet_fetch" "greet_user_art")
+    local random_number=$(( RANDOM % 2 ))
     local index=$random_number
     local greeter=${greeters[$index]}
     # echo "selected greeter $index = $greeter"
