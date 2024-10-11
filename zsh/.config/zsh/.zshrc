@@ -61,7 +61,8 @@ alias lg=lazygit
 alias ip="ip -c"
 
 # alias git
-alias gpush="git push --set-upstream origin"
+alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias greset="git reset --hard @{u}"
 alias gs="git status -sb"
 alias gc="git commit -v"
@@ -70,7 +71,6 @@ alias gblog="git branch -al"
 alias glog="git log --oneline --decorate --graph"
 alias gcheck="git checkout"
 alias gcreate="git checkout -b"
-alias gpull="git pull"
 alias gfetch="git fetch origin"
 alias gprune="git remote prune origin"
 
