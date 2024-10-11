@@ -66,71 +66,99 @@ npm config set prefix "~/.local/npm-global"
 ## Void Linux
 
 ```sh
-# setup network
-ln -s /etc/sv/dhcpcd /var/service
-ping voidlinux.org
+# partition
+1G EFI @ /boot/EFI VFAT
+48G Swap
+*G Linux Root x86_64 @ / ext4
 
-# update system
+# get xtools
 sudo xbps-install -Syu
+sudo xbps-install -S xtools
 
-# will use xtools from here on
-sudo xbps-install -Syu xtools
+# enable repos
+xi void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree
+xi -Su
 
-# hardware all amd
-xi linux-firmware-amd mesa-dri vulkan-loader mesa-vulkan-radeon mesa-vaapi mesa-vdpau 
-# hardware 32bit amd
+# locales
+/etc/default/libc-locales
+sudo xbps-reconfigure glibc-locales --force
+
+# drivers
+xi linux-firmware-amd vulkan-loader mesa-dri mesa-vulkan-radeon \
+   mesa-vaapi mesa-vdpau
 xi mesa-dri-32bit vulkan-loader-32bit mesa-vulkan-radeon-32bit
-# hardware intel laptop
+xi xpadneo xone
+# intel laptop
 xi tlp tlpui tlp-rdw
-# xbox gamepad
-xi xpadneo xone 
-# steelseries arctis headset
-# build from git Sapd/HeadsetControl
+# headset from Sapd/HeadsetControl
 
-# software: desktop common
-xi emptty dbus elogind dbus-elogind polkit xorg-fonts gvfs handlr xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs socklog-void
-# software: desktop wayland
-xi sway xdg-desktop-portal-wlr qt5-wayland qt6-wayland polkit-gnome
-# software: general
-xi vim neovim bottom man-pages-devel man-pages-posix void-repo-nonfree zsh kitty git firefox tealdeer fzf curl wget xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet cowsay lazygit go cargo nerd-fonts openrgb font-awesome font-awesome5 font-awesome6 gammastep gammastep-indicator waybar steam void-repo-multilib void-repo-multilib-nonfree libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit mono grim slurp swappy wdisplays pavucontrol 7zip 7zip-unrar chromium evince nwg-look tree unrar unzip thunar wofi
-fc-cache -fv
-fc-list
-# change network setup
-xi NetworkManager
-sudo rm /var/service/dhcpcd
-sudo ln -s /etc/sv/NetworkManager /var/service/
-# setup pipewire
-xi pipewire
-mkdir -p /etc/pipewire/pipewire.conf.d
+# fonts
+xi noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji nerd-fonts
+sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf 
+sudo xbps-reconfigure -f fontconfig
+
+# ssd trim weekly
+vim /etc/cron.weekly/fstrim
+    #!/bin/sh
+    fstrim /
+
+# core
+xi NetworkManager elogind
+sudo rm /var/service/dhcpcd /var/service/wpa_supplicant
+sudo ln -s /etc/sv/NetworkManager /var/service
+sudo ln -s /etc/sv/dbus /var/service
+
+# pipewire
+sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+# autostart pipewire
+sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart
+xi qpwgraph
 
-# bootstrap all void packages
-mkdir 3pp
-cd 3pp
+# desktop
+xi gnome extension-manager
+sudo ln -s /etc/sv/gdm /var/service
+
+# setup xdg-dirs
+cd ~
+mkdir download picture
+mkdir -p 3pp/pio-xdg
+cd 3pp/pio-xdg
+mkdir Desktop Documents Music Public Templates Videos 
+
+# service logging
+xi socklog-void
+sudo ln -s /etc/sv/socklog-unix /var/service
+sudo ln -s /etc/sv/nanoklogd /var/service
+sudo usermod -aG socklog pio
+# test with svlogtail
+
+# dotfiles
+git clone https://github.com/xinoip/dotfiles
+git submodule update --init --recursive
+xi stow
+stow */
+vim /etc/zsh/zshenv
+    export ZDOTDIR=~/.config/zsh
+chsh --shell /usr/bin/zsh
+xi file-devel
+go install github.com/doronbehar/pistol/cmd/pistol@latest
+cargo install trashy
+
+# void-packages
+cd ~/3pp
 git clone https://github.com/void-linux/void-packages.git --depth=1
 cd void-packages
 ./xbps-src binary-bootstrap
 echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
 # use xi to install while in void-packages dir
 
-# enable services
-# dbus starts elogind, so dont run elogind as service
-sudo ln -s /etc/sv/dbus /var/service
-sudo ln -s /etc/sv/polkitd /var/service
-sudo ln -s /etc/sv/emptty /var/service
-sudo ln -s /etc/sv/socklog-unix /var/service
-sudo ln -s /etc/sv/nanoklogd /var/service
+# software
+xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer fzf xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet cowsay lazygit go cargo steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta chromium tree unrar unzip kitty
 
-# improve fonts
-sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
-sudo xbps-reconfigure -f fontconfig
-
-# setup dotfiles
-git clone https://github.com/xinoip/dotfiles
-# need pistol as file previewer for lf 
-xi file-devel
-go install github.com/doronbehar/pistol/cmd/pistol@latest
-# trash bin program
-cargo install trashy
+# flatpak
+xi flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub io.gitlab.librewolf-community
 ```
