@@ -155,7 +155,12 @@ echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
 # use xi to install while in void-packages dir
 
 # software
-xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer fzf xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet cowsay lazygit go cargo steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta chromium tree unrar unzip kitty ripgrep gamemode MangoHud
+xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
+   fzf xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet \
+   cowsay lazygit go cargo steam libgcc-32bit libstdc++-32bit \
+   libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta \
+   chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
+   clang llvm clang-tools-extra
 
 # flatpak
 xi flatpak
