@@ -107,6 +107,7 @@ return {
                         },
                     },
                 },
+                gopls = {},
             }
 
             -- Let Mason install the servers, check with :Mason
