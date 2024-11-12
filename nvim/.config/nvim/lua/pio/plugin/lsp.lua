@@ -108,6 +108,7 @@ return {
                     },
                 },
                 gopls = {},
+                bashls = {},
             }
 
             -- Let Mason install the servers, check with :Mason
@@ -118,6 +119,8 @@ return {
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
                 'cmakelang', -- cmake-format
+                'shfmt', -- bash-language-server formatter
+                'shellcheck', -- bash-language-server linter
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
