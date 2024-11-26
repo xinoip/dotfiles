@@ -7,9 +7,9 @@ greet_user_cowsay() {
     GREET_USER=$(figlet -f mini "Welcome  back  $USER!")
     DATE_STR=$(date +%a\ %H:%M:%S)
     DATE_STR_RIGHT_ALIGN=$(figlet -f term -r $DATE_STR)
-    echo "$GREET_USER $DATE_STR" \
-        | cowsay -f $RANDOM_COW -n \
-        | lolcat -r -b
+    echo "$GREET_USER $DATE_STR" |
+        cowsay -f $RANDOM_COW -n |
+        lolcat
 }
 
 greet_user_art() {
@@ -17,7 +17,7 @@ greet_user_art() {
     DATE_STR=$(date +%a\ %H:%M:%S)
     RANDOM_ART=$(ls $COLORSCRIPTS | shuf -n 1)
     $COLORSCRIPTS/$RANDOM_ART
-    echo -e "$DATE_STR\n$GREET_STR" | lolcat -r -b
+    echo -e "$DATE_STR\n$GREET_STR" | lolcat
 }
 
 greet_fetch() {
@@ -28,12 +28,12 @@ greet_fetch() {
     ufetch
     GREET_STR="Welcome back $USER!"
     DATE_STR=$(date +%a\ %H:%M:%S)
-    echo -e "$DATE_STR\n$GREET_STR" | lolcat -r -b
+    echo -e "$DATE_STR\n$GREET_STR" | lolcat
 }
 
 greet() {
     local greeters=("greet_fetch" "greet_user_art")
-    local random_number=$(( RANDOM % 2 ))
+    local random_number=$((RANDOM % 2))
     local index=$random_number
     local greeter=${greeters[$index]}
     # echo "selected greeter $index = $greeter"
@@ -41,4 +41,3 @@ greet() {
 }
 
 greet
-
