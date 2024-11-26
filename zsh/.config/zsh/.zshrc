@@ -1,5 +1,5 @@
 # plugin configs
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 export WD_CONFIG=~/.cache/.warprc
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 4h
@@ -26,6 +26,8 @@ export CARGO_HOME=~/3pp/cargo
 NPM_PACKAGES="${HOME}/.local/npm-global"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export GOPATH=$HOME/3pp/go
+export N_PREFIX=$HOME/3pp/node
+export NEXT_TELEMETRY_DISABLED=1
 
 path+=(
     ~/3pp/bin
@@ -34,6 +36,8 @@ path+=(
     ~/3pp/cargo/bin
     $GOPATH/bin
     $NPM_PACKAGES/bin
+    ~/stl/prefix
+    $N_PREFIX/bin
 )
 
 fpath+=(
@@ -82,7 +86,7 @@ alias xrm="sudo xbps-remove -ROo"
 # shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 $HOME/.config/zsh/greeter.sh
-bindkey -v # setup vim bindings
+# bindkey -v # setup vim bindings
 
 # functions
 
@@ -128,3 +132,11 @@ pio_compress() {
 
 # setup correct colors for ls output
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export TERM=xterm-256color
+
