@@ -109,6 +109,7 @@ return {
                 },
                 gopls = {},
                 bashls = {},
+                ts_ls = {},
             }
 
             -- Let Mason install the servers, check with :Mason
@@ -315,4 +316,9 @@ return {
         end,
     },
     { 'CRAG666/code_runner.nvim', config = true },
+    {
+        'pmizio/typescript-tools.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+        opts = {},
+    },
 }
