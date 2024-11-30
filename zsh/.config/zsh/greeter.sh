@@ -15,7 +15,8 @@ greet_user_cowsay() {
 greet_user_art() {
     GREET_STR="Welcome back $USER!"
     DATE_STR=$(date +%a\ %H:%M:%S)
-    RANDOM_ART=$(ls $COLORSCRIPTS | shuf -n 1)
+    # ls only the files, excludes folder 'disabled'
+    RANDOM_ART=$(ls -p $COLORSCRIPTS | grep -v / | shuf -n 1)
     $COLORSCRIPTS/$RANDOM_ART
     echo -e "$DATE_STR\n$GREET_STR" | lolcat
 }
