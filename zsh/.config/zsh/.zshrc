@@ -1,5 +1,5 @@
 # plugin configs
-export ZSH_TMUX_AUTOSTART=false
+export ZSH_TMUX_AUTOSTART=true
 export WD_CONFIG=~/.cache/.warprc
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 4h
@@ -25,7 +25,7 @@ export WGETRC=$HOME/.config/wget/.wgetrc
 export CARGO_HOME=~/3pp/cargo
 NPM_PACKAGES="${HOME}/.local/npm-global"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export GOPATH=$HOME/3pp/go
+export GOPATH=$HOME/3pp/gopath
 export N_PREFIX=$HOME/3pp/node
 export NEXT_TELEMETRY_DISABLED=1
 
@@ -38,6 +38,7 @@ path+=(
     $NPM_PACKAGES/bin
     ~/stl/prefix
     $N_PREFIX/bin
+    /usr/local/go/bin
 )
 
 fpath+=(
@@ -49,7 +50,7 @@ alias sudo="sudo " # make all other aliases available for sudo
                     # need additional spacing for sudo flags
 alias piocopy="xclip -selection clipboard"
 alias lf=lfcd
-alias bcat=bat
+alias bcat=batcat
 alias ls=lsd
 alias la="lsd -lAh"
 alias vim=nvim
@@ -62,6 +63,7 @@ alias kimg="kitty +kitten icat"
 alias clearf="/usr/bin/clear"
 alias clear="clear && $HOME/.config/zsh/greeter.sh"
 alias lg=lazygit
+alias lzd=lazydocker
 alias ip="ip -c"
 
 # alias git
@@ -134,9 +136,9 @@ pio_compress() {
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
 
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 export TERM=xterm-256color
 
