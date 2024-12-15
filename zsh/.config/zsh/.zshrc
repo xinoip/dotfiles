@@ -93,8 +93,8 @@ $HOME/.config/zsh/greeter.sh
 # functions
 
 force_compinit() {
-    rm ~/.cache/antigen/.zcompdump
-    rm ~/.cache/antigen/.zcompdump.zwc
+    delf ~/.cache/antigen/.zcompdump
+    delf ~/.cache/antigen/.zcompdump.zwc
     compinit
 }
 
