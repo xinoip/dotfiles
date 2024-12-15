@@ -43,7 +43,11 @@ path+=(
 
 fpath+=(
     ~/.antigen/bundles/mfaerevaag/wd/wd.sh
+
+    # docker completion zsh > ~/path/_docker
+    ~/.docker/completions
 )
+autoload -Uz compinit && compinit -i
 
 # alias program
 alias sudo="sudo " # make all other aliases available for sudo
