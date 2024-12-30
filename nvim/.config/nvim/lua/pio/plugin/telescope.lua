@@ -12,7 +12,7 @@ return {
     config = function()
         local telescope = require 'telescope'
         local actions = require 'telescope.actions'
-        local ignored = { 'node_modules', '.git', '.venv' }
+        local ignored = { 'node_modules', '.git', '.venv', 'ext' }
         telescope.setup {
             extensions = {
                 fzf = {
