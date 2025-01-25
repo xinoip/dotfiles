@@ -110,6 +110,7 @@ return {
                 gopls = {},
                 bashls = {},
                 ts_ls = {},
+                sqlls = {},
             }
 
             -- Let Mason install the servers, check with :Mason
