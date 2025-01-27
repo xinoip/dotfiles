@@ -1,5 +1,5 @@
 # plugin configs
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 export WD_CONFIG=~/.cache/.warprc
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent lifetime 4h
@@ -54,7 +54,7 @@ alias sudo="sudo " # make all other aliases available for sudo
                     # need additional spacing for sudo flags
 alias piocopy="xclip -selection clipboard"
 alias lf=lfcd
-alias bcat=batcat
+alias bcat=bat
 alias ls=lsd
 alias la="lsd -lAh"
 alias vim=nvim
