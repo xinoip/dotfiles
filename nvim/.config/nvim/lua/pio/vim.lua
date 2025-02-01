@@ -10,6 +10,7 @@ vim.opt.scrolloff = 10
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
+vim.opt.colorcolumn = '92'
 
 --# Indentation
 vim.opt.breakindent = true
