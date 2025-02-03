@@ -85,7 +85,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    cowsay lazygit go cargo steam libgcc-32bit libstdc++-32bit \
    libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
-   clang llvm clang-tools-extra firefox
+   clang llvm clang-tools-extra firefox ufetch
 
 info "Flatpak"
 xi flatpak
@@ -112,6 +112,7 @@ sudo bash -c 'cat <<EOF >> "/etc/emptty/conf"
 AUTOLOGIN=true
 DEFAULT_USER=pio
 VERTICAL_SELECTION=true
+DEFAULT_SESSION_ENV=wayland
 EOF'
 
 info "Enable display server"
