@@ -4,9 +4,9 @@ set -e
 set -o nounset
 
 info() {
-    local message="$1"
-    local color="\033[1;33m"  # Yellow
-    echo -e "${color}[VOID_SETUP] ${message}\033[0m"
+   local message="$1"
+   local color="\033[1;33m" # Yellow
+   echo -e "${color}[VOID_SETUP] ${message}\033[0m"
 }
 
 info "START"
@@ -64,7 +64,7 @@ rm -rf Desktop Documents Music Public Templates Videos Downloads Pictures
 mkdir -p download picture
 mkdir -p 3pp/pio-xdg
 cd 3pp/pio-xdg
-mkdir Desktop Documents Music Public Templates Videos 
+mkdir Desktop Documents Music Public Templates Videos
 
 info "Service logs"
 xi socklog-void
@@ -77,7 +77,7 @@ cd ~/3pp
 git clone https://github.com/void-linux/void-packages.git --depth=1
 cd void-packages
 ./xbps-src binary-bootstrap
-echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
+echo XBPS_ALLOW_RESTRICTED=yes >>etc/conf
 
 info "Install software"
 xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
@@ -85,7 +85,11 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    cowsay lazygit go cargo steam libgcc-32bit libstdc++-32bit \
    libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
-   clang llvm clang-tools-extra firefox ufetch
+   clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
+   easyeffects lsp-plugins
+
+info "Enable docker service"
+sudo ln -s /etc/sv/docker /var/service
 
 info "Flatpak"
 xi flatpak
