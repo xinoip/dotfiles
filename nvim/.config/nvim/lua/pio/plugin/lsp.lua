@@ -298,6 +298,7 @@ return {
                 'query',
                 'vim',
                 'vimdoc',
+                'just',
             },
             auto_install = true,
             highlight = {
