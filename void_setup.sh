@@ -86,7 +86,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    libdrm-32bit libglvnd-32bit mono 7zip 7zip-unrar delta \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
    clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
-   easyeffects lsp-plugins vscode gamescope
+   easyeffects lsp-plugins vscode gamescope xrandr
 
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
