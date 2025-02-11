@@ -1,3 +1,6 @@
 [submodule "zsh/.config/zsh/antidote"]
 	path = zsh/.config/zsh/antidote
 	url = https://github.com/mattmc3/antidote.git
+[submodule "tmux/.config/tmux/tpm"]
+	path = tmux/.config/tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
