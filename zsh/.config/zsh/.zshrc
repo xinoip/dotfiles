@@ -69,6 +69,7 @@ alias clear="clear && $HOME/.config/zsh/greeter.sh"
 alias lg=lazygit
 alias lzd=lazydocker
 alias ip="ip -c"
+alias curlget="curl -LO"
 
 # alias git
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
