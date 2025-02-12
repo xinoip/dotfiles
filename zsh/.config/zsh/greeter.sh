@@ -18,7 +18,7 @@ greet_user_art() {
     # ls only the files, excludes folder 'disabled'
     RANDOM_ART=$(ls -p $COLORSCRIPTS | grep -v / | shuf -n 1)
     $COLORSCRIPTS/$RANDOM_ART
-    echo -e "$DATE_STR\n$GREET_STR" | lolcat
+    echo -e "$DATE_STR ($RANDOM_ART)\n$GREET_STR" | lolcat
 }
 
 greet_fetch() {

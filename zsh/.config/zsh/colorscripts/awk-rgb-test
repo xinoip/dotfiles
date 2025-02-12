@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "This should be a smooth gradient"
+# echo "This should be a smooth gradient"
 echo ""
 awk 'BEGIN{
     s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
@@ -14,3 +14,4 @@ awk 'BEGIN{
     }
     printf "\n";
 }'
+echo ""
