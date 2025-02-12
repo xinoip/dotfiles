@@ -28,6 +28,7 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export GOPATH=$HOME/3pp/gopath
 export N_PREFIX=$HOME/3pp/node
 export NEXT_TELEMETRY_DISABLED=1
+export PNPM_HOME="${HOME}/.local/share/pnpm"
 
 path+=(
     ~/3pp/bin
@@ -39,6 +40,7 @@ path+=(
     ~/stl/prefix
     $N_PREFIX/bin
     /usr/local/go/bin
+    $PNPM_HOME
 )
 
 fpath+=(
