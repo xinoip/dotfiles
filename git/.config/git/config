@@ -5,6 +5,9 @@ email = placeholder
 [init]
 defaultBranch = main
 
+[pull]
+rebase = true
+
 [core]
 pager = delta
 
