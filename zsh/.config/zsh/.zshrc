@@ -130,6 +130,14 @@ xunhold() {
     sudo xbps-pkgdb -m unhold $1
 }
 
+quick_serve() {
+    if [ -n "$1" ]; then
+	python3 -m http.server $1
+    else
+	python3 -m http.server 3000
+    fi
+}
+
 # $1 folder to be encrypted and uploaded
 # $2 gdrive target
 # $3 password
