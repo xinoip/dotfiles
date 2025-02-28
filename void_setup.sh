@@ -87,7 +87,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
    clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
-   android-tools ninja
+   android-tools ninja gparted
 
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
