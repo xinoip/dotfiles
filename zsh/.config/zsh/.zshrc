@@ -86,6 +86,7 @@ alias gcheck="git checkout"
 alias gcreate="git checkout -b"
 alias gfetch="git fetch origin"
 alias gprune="git remote prune origin"
+alias gbump="git commit --allow-empty -m 'bump' --no-verify"
 
 # alias convenience
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
