@@ -55,3 +55,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
+
+--# Custom commands
+vim.api.nvim_create_user_command('FormatDisable', function(args)
+    if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+    else
+        vim.g.disable_autoformat = true
+    end
+    print 'Format on save disabled'
+end, {
+    desc = 'Disable autoformat-on-save',
+    bang = true,
+})
+vim.api.nvim_create_user_command('FormatEnable', function()
+    vim.b.disable_autoformat = false
+    vim.g.disable_autoformat = false
+    print 'Format on save enabled'
+end, {
+    desc = 'Re-enable autoformat-on-save',
+})
