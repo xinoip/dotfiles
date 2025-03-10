@@ -11,6 +11,9 @@ vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
 vim.opt.colorcolumn = '92'
+vim.g.have_nerd_font = true
+vim.opt.title = true
+vim.opt.titlestring = '%t - Piovim'
 
 --# Indentation
 vim.opt.breakindent = true
