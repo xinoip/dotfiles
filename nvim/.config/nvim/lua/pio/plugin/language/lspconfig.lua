@@ -8,9 +8,6 @@ return {
 
         -- LSP status updates
         { 'j-hui/fidget.nvim', opts = {} },
-
-        -- Extra capabilities provided by nvim-cmp
-        'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -20,17 +17,10 @@ return {
                     vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
 
-                map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-                map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-                map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-                map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-                map('<leader>r', vim.lsp.buf.rename, '[R]e[n]ame')
-                map('<leader>.', vim.lsp.buf.code_action, '[C]ode [A]ction')
-                map('K', vim.lsp.buf.hover, 'Hover info')
-                map('<leader>d', vim.diagnostic.open_float, 'Line [D]iagnostics')
+                map('<leader>r', vim.lsp.buf.rename, 'LSP Rename')
+                map('<leader>.', vim.lsp.buf.code_action, 'LSP Action')
+                map('K', vim.lsp.buf.hover, 'LSP Info')
+                map('<leader>d', vim.diagnostic.open_float, 'LSP Line Diagnostics')
 
                 -- Highlight under cursor / Clear when moved out
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -68,7 +58,8 @@ return {
 
         -- Capabilities such as snippets, cmp etc.
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+        local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
+        capabilities = vim.tbl_deep_extend('force', capabilities, blink_capabilities)
 
         -- Servers to install
         --  cmd (table): Override the default command used to start the server
