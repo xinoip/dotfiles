@@ -87,7 +87,8 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
    clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
-   android-tools ninja gparted qbittorrent pandoc texlive-bin
+   android-tools ninja gparted qbittorrent pandoc texlive-bin \
+   ImageMagick
 
 # sudo tlmgr install collection-latex collection-latexrecommended collection-basic
 
