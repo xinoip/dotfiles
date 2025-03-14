@@ -22,6 +22,16 @@ xi -Su
 
 info "AMD drivers"
 xi linux-firmware-amd vulkan-loader mesa-dri mesa-vulkan-radeon mesa-vaapi mesa-vdpau mesa-dri-32bit vulkan-loader-32bit mesa-vulkan-radeon-32bit
+
+# info "NVIDIA drivers"
+# xi nvidia nvidia-libs-32bit vulkan-loader vulkan-loader-32bit
+# sudo bash -c 'cat <<EOF > "/etc/modprobe.d/nvidia_drm.conf"
+# options nvidia_drm modeset=1
+# EOF'
+
+# info "Intel drivers"
+# xi linux-firmware-intel mesa-vulkan-intel intel-video-accel mesa-dri
+
 info "Gamepad drivers"
 xi xpadneo xone
 
@@ -72,13 +82,6 @@ sudo ln -s /etc/sv/socklog-unix /var/service
 sudo ln -s /etc/sv/nanoklogd /var/service
 sudo usermod -aG socklog $USER
 
-info "void-packages repo"
-cd ~/3pp
-git clone https://github.com/xinoip/void-packages.git --depth=1
-cd void-packages
-./xbps-src binary-bootstrap
-echo XBPS_ALLOW_RESTRICTED=yes >>etc/conf
-
 info "Install software"
 xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    fzf xz lsd lf stow bat tmux cmake base-devel lolcat-c figlet \
@@ -90,7 +93,20 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    android-tools ninja gparted qbittorrent pandoc texlive-bin \
    ImageMagick
 
+# info "Install latex plugins"
 # sudo tlmgr install collection-latex collection-latexrecommended collection-basic
+
+info "void-packages repo"
+cd ~/3pp
+git clone https://github.com/xinoip/void-packages.git --depth=1
+cd void-packages
+./xbps-src binary-bootstrap
+echo XBPS_ALLOW_RESTRICTED=yes >>etc/conf
+
+info "Build & Install Brave browser"
+cd ~/3pp/void-packages
+./xbps-src pkg brave-bin
+xi brave-bin
 
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
