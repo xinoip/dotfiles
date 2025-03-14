@@ -114,6 +114,9 @@ xi brave-bin
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
 
+info "Setup docker group"
+sudo usermod -aG docker $USER
+
 info "Flatpak"
 xi flatpak
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
