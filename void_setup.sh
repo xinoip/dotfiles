@@ -125,7 +125,7 @@ cd dotfiles
 git submodule update --init --recursive
 xi stow
 rm -rf ~/.config/user-dirs.dirs
-stow zsh nvim kitty tmux lf xdg
+stow zsh nvim kitty tmux lf xdg git lazygit mangohud pulse tealdeer wget
 sudo bash -c 'cat <<EOF >> "/etc/zsh/zshenv"
 export ZDOTDIR=~/.config/zsh
 EOF'
