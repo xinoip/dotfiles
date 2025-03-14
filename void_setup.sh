@@ -93,6 +93,9 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    android-tools ninja gparted qbittorrent pandoc texlive-bin \
    ImageMagick
 
+info "Install Node"
+n lts
+
 # info "Install latex plugins"
 # sudo tlmgr install collection-latex collection-latexrecommended collection-basic
 
