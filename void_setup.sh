@@ -91,7 +91,11 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
    android-tools ninja gparted qbittorrent pandoc texlive-bin \
-   ImageMagick
+   ImageMagick openrgb nmap inetutils-telnet wireshark wireshark-qt \
+   powertop just
+
+# info "Battery health"
+# xi tlp powertop
 
 info "Install Node"
 n lts
