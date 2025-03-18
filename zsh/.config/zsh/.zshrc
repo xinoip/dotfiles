@@ -92,6 +92,9 @@ alias gbump="git commit --allow-empty -m 'bump' --no-verify"
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
 alias disable_ssh="sudo rm -rf /var/service/sshd"
 alias xrm="sudo xbps-remove -ROo"
+alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
+alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
+alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
 
 # shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
