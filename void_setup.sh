@@ -66,7 +66,7 @@ sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pip
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart
 
 info "Install KDE & emptty"
-xi kde-plasma dolphin emptty kdegraphics-thumbnailers ffmpegthumbs
+xi kde-plasma dolphin emptty kdegraphics-thumbnailers ffmpegthumbs ark
 
 info "Setup xdg-dirs"
 cd ~
@@ -92,7 +92,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
    android-tools ninja gparted qbittorrent pandoc texlive-bin \
    ImageMagick openrgb nmap inetutils-telnet wireshark wireshark-qt \
-   powertop just
+   powertop just wireguard-tools
 
 # info "Battery health"
 # xi tlp powertop
