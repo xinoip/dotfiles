@@ -66,7 +66,7 @@ sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pip
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart
 
 info "Install KDE & emptty"
-xi kde-plasma dolphin emptty kdegraphics-thumbnailers ffmpegthumbs ark
+xi kde-plasma dolphin emptty kdegraphics-thumbnailers ffmpegthumbs ark spectacle
 
 info "Setup xdg-dirs"
 cd ~
