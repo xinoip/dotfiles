@@ -97,6 +97,9 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
 # info "Battery health"
 # xi tlp powertop
 
+# info "Steam tinker launcher"
+# xi xdotool xprop xwininfo yad
+
 info "Install Node"
 n lts
 
