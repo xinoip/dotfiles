@@ -30,6 +30,8 @@ export N_PREFIX=$HOME/3pp/node
 export NEXT_TELEMETRY_DISABLED=1
 export PNPM_HOME="${HOME}/.local/share/pnpm"
 export ANDROID_HOME=$HOME/3pp/android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export FLUTTER_ROOT=$HOME/3pp/flutter
 
 path+=(
     ~/3pp/bin
@@ -43,6 +45,8 @@ path+=(
     /usr/local/go/bin
     $PNPM_HOME
     ~/3pp/flutter/bin
+    ~/3pp/android/sdk
+    ~/3pp/android/sdk/platform-tools
 )
 
 fpath+=(
