@@ -118,6 +118,11 @@ cd ~/3pp/void-packages
 ./xbps-src pkg brave-bin
 xi brave-bin
 
+# info "Build & Install Android Studio"
+# cd ~/3pp/void-packages
+# ./xbps-src pkg android-studio
+# xi android-studio
+
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
 

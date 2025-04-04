@@ -41,6 +41,7 @@ path+=(
     $N_PREFIX/bin
     /usr/local/go/bin
     $PNPM_HOME
+    ~/3pp/flutter/bin
 )
 
 fpath+=(
@@ -95,6 +96,9 @@ alias xrm="sudo xbps-remove -ROo"
 alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
 alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
 alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
+alias python_venv_setup="python3 -m venv ~/3pp/python-env"
+alias python_venv_activate=". ~/3pp/python-env/bin/activate"
+alias python_venv_pip="~/3pp/python-env/bin/pip"
 
 # shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
