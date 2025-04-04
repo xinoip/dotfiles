@@ -29,6 +29,7 @@ export GOPATH=$HOME/3pp/gopath
 export N_PREFIX=$HOME/3pp/node
 export NEXT_TELEMETRY_DISABLED=1
 export PNPM_HOME="${HOME}/.local/share/pnpm"
+export ANDROID_HOME=$HOME/3pp/android/sdk
 
 path+=(
     ~/3pp/bin
