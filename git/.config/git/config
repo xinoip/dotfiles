@@ -8,6 +8,14 @@ defaultBranch = main
 [pull]
 rebase = true
 
+[push]
+default = simple
+autoSetupRemote = true
+followTags = true
+
+[fetch]
+all = true
+
 [core]
 pager = delta
 
@@ -21,7 +29,10 @@ navigate = true
 conflictstyle = diff3
 
 [diff]
-colorMoved = default
+algorithm = histogram
+colorMoved = plain
+mnemonicPrefix = true
+renames = true
 
 [delta]
 features = decorations
@@ -42,3 +53,11 @@ hunk-header-file-style = red
 hunk-header-line-number-style = "#067a00"
 hunk-header-style = file line-number syntax
 
+[column]
+ui = auto
+
+[branch]
+sort = -committerdate
+
+[tag]
+sort = version:refname
