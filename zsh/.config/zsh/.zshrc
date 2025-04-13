@@ -151,6 +151,13 @@ quick_serve() {
     fi
 }
 
+docker_prune_all() {
+    docker container prune
+    docker volume prune -a
+    docker image prune -a
+    docker network prune
+}
+
 # $1 folder to be encrypted and uploaded
 # $2 gdrive target
 # $3 password
