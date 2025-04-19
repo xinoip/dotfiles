@@ -90,9 +90,9 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    chromium tree unrar unzip kitty ripgrep gamemode MangoHud \
    clang llvm clang-tools-extra firefox ufetch n docker lazydocker \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
-   android-tools ninja gparted qbittorrent pandoc texlive-bin \
-   ImageMagick openrgb nmap inetutils-telnet wireshark wireshark-qt \
-   powertop just wireguard-tools fd wl-clipboard git-filter-repo
+   android-tools ninja gparted qbittorrent pandoc ImageMagick openrgb \
+   nmap inetutils-telnet wireshark wireshark-qt powertop just wireguard-tools \
+   fd wl-clipboard git-filter-repo
 
 # info "Battery health"
 # xi tlp powertop
@@ -101,9 +101,10 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
 # xi xdotool xprop xwininfo yad
 
 info "Install Node"
-n lts
+N_PREFIX=$HOME/3pp/node n lts
 
 # info "Install latex plugins"
+# xi texlive-bin
 # sudo tlmgr install collection-latex collection-latexrecommended collection-basic
 
 info "void-packages repo"
