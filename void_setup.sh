@@ -92,7 +92,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
    android-tools ninja gparted qbittorrent pandoc ImageMagick openrgb \
    nmap inetutils-telnet wireshark wireshark-qt powertop just wireguard-tools \
-   fd wl-clipboard git-filter-repo
+   fd wl-clipboard git-filter-repo baobab
 
 # info "Battery health"
 # xi tlp powertop
