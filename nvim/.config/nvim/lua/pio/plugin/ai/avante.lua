@@ -4,6 +4,9 @@ return {
     version = false,
     opts = {
         provider = 'copilot',
+        behaviour = {
+            use_cwd_as_project_root = true,
+        },
     },
     build = 'make',
     dependencies = {
