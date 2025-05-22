@@ -92,7 +92,8 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    easyeffects lsp-plugins vscode gamescope xrandr vsv dust \
    android-tools ninja gparted qbittorrent pandoc ImageMagick openrgb \
    nmap inetutils-telnet wireshark wireshark-qt powertop just wireguard-tools \
-   fd wl-clipboard git-filter-repo baobab docker-buildx
+   fd wl-clipboard git-filter-repo baobab docker-buildx duf lshw mtr iotop \
+   progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema
 
 # info "Battery health"
 # xi tlp powertop

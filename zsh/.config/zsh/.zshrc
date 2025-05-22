@@ -78,6 +78,10 @@ alias lg=lazygit
 alias lzd=lazydocker
 alias ip="ip -c"
 alias curlget="curl -LO"
+alias df=duf
+alias grep=rg
+alias find=fd
+alias top=btop
 
 # alias git
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
@@ -104,6 +108,7 @@ alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/
 alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
 alias python_venv_pip="~/3pp/python-env/bin/pip"
+alias pio_logout="sudo pkill -u pio"
 
 # shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
