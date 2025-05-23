@@ -61,7 +61,6 @@ autoload -Uz compinit && compinit -i
 alias sudo="sudo " # make all other aliases available for sudo
                     # need additional spacing for sudo flags
 alias piocopy="xclip -selection clipboard"
-alias lf=lfcd
 alias bcat=bat
 alias ls=lsd
 alias la="lsd -lAh"
@@ -83,6 +82,7 @@ alias df=duf
 alias grep=rg
 alias find=fd
 alias top=btop
+alias lf="yzcd"
 
 # alias git
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
@@ -131,6 +131,15 @@ chpwd() {
 lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`
     cd "$(command lf -print-last-dir "$@")"
+}
+
+yzcd () {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+	cd -- "$cwd"
+    fi
+    delf -- "$tmp"
 }
 
 xsearch() {

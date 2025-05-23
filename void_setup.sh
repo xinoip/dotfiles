@@ -93,7 +93,8 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    android-tools ninja gparted qbittorrent pandoc ImageMagick openrgb \
    nmap inetutils-telnet wireshark wireshark-qt powertop just wireguard-tools \
    fd wl-clipboard git-filter-repo baobab docker-buildx duf lshw mtr iotop \
-   progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema
+   progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema \
+   yazi
 
 # info "Battery health"
 # xi tlp powertop
