@@ -78,6 +78,7 @@ alias lg=lazygit
 alias lzd=lazydocker
 alias ip="ip -c"
 alias curlget="curl -LO"
+alias du=dust
 alias df=duf
 alias grep=rg
 alias find=fd
