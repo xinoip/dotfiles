@@ -47,6 +47,7 @@ path+=(
     ~/3pp/flutter/bin
     ~/3pp/android/sdk
     ~/3pp/android/sdk/platform-tools
+    ~/.pub-cache/bin
 )
 
 fpath+=(
@@ -83,6 +84,7 @@ alias grep=rg
 alias find=fd
 alias top=btop
 alias lf="yzcd"
+alias explorer=dolphin
 
 # alias git
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
