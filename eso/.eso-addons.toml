@@ -1,4 +1,4 @@
-addonDir = "/home/pio/.steam/steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online/live/AddOns"
+addonDir = "/home/pio/extra/SteamLibrary/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online/live/AddOns"
 
 [[addons]]
 name = "MapPins"
@@ -21,11 +21,6 @@ url = "https://www.esoui.com/downloads/download2625"
 dependency = false
 
 [[addons]]
-name = "LibGPS"
-url = "https://www.esoui.com/downloads/download601"
-dependency = false
-
-[[addons]]
 name = "LoreBooks"
 url = "https://www.esoui.com/downloads/download288"
 dependency = false
@@ -33,26 +28,6 @@ dependency = false
 [[addons]]
 name = "PerfectPixel"
 url = "https://www.esoui.com/downloads/download2103"
-dependency = false
-
-[[addons]]
-name = "LibMapPing"
-url = "https://www.esoui.com/downloads/download1302"
-dependency = false
-
-[[addons]]
-name = "LibDebugLogger"
-url = "https://www.esoui.com/downloads/download2275"
-dependency = false
-
-[[addons]]
-name = "LibChatMessage"
-url = "https://www.esoui.com/downloads/download2382"
-dependency = false
-
-[[addons]]
-name = "LibAddonMenu-2.0"
-url = "https://www.esoui.com/downloads/download7"
 dependency = false
 
 [[addons]]
@@ -88,11 +63,6 @@ dependency = false
 [[addons]]
 name = "TamrielTradeCentre"
 url = "https://www.esoui.com/downloads/download1245"
-dependency = false
-
-[[addons]]
-name = "DolgubonsLazyWritCreator"
-url = "https://www.esoui.com/downloads/download1346"
 dependency = false
 
 [[addons]]
@@ -141,11 +111,6 @@ url = "https://www.esoui.com/downloads/download56"
 dependency = false
 
 [[addons]]
-name = "LibLazyCrafting"
-url = "https://www.esoui.com/downloads/download1594"
-dependency = false
-
-[[addons]]
 name = "LibMainMenu-2.0"
 url = "https://www.esoui.com/downloads/download2118"
 dependency = false
@@ -156,16 +121,6 @@ url = "https://www.esoui.com/downloads/download1576"
 dependency = false
 
 [[addons]]
-name = "VotansMiniMap"
-url = "https://www.esoui.com/downloads/download1399"
-dependency = false
-
-[[addons]]
-name = "LibHarvensAddonSettings"
-url = "https://www.esoui.com/downloads/download584"
-dependency = false
-
-[[addons]]
 name = "LibAsync"
 url = "https://www.esoui.com/downloads/download2125"
 dependency = false
@@ -173,4 +128,99 @@ dependency = false
 [[addons]]
 name = "NTakDialog"
 url = "https://www.esoui.com/downloads/download2290"
+dependency = false
+
+[[addons]]
+name = "USPF"
+url = "https://www.esoui.com/downloads/download1863"
+dependency = false
+
+[[addons]]
+name = "DailyProvisioning"
+url = "https://www.esoui.com/downloads/download1901"
+dependency = false
+
+[[addons]]
+name = "PotionMaker"
+url = "https://www.esoui.com/downloads/download405"
+dependency = false
+
+[[addons]]
+name = "WritWorthy"
+url = "https://www.esoui.com/downloads/download1605"
+dependency = false
+
+[[addons]]
+name = "AccurateWorldMap"
+url = "https://www.esoui.com/downloads/download3377"
+dependency = false
+
+[[addons]]
+name = "EndeavorTracker"
+url = "https://www.esoui.com/downloads/download3154"
+dependency = false
+
+[[addons]]
+name = "Azurah"
+url = "https://www.esoui.com/downloads/download602"
+dependency = false
+
+[[addons]]
+name = "CombatAlerts"
+url = "https://www.esoui.com/downloads/download1855"
+dependency = false
+
+[[addons]]
+name = "LibAddonMenu-2.0"
+url = "https://www.esoui.com/downloads/download7"
+dependency = false
+
+[[addons]]
+name = "LibAlchemyStation"
+url = "https://www.esoui.com/downloads/download2628"
+dependency = false
+
+[[addons]]
+name = "LibCharacterKnowledge"
+url = "https://www.esoui.com/downloads/download3317"
+dependency = false
+
+[[addons]]
+name = "LibGPS"
+url = "https://www.esoui.com/downloads/download601"
+dependency = false
+
+[[addons]]
+name = "LibLazyCrafting"
+url = "https://www.esoui.com/downloads/download1594"
+dependency = false
+
+[[addons]]
+name = "LibMapThemer"
+url = "https://www.esoui.com/downloads/download3742"
+dependency = false
+
+[[addons]]
+name = "LibMarify"
+url = "https://www.esoui.com/downloads/download2542"
+dependency = false
+
+[[addons]]
+name = "LibPrice"
+url = "https://www.esoui.com/downloads/download2204"
+dependency = false
+
+[[addons]]
+name = "LibSets"
+url = "https://www.esoui.com/downloads/download2241"
+dependency = false
+
+[[addons]]
+name = "LibTableFunctions-1.0"
+url = "https://www.esoui.com/downloads/download2624"
+dependency = false
+
+[[addons]]
+name = "LibMapPing"
+url = "https://www.esoui.com/downloads/download1302"
 dependency = false
