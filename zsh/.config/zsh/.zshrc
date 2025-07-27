@@ -196,6 +196,16 @@ pio_compress() {
     tar -cJf $1.tar.xz $1
 }
 
+# $1 in
+pio_topdf() {
+    echo "Converting $1"
+
+    docker run --rm \
+	--volume "$(pwd):/data" \
+	--user $(id -u):$(id -g) \
+	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
+}
+
 
 # setup correct colors for ls output
 eval "$(dircolors $HOME/.config/zsh/.dircolors)"
