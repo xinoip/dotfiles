@@ -101,6 +101,8 @@ return {
             'cmakelang', -- cmake-format
             'shfmt', -- bash-language-server formatter
             'shellcheck', -- bash-language-server linter
+            'isort', -- Python formatter
+            'black', -- Python formatter
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

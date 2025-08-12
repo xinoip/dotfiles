@@ -35,6 +35,7 @@ return {
             return { timeout_ms = 500, lsp_format = 'fallback' }
         end,
         formatters_by_ft = {
+            python = { 'isort', 'black' },
             lua = { 'stylua' },
             cmake = { 'cmake_format' },
             javascript = { 'prettierd', 'prettier', stop_after_first = true },
