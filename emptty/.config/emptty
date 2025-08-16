@@ -1,0 +1,8 @@
+#!/bin/sh
+Selection=true
+Environment=wayland
+
+. /etc/profile
+# . ~/.profile
+
+exec dbus-launch "$@"
