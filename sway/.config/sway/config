@@ -4,8 +4,9 @@ set $mod Mod4
 set $smod Shift
 set $tmod Mod1
 set $TERMINAL kitty
+set $EXPLORER dolphin
 set $term $TERMINAL
-set $BROWSER firefox
+set $BROWSER brave-browser-stable
 set $LAUNCHER wofi -H 800 -W 800 --show drun
 set $second_monitor DP-2
 set $first_monitor DP-1
@@ -14,7 +15,8 @@ set $menu $LAUNCHER
 # --- launch
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+$smod+Return exec $BROWSER
-bindsym $mod+d exec $LAUNCHER
+bindsym $mod exec $LAUNCHER
+bindsym $mod+e exec $EXPLORER
 bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+$smod+e exec wlogout
 bindsym $mod+Shift+minus move scratchpad
@@ -27,7 +29,7 @@ bindsym $mod+minus scratchpad show
 
 # --- autostart
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-exec --no-startup-id gammastep-indicator -l 39.92:32.86
+# exec --no-startup-id gammastep-indicator -l 39.92:32.86
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock
 #exec --no-startup-id picom -b
@@ -44,25 +46,27 @@ exec --no-startup-id pipewire
 #exec --no-startup-id betterlockscreen -u ~/picture/active_wallpaper
 #exec --no-startup-id copyq
 #exec --no-startup-id xrdb -merge ~/.Xresources
-exec ~/.local/pio-script/welcome_home.sh
+# exec ~/.local/pio-script/welcome_home.sh
 
 # --- display output / input
 output DP-1 {
-    mode 3440x1440@144hz
-    bg ~/picture/active_wallpaper_1 fill
+    mode 3440x1440@175hz
+    bg ~/picture/wall/active fill
     position 1080 0
     #scale 1.10
     #adaptive_sync on
 }
 output DP-2 {
     mode 1920x1080@164.955hz
-    bg ~/picture/active_wallpaper_2 fill
+    bg ~/picture/wall/active_vert fill
     position 0 0
     transform 270 
 }
 input type:keyboard {
     xkb_layout us,tr
     xkb_options grp:win_space_toggle
+    repeat_delay 200
+    repeat_rate 50
 }
 
 # --- media keys
