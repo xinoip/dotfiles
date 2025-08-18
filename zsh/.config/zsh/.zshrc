@@ -1,3 +1,9 @@
+# zsh options
+setopt correct           # autocorrect mistyped commands
+setopt auto_pushd        # auto pushd when cd
+setopt pushd_ignore_dups # don't push duplicates
+setopt pushdminus        # popd with minus
+
 # plugin configs
 export ZSH_TMUX_AUTOSTART=false
 export WD_CONFIG=~/.cache/.warprc
@@ -62,9 +68,11 @@ autoload -Uz compinit && compinit -i
 alias sudo="sudo " # make all other aliases available for sudo
                     # need additional spacing for sudo flags
 alias piocopy="xclip -selection clipboard"
-alias bcat=bat
-alias ls=lsd
-alias la="lsd -lAh"
+alias cat="bat --pager=never --theme=ansi --style=plain"
+alias catf="bat --theme=ansi"
+alias ls="lsd --group-dirs first"
+alias la="ls -lAh"
+alias tree="lsd --tree"
 alias vim=nvim
 alias code="code --enable-ozone --ozone-platform=wayland"
 alias open="xdg-open"
@@ -127,7 +135,7 @@ force_compinit() {
 }
 
 chpwd() {
-  lsd -lAh
+    ls
 }
 
 lfcd () {
