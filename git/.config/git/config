@@ -61,3 +61,5 @@ sort = -committerdate
 
 [tag]
 sort = version:refname
+[url "ssh://git@github.com/xinoip"]
+	insteadOf = https://github.com/xinoip

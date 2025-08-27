@@ -23,6 +23,7 @@ export MANWIDTH=999
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
+export GOPRIVATE=github.com/xinoip
 
 # program export
 export WGETRC=$HOME/.config/wget/.wgetrc
