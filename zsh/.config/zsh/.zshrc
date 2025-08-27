@@ -224,5 +224,3 @@ eval "$(dircolors $HOME/.config/zsh/.dircolors)"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
 
-export TERM=xterm-256color
-
