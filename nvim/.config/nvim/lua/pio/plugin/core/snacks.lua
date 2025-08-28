@@ -9,7 +9,16 @@ return {
         image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true, main = { current = true } },
+        picker = {
+            enabled = true,
+            main = { current = true },
+            layout = {
+                layout = {
+                    width = 0.9,
+                    height = 0.9,
+                },
+            },
+        },
         quickfile = { enabled = true },
         scope = { enabled = true },
         statuscolumn = { enabled = true },
