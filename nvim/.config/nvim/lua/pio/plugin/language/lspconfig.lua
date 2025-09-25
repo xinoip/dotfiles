@@ -85,7 +85,7 @@ return {
             },
             gopls = {},
             bashls = {},
-            ts_ls = {},
+            -- ts_ls = {},
             sqlls = {},
             templ = {},
             pyright = {},
@@ -103,6 +103,8 @@ return {
             'shellcheck', -- bash-language-server linter
             'isort', -- Python formatter
             'black', -- Python formatter
+            'prettierd', -- JS/TS formatter
+            'marksman', -- markdown lsp
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
