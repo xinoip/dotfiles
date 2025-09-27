@@ -1,6 +1,7 @@
 [user]
 name = xinoip
 email = xinoip@proton.me
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyoeUAfBmV86kwawO2Y/ffM6ARXHSYl4RXrjR6tNoPT
 
 [init]
 defaultBranch = main
@@ -63,3 +64,9 @@ sort = -committerdate
 sort = version:refname
 [url "ssh://git@github.com/xinoip"]
 	insteadOf = https://github.com/xinoip
+
+[gpg]
+format = ssh
+
+[commit]
+gpgsign = true
