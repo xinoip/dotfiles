@@ -225,4 +225,4 @@ eval "$(dircolors $HOME/.config/zsh/.dircolors)"
 # eval "$(pyenv init -)"
 
 # Use bitwarden as ssh-agent
-export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
+export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock
