@@ -74,7 +74,7 @@ sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart
 
 info "Install KDE"
 # emptty may be used instead of sddm
-xi kde-plasma kde-baseapps dolphin kdegraphics-thumbnailers ffmpegthumbs ark spectacle xorg-minimal
+xi kde-plasma kde-baseapps dolphin kdegraphics-thumbnailers ffmpegthumbs ark spectacle xorg-minimal gwenview evince
 
 info "Setup xdg-dirs"
 cd ~
