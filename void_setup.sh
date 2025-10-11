@@ -166,6 +166,9 @@ info "Setup Bitwarden"
 flatpak install flathub com.bitwarden.desktop
 sudo flatpak override --env=BITWARDEN_SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock com.bitwarden.desktop
 
+info "Setup flatpak apps"
+flatpak install flathub net.davidotek.pupgui2
+
 info "Switch to NetworkManager THIS MAY LOSE INTERNET"
 xi NetworkManager
 sudo rm -rf /var/service/dhcpcd /var/service/wpa_supplicant
