@@ -31,6 +31,7 @@ xi linux-firmware-amd vulkan-loader mesa-dri mesa-vulkan-radeon mesa-vaapi mesa-
 
 # info "Intel drivers"
 # xi linux-firmware-intel mesa-vulkan-intel intel-video-accel mesa-dri vulkan-loader mesa-vulkan-intel-32bit mesa-dri-32bit vulkan-loader-32bit
+# info "Install intel ucode"
 
 # TODO: check microcode support for intel & amd
 # TODO: setup chrony
@@ -47,29 +48,33 @@ sudo xbps-reconfigure -f fontconfig
 
 info "SSD Trim weekly"
 xi snooze
+sudo ln -s /etc/sv/snooze-daily /var/service
 sudo ln -s /etc/sv/snooze-weekly /var/service
 sudo mkdir -p /etc/cron.weekly
-sudo bash -c 'cat <<EOF > "/etc/cron.weekly/fstrim"
+sudo bash -c 'cat <<EOF > "/etc/cron.weekly/maintain"
 #!/bin/sh
 fstrim /
+tldr --update
+vkpurge rm all
 EOF'
-sudo chmod +x /etc/cron.weekly/fstrim
+sudo chmod +x /etc/cron.weekly/maintain
 
-info "Install core services"
-xi NetworkManager elogind
-sudo rm -rf /var/service/dhcpcd /var/service/wpa_supplicant
-sudo ln -s /etc/sv/NetworkManager /var/service
+info "Install elogind/dbus"
+xi elogind
 sudo ln -s /etc/sv/dbus /var/service
 
 info "Install pipewire"
-xi pipewire qpwgraph
+# qpwgraph may be installed too
+xi pipewire
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+sudo mkdir -p /etc/xdg/autostart
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart
 
-info "Install KDE & emptty"
-xi kde-plasma dolphin emptty kdegraphics-thumbnailers ffmpegthumbs ark spectacle
+info "Install KDE"
+# emptty may be used instead of sddm
+xi kde-plasma kde-baseapps dolphin kdegraphics-thumbnailers ffmpegthumbs ark spectacle xorg-minimal
 
 info "Setup xdg-dirs"
 cd ~
@@ -99,11 +104,12 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema \
    yazi tokei wiki-tui prelink
 
+info "Steam tinker launcher dependencies"
+xi xdotool xprop xwininfo yad
+
 # info "Battery health"
 # xi tlp powertop
-
-# info "Steam tinker launcher"
-# xi xdotool xprop xwininfo yad
+# sudo ln -s /etc/sv/tlp /var/service
 
 info "Install Node"
 N_PREFIX=$HOME/3pp/node n lts
@@ -119,15 +125,14 @@ cd void-packages
 ./xbps-src binary-bootstrap
 echo XBPS_ALLOW_RESTRICTED=yes >>etc/conf
 
-info "Build & Install Brave browser"
+info "Build & Install additional void packages"
 cd ~/3pp/void-packages
 ./xbps-src pkg brave-bin
 xi brave-bin
-
-# info "Build & Install Android Studio"
-# cd ~/3pp/void-packages
-# ./xbps-src pkg android-studio
-# xi android-studio
+./xbps-src pkg zen-browser
+xi zen-browser
+./xbps-src pkg android-studio
+xi android-studio
 
 info "Enable docker service"
 sudo ln -s /etc/sv/docker /var/service
@@ -146,22 +151,21 @@ cd dotfiles
 git submodule update --init --recursive
 xi stow
 rm -rf ~/.config/user-dirs.dirs
-stow zsh nvim kitty tmux lf xdg git lazygit mangohud pulse tealdeer wget
+stow zsh nvim kitty tmux xdg git lazygit mangohud pulse tealdeer wget
 sudo bash -c 'cat <<EOF >> "/etc/zsh/zshenv"
 export ZDOTDIR=~/.config/zsh
 EOF'
 chsh --shell /usr/bin/zsh
+info "Dotfiles configuration is done. Don't forget to change git remote url afterwards!"
 
-info "Configure autologin"
-sudo groupadd nopasswdlogin
-sudo usermod -aG nopasswdlogin $USER
-sudo bash -c 'cat <<EOF >> "/etc/emptty/conf"
-# Pioconf!
-AUTOLOGIN=true
-DEFAULT_USER=pio
-VERTICAL_SELECTION=true
-DEFAULT_SESSION_ENV=wayland
-EOF'
+info "Setup NTP"
+xi chrony
+sudo ln -s /etc/sv/chronyd /var/service
+
+info "Switch to NetworkManager THIS MAY LOSE INTERNET"
+xi NetworkManager
+sudo rm -rf /var/service/dhcpcd /var/service/wpa_supplicant
+sudo ln -s /etc/sv/NetworkManager /var/service
 
 info "Enable display server"
-sudo ln -s /etc/sv/emptty /var/service
+sudo ln -s /etc/sv/sddm /var/service
