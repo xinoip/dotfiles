@@ -169,6 +169,11 @@ sudo flatpak override --env=BITWARDEN_SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden
 info "Setup flatpak apps"
 flatpak install flathub net.davidotek.pupgui2
 
+info "Setup bluetooth"
+xi bluez libspa-bluetooth
+sudo usermod -aG bluetooth $USER
+sudo ln -s /etc/sv/bluetoothd /var/service
+
 info "Switch to NetworkManager THIS MAY LOSE INTERNET"
 xi NetworkManager
 sudo rm -rf /var/service/dhcpcd /var/service/wpa_supplicant
