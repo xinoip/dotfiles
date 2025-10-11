@@ -174,6 +174,18 @@ xi bluez libspa-bluetooth
 sudo usermod -aG bluetooth $USER
 sudo ln -s /etc/sv/bluetoothd /var/service
 
+info "Optimize system"
+xi gtk+ gtk+-32bit libICE libICE-32bit libnm libnm-32bit libopenal libopenal-32bit libpipewire libpipewire-32bit \
+   SDL2 SDL2-32bit libva libva-32bit libvdpau libvdpau-32bit MangoHud-mangoapp
+sudo bash -c 'cat <<EOF >> "/etc/security/limits.conf"
+* hard nofile 524288
+EOF'
+sudo bash -c 'cat <<EOF >> "/etc/sysctl.conf"
+vm.max_map_count=1048576
+fs.inotify.max_user_instances = 256
+EOF'
+sudo sysctl -p
+
 info "Switch to NetworkManager THIS MAY LOSE INTERNET"
 xi NetworkManager
 sudo rm -rf /var/service/dhcpcd /var/service/wpa_supplicant
