@@ -102,7 +102,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    nmap inetutils-telnet wireshark wireshark-qt powertop just wireguard-tools \
    fd wl-clipboard git-filter-repo baobab docker-buildx duf lshw mtr iotop \
    progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema \
-   yazi tokei wiki-tui prelink trash-cli
+   yazi tokei wiki-tui prelink trash-cli kdeconnect
 
 info "Steam tinker launcher dependencies"
 xi xdotool xprop xwininfo yad
@@ -113,6 +113,7 @@ xi xdotool xprop xwininfo yad
 
 info "Install Node"
 N_PREFIX=$HOME/3pp/node n lts
+xi pnpm
 
 # info "Install latex plugins"
 # xi texlive-bin
