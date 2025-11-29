@@ -89,6 +89,7 @@ return {
             sqlls = {},
             templ = {},
             pyright = {},
+            -- tsp_server = {},
         }
 
         -- Let Mason install the servers, check with :Mason
