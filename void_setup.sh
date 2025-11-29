@@ -104,6 +104,10 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema \
    yazi tokei wiki-tui prelink trash-cli kdeconnect
 
+info "Install development libraries"
+xi libsanitizer-devel wayland-devel libxkbcommon-devel xorg-server-devel libXrandr-devel \
+   libXinerama-devel libXcursor-devel
+
 info "Steam tinker launcher dependencies"
 xi xdotool xprop xwininfo yad
 
