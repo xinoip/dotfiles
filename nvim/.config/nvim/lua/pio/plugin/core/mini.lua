@@ -1,10 +1,12 @@
 return {
-    'echasnovski/mini.nvim',
+    "nvim-mini/mini.nvim",
+    version = false,
     config = function()
-        require('mini.ai').setup()
+        require("mini.icons").setup()
+        require("mini.ai").setup()
         -- require('mini.bracketed').setup()
-        require('mini.cursorword').setup()
-        require('mini.surround').setup {
+        require("mini.cursorword").setup()
+        require("mini.surround").setup({
             -- Add custom surroundings to be used on top of builtin ones. For more
             -- information with examples, see `:h MiniSurround.config`.
             custom_surroundings = nil,
@@ -14,16 +16,16 @@ return {
 
             -- Module mappings. Use `''` (empty string) to disable one.
             mappings = {
-                add = 'ma', -- Add surrounding in Normal and Visual modes
-                delete = 'md', -- Delete surrounding
-                find = 'mf', -- Find surrounding (to the right)
-                find_left = 'mF', -- Find surrounding (to the left)
-                highlight = 'mh', -- Highlight surrounding
-                replace = 'mr', -- Replace surrounding
-                update_n_lines = 'mn', -- Update `n_lines`
+                add = "ma", -- Add surrounding in Normal and Visual modes
+                delete = "md", -- Delete surrounding
+                find = "mf", -- Find surrounding (to the right)
+                find_left = "mF", -- Find surrounding (to the left)
+                highlight = "mh", -- Highlight surrounding
+                replace = "mr", -- Replace surrounding
+                update_n_lines = "mn", -- Update `n_lines`
 
-                suffix_last = 'l', -- Suffix to search with "prev" method
-                suffix_next = 'n', -- Suffix to search with "next" method
+                suffix_last = "l", -- Suffix to search with "prev" method
+                suffix_next = "n", -- Suffix to search with "next" method
             },
 
             -- Number of lines within which surrounding is searched
@@ -38,10 +40,10 @@ return {
             -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
             -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
             -- see `:h MiniSurround.config`.
-            search_method = 'cover',
+            search_method = "cover",
 
             -- Whether to disable showing non-error feedback
             silent = false,
-        }
+        })
     end,
 }

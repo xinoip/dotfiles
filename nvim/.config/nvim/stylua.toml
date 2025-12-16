@@ -1,4 +1,5 @@
 indent_type = "Spaces"
 indent_width = 4
-quote_style = "AutoPreferSingle"
-call_parentheses = "None"
+column_width = 120
+[sort_requires]
+enabled = true

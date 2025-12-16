@@ -1,9 +1,7 @@
--- g?: keymap help for oil
-
 return {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
     config = function()
         require("oil").setup({
             columns = {
@@ -17,8 +15,8 @@ return {
                 show_hidden = true,
                 natural_order = true,
                 is_always_hidden = function(name, _)
-                    return name == '..'
-                end
+                    return name == ".."
+                end,
             },
             keymaps = {
                 ["g?"] = "actions.show_help",
@@ -40,5 +38,5 @@ return {
             },
         })
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end
+    end,
 }
