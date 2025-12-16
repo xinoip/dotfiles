@@ -6,7 +6,7 @@ mattmc3/zephyr path:plugins/completion
 ohmyzsh/ohmyzsh path:lib 
 ohmyzsh/ohmyzsh path:plugins/git 
 ohmyzsh/ohmyzsh path:plugins/command-not-found
-ohmyzsh/ohmyzsh path:plugins/tmux 
+# ohmyzsh/ohmyzsh path:plugins/tmux 
 ohmyzsh/ohmyzsh path:plugins/ssh-agent
 mfaerevaag/wd
 
