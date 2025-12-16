@@ -105,6 +105,13 @@ return {
             desc = 'Goto Implementation',
         },
         {
+            'gz',
+            function()
+                Snacks.zen()
+            end,
+            desc = 'Zen Mode',
+        },
+        {
             '<leader>fo',
             function()
                 Snacks.picker.lsp_symbols()
