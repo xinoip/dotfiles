@@ -1,102 +1,97 @@
-# zsh options
-setopt correct           # autocorrect mistyped commands
-setopt auto_pushd        # auto pushd when cd
-setopt pushd_ignore_dups # don't push duplicates
-setopt pushdminus        # popd with minus
+#########################
+# Core Configuration
+#########################
 
-# plugin configs
-export ZSH_TMUX_AUTOSTART=false
-export WD_CONFIG=~/.cache/.warprc
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent lifetime 4h
-
-# antidote
-source ~/.config/zsh/antidote/antidote.zsh
-antidote load ~/.config/zsh/.zsh_plugins.txt
-autoload -Uz compinit && compinit -i
-
-# core export
-export EDITOR=nvim
-export HISTFILE=~/.cache/.zsh_history
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='bat'
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
-export GOPRIVATE=github.com/xinoip
+export LANG='en_US.UTF-8'
+export LC_CTYPE='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export HISTFILE='~/.cache/.zsh_history'
 
-# program export
-export WGETRC=$HOME/.config/wget/.wgetrc
+eval "$(dircolors ~/.config/zsh/.dircolors)"
 
-# lang export
-export CARGO_HOME=~/3pp/cargo
-NPM_PACKAGES="${HOME}/.local/npm-global"
+#########################
+# SSH Agent Configuration
+#########################
+
+export SSH_AUTH_SOCK='~/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock'
+
+#########################
+# Programming Configuration
+#########################
+
+# Go
+export GOPATH="~/3pp/gopath"
+# Rust
+export CARGO_HOME="~/3pp/cargo"
+# Node
+NPM_PACKAGES="~/.local/npm-global"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export GOPATH=$HOME/3pp/gopath
-export N_PREFIX=$HOME/3pp/node
+export N_PREFIX="~/3pp/node"
 export NEXT_TELEMETRY_DISABLED=1
-export PNPM_HOME="${HOME}/.local/share/pnpm"
-export ANDROID_HOME=$HOME/3pp/android
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-export FLUTTER_ROOT=$HOME/3pp/flutter
+export PNPM_HOME="~/.local/share/pnpm"
+# Flutter
+export ANDROID_HOME="~/3pp/android"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export FLUTTER_ROOT="~/3pp/flutter"
 
 path+=(
-    ~/3pp/bin
-    ~/3pp/nvim/bin
-    ~/.local/bin
-    ~/3pp/cargo/bin
-    $GOPATH/bin
-    $NPM_PACKAGES/bin
-    ~/stl/prefix
-    $N_PREFIX/bin
-    /usr/local/go/bin
-    $PNPM_HOME
-    ~/3pp/flutter/bin
-    ~/3pp/android
-    ~/3pp/android/platform-tools
-    # ~/3pp/android/cmdline-tools/latest/bin
-    ~/.pub-cache/bin
+    "~/3pp/bin"
+    "~/3pp/nvim/bin"
+    "~/.local/bin"
+    "~/3pp/cargo/bin"
+    "$GOPATH/bin"
+    "$NPM_PACKAGES/bin"
+    "~/stl/prefix"
+    "$N_PREFIX/bin"
+    "/usr/local/go/bin"
+    "$PNPM_HOME"
+    "~/3pp/flutter/bin"
+    # "~/3pp/android"
+    # "~/3pp/android/platform-tools"
+    # "~/3pp/android/cmdline-tools/latest/bin"
+    # "~/.pub-cache/bin"
 )
 
-fpath+=(
-    ~/.antigen/bundles/mfaerevaag/wd/wd.sh
+#########################
+# Miscellaneous Configuration
+#########################
 
-    # docker completion zsh > ~/path/_docker
-    ~/.docker/completions
-)
-autoload -Uz compinit && compinit -i
+export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
+export WGETRC="~/.config/wget/.wgetrc"
 
-# alias program
-alias sudo="sudo " # make all other aliases available for sudo
-                    # need additional spacing for sudo flags
-alias piocopy="xclip -selection clipboard"
-alias cat="bat --pager=never --theme=ansi --style=plain"
-alias catf="bat --theme=ansi"
-alias ls="lsd --group-dirs first"
-alias la="ls -lAh"
-alias tree="lsd --tree"
-alias vim=nvim
-alias code="code --enable-ozone --ozone-platform=wayland"
-alias open="xdg-open"
-alias del=trash
-alias delf="/usr/bin/rm -rf"
+
+
+#########################
+# Aliases
+#########################
+
+# Make aliases available for sudo
+alias sudo='sudo '
+alias pio_copy='xclip -selection clipboard'
+alias cat='bat --pager=never --theme=ansi --style=plain'
+alias catf='bat --theme=ansi'
+alias ls='lsd --group-dirs first'
+alias la='ls -lAh'
+alias tree='lsd --tree'
+alias vim='nvim'
+alias del='trash'
+alias delf='/usr/bin/rm -rf'
 alias rm="echo 'use del'"
 alias kimg="kitty +kitten icat"
 alias clearf="/usr/bin/clear"
-alias clear="clear && $HOME/.config/zsh/greeter.sh"
-alias lg=lazygit
-alias lzd=lazydocker
-alias ip="ip -c"
-alias curlget="curl -LO"
-alias du=dust
-alias df=duf
-alias grep=rg
-alias find=fd
-alias top=btop
-alias lf="yzcd"
-alias explorer=dolphin
+alias clear="clear && ~/.config/zsh/greeter.sh"
+alias lg='lazygit'
+alias lzd='lazydocker'
+alias lf='yzcd'
+alias du='dust'
+alias df='duf'
 
-# alias git
+# Git aliases
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias greset="git reset --hard @{u}"
@@ -111,38 +106,45 @@ alias gfetch="git fetch --all --tags"
 alias gprune="git remote prune origin"
 alias gbump="git commit --allow-empty -m 'bump' --no-verify"
 
-# alias convenience
+# Void aliases
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
 alias disable_ssh="sudo rm -rf /var/service/sshd"
 alias xrm="sudo xbps-remove -ROo"
 alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
 alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
 alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
+
+# Other aliases
 alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
 alias python_venv_pip="~/3pp/python-env/bin/pip"
 alias pio_logout="sudo pkill -u pio"
 
-# shell
+#########################
+# Plugin Configuration
+#########################
+
+export WD_CONFIG=~/.cache/.warprc
+
+if [ ! -d ~/3pp/antidote ]; then
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ~/3pp/antidote || (echo "Antidote failed to clone" && exit 1)
+fi
+source ~/3pp/antidote/antidote.zsh
+antidote load ~/.config/zsh/.zsh_plugins.txt
+
+#########################
+# Theme
+#########################
+
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-$HOME/.config/zsh/greeter.sh
-# bindkey -v # setup vim bindings
+~/.config/zsh/greeter.sh
 
-# functions
-
-force_compinit() {
-    delf ~/.cache/antigen/.zcompdump
-    delf ~/.cache/antigen/.zcompdump.zwc
-    compinit
-}
+##########################
+# cd/ls/yazi Setup
+##########################
 
 chpwd() {
     ls
-}
-
-lfcd () {
-    # `command` is needed in case `lfcd` is aliased to `lf`
-    cd "$(command lf -print-last-dir "$@")"
 }
 
 yzcd () {
@@ -152,6 +154,26 @@ yzcd () {
 	cd -- "$cwd"
     fi
     delf -- "$tmp"
+}
+
+#########################
+# Functions
+#########################
+
+pio_nuke() {
+    # Nuke Antidote
+    delf ~/.cache/antidote ~/.config/zsh/.zsh_plugins.zsh \
+	~/.config/zsh/.zcompdump ~/.config/zsh/.zcompdump.zwc \
+	~/3pp/antidote
+    echo "Antidote nuked."
+
+    # Nuke Tmux
+
+    echo "Restart shell to see effects."
+}
+
+pio_update() {
+    antidote update
 }
 
 xsearch() {
@@ -216,14 +238,3 @@ pio_topdf() {
 	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
 }
 
-
-# setup correct colors for ls output
-eval "$(dircolors $HOME/.config/zsh/.dircolors)"
-
-
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-# Use bitwarden as ssh-agent
-export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock

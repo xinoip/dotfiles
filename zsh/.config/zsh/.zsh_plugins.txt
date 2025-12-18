@@ -1,19 +1,28 @@
+#########################
+# More Sane ZSH
+#########################
+
+mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/compstyle
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/utility
 
-# zsh-users/zsh-syntax-highlighting
-# zsh-users/zsh-completions path:src kind:fpath
-
-ohmyzsh/ohmyzsh path:lib 
-ohmyzsh/ohmyzsh path:plugins/git 
-ohmyzsh/ohmyzsh path:plugins/command-not-found
-# ohmyzsh/ohmyzsh path:plugins/tmux 
-ohmyzsh/ohmyzsh path:plugins/ssh-agent
-mfaerevaag/wd
-
-romkatv/powerlevel10k
+#########################
+# Core
+#########################
 
 Aloxaf/fzf-tab
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions 
 
+#########################
+# Goodies
+#########################
+
+mfaerevaag/wd
+romkatv/powerlevel10k
 # jeffreytse/zsh-vi-mode
