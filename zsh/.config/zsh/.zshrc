@@ -18,7 +18,7 @@ eval "$(dircolors ~/.config/zsh/.dircolors)"
 # SSH Agent Configuration
 #########################
 
-export SSH_AUTH_SOCK='~/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock'
+export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock"
 
 #########################
 # Programming Configuration
@@ -63,8 +63,6 @@ path+=(
 
 export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
 export WGETRC="~/.config/wget/.wgetrc"
-
-
 
 #########################
 # Aliases
@@ -168,8 +166,10 @@ pio_nuke() {
     echo "Antidote nuked."
 
     # Nuke Tmux
+    delf ~/.config/tmux/plugins
+    echo "Tmux nuked."
 
-    echo "Restart shell to see effects."
+    echo "Restart both shell and tmux to see effects."
 }
 
 pio_update() {
