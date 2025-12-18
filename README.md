@@ -1,48 +1,10 @@
 # dotfiles
 
-My personal dotfiles for linux systems (mainly void linux).
+Personal dotfiles targeting [void](https://voidlinux.org/).
 
-## Activate All
+Directory structure is based around using `stow` to manage symlinks.
 
-Using stow:
+- `legacy/`: stuff i no longer use
+- `meta/`: thingies that won't be symlinked
 
-```sh
-stow */
-```
-
-## ZSH Requirements
-
-Modify `/etc/zsh/zshenv`:
-
-```sh
-export ZDOTDIR=~/.config/zsh
-```
-
-Change default shell:
-
-```sh
-chsh --shell /usr/bin/zsh
-```
-
-## XDG Requirements
-
-Create XDG directories:
-
-```sh
-cd ~
-mkdir download picture
-mkdir -p 3pp/pio-xdg
-cd 3pp/pio-xdg
-mkdir Desktop Documents Music Public Templates Videos 
-```
-
-## emptty
-
-For autologin:
-
-```sh
-# edit /etc/emptty/conf
-sudo groupadd nopasswdlogin
-sudo usermod $USER -aG nopasswdlogin
-```
-
+`neovim` btw.
