@@ -30,11 +30,7 @@ xi linux-firmware-amd vulkan-loader mesa-dri mesa-vulkan-radeon mesa-vaapi mesa-
 # EOF'
 
 # info "Intel drivers"
-# xi linux-firmware-intel mesa-vulkan-intel intel-video-accel mesa-dri vulkan-loader mesa-vulkan-intel-32bit mesa-dri-32bit vulkan-loader-32bit
-# info "Install intel ucode"
-
-# TODO: check microcode support for intel & amd
-# TODO: setup chrony
+# xi linux-firmware-intel mesa-vulkan-intel intel-video-accel mesa-dri vulkan-loader mesa-vulkan-intel-32bit mesa-dri-32bit vulkan-loader-32bit intel-ucode
 
 info "Gamepad drivers"
 xi xpadneo xone
