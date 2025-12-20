@@ -24,19 +24,19 @@ export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.
 #########################
 
 # Go
-export GOPATH="~/3pp/gopath"
+export GOPATH="$HOME/3pp/gopath"
 # Rust
-export CARGO_HOME="~/3pp/cargo"
+export CARGO_HOME="$HOME/3pp/cargo"
 # Node
-NPM_PACKAGES="~/.local/npm-global"
+NPM_PACKAGES="$HOME/.local/npm-global"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-export N_PREFIX="~/3pp/node"
+export N_PREFIX="$HOME/3pp/node"
 export NEXT_TELEMETRY_DISABLED=1
-export PNPM_HOME="~/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 # Flutter
-export ANDROID_HOME="~/3pp/android"
+export ANDROID_HOME="$HOME/3pp/android"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export FLUTTER_ROOT="~/3pp/flutter"
+export FLUTTER_ROOT="$HOME/3pp/flutter"
 
 path+=(
     "~/3pp/bin"
@@ -169,6 +169,10 @@ pio_nuke() {
     # Nuke Tmux
     delf ~/.config/tmux/plugins
     echo "Tmux nuked."
+
+    # Nuke Neovim
+    delf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
+    echo "Neovim nuked."
 
     echo "Restart both shell and tmux to see effects."
 }
