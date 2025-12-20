@@ -87,6 +87,7 @@ alias lzd='lazydocker'
 alias lf='yzcd'
 alias du='dust'
 alias df='duf'
+alias ip='ip -c'
 
 # Git aliases
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
