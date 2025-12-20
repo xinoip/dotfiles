@@ -1,5 +1,5 @@
 return {
-    'folke/snacks.nvim',
+    "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
@@ -25,114 +25,114 @@ return {
     },
     keys = {
         {
-            '<leader>ff',
+            "<leader>ff",
             function()
                 Snacks.picker.resume()
             end,
-            desc = 'Resume',
+            desc = "Resume",
         },
         {
-            '<C-p>',
+            "<C-p>",
             function()
-                Snacks.picker.files {
+                Snacks.picker.files({
                     hidden = true,
-                }
+                })
             end,
-            desc = 'Files',
+            desc = "Files",
         },
         {
-            '<leader>fg',
+            "<leader>fg",
             function()
                 Snacks.picker.grep()
             end,
-            desc = 'Grep',
+            desc = "Grep",
         },
         {
-            '<leader>fb',
+            "<leader>fb",
             function()
                 Snacks.picker.buffers()
             end,
-            desc = 'Buffers',
+            desc = "Buffers",
         },
         {
-            '<leader>fh',
+            "<leader>fh",
             function()
                 Snacks.picker.help()
             end,
-            desc = 'Help',
+            desc = "Help",
         },
         {
-            '<leader>fm',
+            "<leader>fm",
             function()
                 Snacks.picker.man()
             end,
-            desc = 'Man Pages',
+            desc = "Man Pages",
         },
         {
-            '<leader>e',
+            "<leader>e",
             function()
                 Snacks.explorer()
             end,
-            desc = 'File Explorer',
+            desc = "File Explorer",
         },
         {
-            'gd',
+            "gd",
             function()
                 Snacks.picker.lsp_definitions()
             end,
-            desc = 'Goto Definition',
+            desc = "Goto Definition",
         },
         {
-            'gD',
+            "gD",
             function()
                 Snacks.picker.lsp_declarations()
             end,
-            desc = 'Goto Declaration',
+            desc = "Goto Declaration",
         },
         {
-            'gr',
+            "gr",
             function()
                 Snacks.picker.lsp_references()
             end,
             nowait = true,
-            desc = 'Goto References',
+            desc = "Goto References",
         },
         {
-            'gI',
+            "gI",
             function()
                 Snacks.picker.lsp_implementations()
             end,
-            desc = 'Goto Implementation',
+            desc = "Goto Implementation",
         },
         {
-            'gz',
+            "gz",
             function()
                 Snacks.zen()
             end,
-            desc = 'Zen Mode',
+            desc = "Zen Mode",
         },
         {
-            '<leader>fo',
+            "<leader>fo",
             function()
                 Snacks.picker.lsp_symbols()
             end,
-            desc = 'LSP Symbols',
+            desc = "LSP Symbols",
         },
         {
-            '<leader>fO',
+            "<leader>fO",
             function()
                 Snacks.picker.lsp_workspace_symbols()
             end,
-            desc = 'LSP Workspace Symbols',
+            desc = "LSP Workspace Symbols",
         },
     },
     init = function()
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'VeryLazy',
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "VeryLazy",
             callback = function()
                 -- Create some toggle mappings
-                Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
-                Snacks.toggle.diagnostics():map '<leader>ud'
+                Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+                Snacks.toggle.diagnostics():map("<leader>ud")
             end,
         })
     end,

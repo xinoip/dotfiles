@@ -21,6 +21,6 @@ return {
         },
     },
     config = function()
-        vim.api.nvim_set_hl(0, "WhichKeyNormal", { bg = "#141617" })
-    end
+        vim.api.nvim_set_hl(0, "WhichKeyNormal", { bg = "#000000" })
+    end,
 }
