@@ -10,7 +10,6 @@ export MANWIDTH=999
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
-export HISTFILE='~/.cache/.zsh_history'
 
 eval "$(dircolors ~/.config/zsh/.dircolors)"
 
@@ -129,6 +128,8 @@ if [ ! -d ~/3pp/antidote ]; then
 fi
 source ~/3pp/antidote/antidote.zsh
 antidote load ~/.config/zsh/.zsh_plugins.txt
+
+setopt share_history
 
 #########################
 # Theme
