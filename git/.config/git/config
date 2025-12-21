@@ -70,3 +70,6 @@ format = ssh
 
 [commit]
 gpgsign = true
+
+[url "git@github.com:momoli-dev/"]
+	insteadOf = https://github.com/momoli-dev/
