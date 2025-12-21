@@ -103,6 +103,7 @@ alias gcreate="git checkout -b"
 alias gfetch="git fetch --all --tags"
 alias gprune="git remote prune origin"
 alias gbump="git commit --allow-empty -m 'bump' --no-verify"
+alias ga="git add"
 
 # Void aliases
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
