@@ -14,6 +14,7 @@ vim.opt.colorcolumn = "120"
 vim.g.have_nerd_font = true
 vim.opt.title = true
 vim.opt.titlestring = "%t - Piovim"
+vim.opt.foldenable = false
 
 --# Indentation
 vim.opt.breakindent = true
