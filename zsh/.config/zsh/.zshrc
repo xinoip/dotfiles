@@ -181,6 +181,18 @@ pio_nuke() {
 
 pio_update() {
     antidote update
+    echo "Antidote updated."
+    xi -Su
+    echo "Void updated."
+    flatpak update
+    echo "Flatpak updated."
+
+    cd ~/3pp/void-packages
+    git pull upstream master
+    xi -Su
+    echo "Void packages updated."
+    ~/3pp/void-packages/personal/bump_zen.sh
+    echo "Void packages bumped."
 }
 
 xsearch() {
