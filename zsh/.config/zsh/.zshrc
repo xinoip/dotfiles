@@ -162,6 +162,13 @@ yzcd () {
 # Functions
 #########################
 
+# $1 message
+pio_confirm() {
+    read -q "REPLY?${1:-Are you sure?} (y/N) "
+    printf "\n"
+    [[ ! $REPLY =~ ^[Nn]$ ]]
+}
+
 pio_nuke() {
     # Nuke Antidote
     delf ~/.cache/antidote ~/.config/zsh/.zsh_plugins.zsh \
@@ -181,19 +188,16 @@ pio_nuke() {
 }
 
 pio_update() {
-    antidote update
-    echo "Antidote updated."
-    xi -Su
-    echo "Void updated."
-    flatpak update
-    echo "Flatpak updated."
+    pio_confirm "Update Antidote?" && antidote update && echo "Antidote updated."
 
-    cd ~/3pp/void-packages
-    git pull upstream master
-    xi -Su
-    echo "Void packages updated."
-    ~/3pp/void-packages/personal/bump_zen.sh
-    echo "Void packages bumped."
+    pio_confirm "Update Void?" && xi -Su && echo "Void updated."
+
+    pio_confirm "Update Flatpak?" && flatpak update && echo "Flatpak updated."
+
+    pio_confirm "Update Void packages?" && cd ~/3pp/void-packages && git pull upstream master && xi -Su \
+                                        && echo "Void packages updated."
+
+    pio_confirm "Bump Void packages?" && ~/3pp/void-packages/personal/bump.sh && echo "Void packages bumped."
 }
 
 xsearch() {
