@@ -134,6 +134,10 @@ antidote load ~/.config/zsh/.zsh_plugins.txt
 
 setopt share_history
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 #########################
 # Theme
 #########################
