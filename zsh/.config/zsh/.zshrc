@@ -266,3 +266,8 @@ pio_topdf() {
 	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
 }
 
+
+# $1 in file
+pio_watch() {
+    gamescope -w 3440 -h 1440 -r 175 -f --hdr-enabled -- mpv --panscan=1.0 $1
+}
