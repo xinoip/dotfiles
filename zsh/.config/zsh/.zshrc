@@ -17,7 +17,7 @@ eval "$(dircolors ~/.config/zsh/.dircolors)"
 # SSH Agent Configuration
 #########################
 
-export SSH_AUTH_SOCK="$HOME/.var/app/com.bitwarden.desktop/.bitwarden-ssh-agent.sock"
+source ~/.config/zsh/ssh.zsh
 
 #########################
 # Programming Configuration
