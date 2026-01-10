@@ -14,10 +14,11 @@ export LC_ALL='en_US.UTF-8'
 eval "$(dircolors ~/.config/zsh/.dircolors)"
 
 #########################
-# SSH Agent Configuration
+# GPG/SSH Configuration
 #########################
 
 source ~/.config/zsh/ssh.zsh
+export GPG_TTY=$(tty)
 
 #########################
 # Programming Configuration
