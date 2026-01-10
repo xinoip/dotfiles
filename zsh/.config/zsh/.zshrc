@@ -89,6 +89,7 @@ alias lf='yzcd'
 alias du='dust'
 alias df='duf'
 alias ip='ip -c'
+alias history='fc -li 1'
 
 # Git aliases
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
@@ -134,6 +135,8 @@ source ~/3pp/antidote/antidote.zsh
 antidote load ~/.config/zsh/.zsh_plugins.txt
 
 setopt share_history
+HISTSIZE=100000
+SAVEHIST=100000
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
