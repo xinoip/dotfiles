@@ -224,7 +224,7 @@ xunhold() {
     sudo xbps-pkgdb -m unhold $1
 }
 
-quick_serve() {
+pio_serve() {
     if [ -n "$1" ]; then
 	python3 -m http.server $1
     else
