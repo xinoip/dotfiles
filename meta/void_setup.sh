@@ -99,7 +99,7 @@ xi vim neovim bottom man-pages-devel man-pages-posix zsh tealdeer \
    fd wl-clipboard git-filter-repo baobab docker-buildx duf lshw mtr iotop \
    progress bind-utils termshark ipcalc bootchart2 procs unp jq asciinema \
    yazi tokei wiki-tui prelink trash-cli kdeconnect nicotine+ soundconverter \
-   tree-sitter tree-sitter-devel
+   tree-sitter tree-sitter-devel poppler libreoffice
 
 info "Install development libraries"
 xi libsanitizer-devel wayland-devel libxkbcommon-devel xorg-server-devel libXrandr-devel \
