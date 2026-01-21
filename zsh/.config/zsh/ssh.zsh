@@ -21,5 +21,6 @@ fi
 
 if ! ssh-add -l > /dev/null 2>&1; then
   ssh-add ~/.ssh/pio_key 2>/dev/null
+  ssh-add ~/.ssh/id_ed25519_sk_rk 2>/dev/null
 fi
 
