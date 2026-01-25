@@ -62,11 +62,7 @@ sort = -committerdate
 
 [tag]
 sort = version:refname
-[url "ssh://git@github.com/xinoip"]
-	insteadOf = https://github.com/xinoip
 
 [commit]
 gpgsign = true
 
-[url "git@github.com:momoli-dev/"]
-	insteadOf = https://github.com/momoli-dev/
