@@ -1,15 +1,32 @@
 #########################
+# Preliminary Stuff
+#########################
+
+# Determine if we are running on Ub*ntu
+PIOBUNTU=false
+if [[ -f /etc/lsb-release ]]; then
+    if grep -q "Ubuntu" /etc/lsb-release; then
+	PIOBUNTU=true
+    fi
+fi
+
+#########################
 # Core Configuration
 #########################
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PAGER='bat'
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+
+if $PIOBUNTU; then
+    export PAGER='batcat'
+else
+    export PAGER='bat'
+fi
 
 eval "$(dircolors ~/.config/zsh/.dircolors)"
 
@@ -68,6 +85,10 @@ export WGETRC="~/.config/wget/.wgetrc"
 # Aliases
 #########################
 
+if $PIOBUNTU; then
+    alias bat=batcat
+fi
+
 # Make aliases available for sudo
 alias sudo='sudo '
 alias pio_copy='xclip -selection clipboard'
@@ -121,6 +142,11 @@ alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
 alias python_venv_pip="~/3pp/python-env/bin/pip"
 alias pio_logout="sudo pkill -u pio"
+
+if $PIOBUNTU; then
+    alias xi="sudo apt-get install"
+    alias xrm="sudo apt-get autoremove"
+fi
 
 #########################
 # Plugin Configuration
@@ -198,18 +224,28 @@ pio_nuke() {
 pio_update() {
     pio_confirm "Update Antidote?" && antidote update && echo "Antidote updated."
 
-    pio_confirm "Update Void?" && xi -Su && echo "Void updated."
+    if $PIOBUNTU; then
+	pio_confirm "Update Ubuntu?" && sudo apt update && sudo apt upgrade && echo "Ubuntu updated."
+    else
+	pio_confirm "Update Void?" && xi -Su && echo "Void updated."
 
-    pio_confirm "Update Flatpak?" && flatpak update && echo "Flatpak updated."
-
-    pio_confirm "Update Void packages?" && cd ~/3pp/void-packages && git pull upstream master && xi -Su \
+	pio_confirm "Update Void packages?" && cd ~/3pp/void-packages && git pull upstream master && xi -Su \
                                         && echo "Void packages updated."
 
-    pio_confirm "Bump Void packages?" && ~/3pp/void-packages/personal/bump.sh && echo "Void packages bumped."
+	pio_confirm "Bump Void packages?" && ~/3pp/void-packages/personal/bump.sh && echo "Void packages bumped."
+    fi
+
+    if [[ -f /usr/bin/flatpak ]]; then
+	pio_confirm "Update Flatpak?" && flatpak update && echo "Flatpak updated."
+    fi
 }
 
 xsearch() {
-    xbps-query -Rs "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} '
+    if $PIOBUNTU; then
+	apt-cache pkgnames "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'apt-cache show {1}' | xargs -ro sudo apt install
+    else
+	xbps-query -Rs "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} ' | xargs -ro xi
+    fi
 }
 
 xhold() {
