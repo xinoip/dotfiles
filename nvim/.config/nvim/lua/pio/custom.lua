@@ -1,3 +1,5 @@
+-- These are my custom commands. They all start with "Pio"
+
 -- Toggle all animations on/off
 vim.g.pio_animate = false
 vim.api.nvim_create_user_command("PioAnimate", function()
