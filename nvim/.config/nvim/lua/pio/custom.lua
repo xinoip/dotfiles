@@ -16,3 +16,12 @@ vim.api.nvim_create_user_command("PioAnimate", function()
 end, {
     desc = "Toggle animations",
 })
+
+-- Toggle format on save
+vim.g.pio_format = true
+vim.api.nvim_create_user_command("PioFormat", function()
+    vim.g.pio_format = not vim.g.pio_format
+    vim.notify("Format on save: " .. (vim.g.pio_format and "on" or "off"))
+end, {
+    desc = "Disable format on save",
+})
