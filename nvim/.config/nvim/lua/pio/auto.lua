@@ -67,3 +67,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
+
+-- Transparent background: only needed for background images
+-- vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
+-- vim.cmd([[highlight NormalNC guibg=NONE ctermbg=NONE]])
