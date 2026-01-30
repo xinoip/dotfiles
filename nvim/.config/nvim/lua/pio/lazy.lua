@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 require("pio.remap")
 require("pio.vim")
 require("pio.custom")
+require("pio.auto")
 
 require("lazy").setup({
     spec = {
