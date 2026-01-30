@@ -22,6 +22,18 @@ return {
         quickfile = { enabled = true },
         scope = { enabled = true },
         statuscolumn = { enabled = true },
+        scroll = {
+            enabled = false,
+            animate = {
+                duration = { step = 5, total = 200 },
+                easing = "outCubic",
+            },
+            animate_repeat = {
+                delay = 50,
+                duration = { step = 2, total = 50 },
+                easing = "outCubic",
+            },
+        },
     },
     keys = {
         {

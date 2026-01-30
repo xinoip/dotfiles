@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Configure remaps and vim.opt configurations right before loading lazy
 require("pio.remap")
 require("pio.vim")
+require("pio.custom")
 
 require("lazy").setup({
     spec = {

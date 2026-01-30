@@ -2,6 +2,7 @@ return {
     {
         "sphamba/smear-cursor.nvim",
         opts = {
+            enabled = false,
             cursor_color = "#ea83a5",
             particles_enabled = true,
             stiffness = 0.5,
@@ -23,10 +24,5 @@ return {
             min_distance_emit_particles = 0,
         },
     },
-    {
-        "karb94/neoscroll.nvim",
-        opts = {
-            duration_multiplier = 0.1,
-        },
-    },
+    -- NOTE: Snacks.scroll used for animated scrolling
 }
