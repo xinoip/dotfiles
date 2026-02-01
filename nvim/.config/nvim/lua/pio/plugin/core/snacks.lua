@@ -18,6 +18,7 @@ return {
                     height = 0.9,
                 },
             },
+            sources = { explorer = { layout = { layout = { width = 0.2 } } } },
         },
         quickfile = { enabled = true },
         scope = { enabled = true },
