@@ -40,12 +40,30 @@ return {
             python = { "isort", "black" },
             lua = { "stylua" },
             cmake = { "cmake_format" },
-            javascript = { "prettierd", "prettier", stop_after_first = true },
-            javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-            typescript = { "prettierd", "prettier", stop_after_first = true },
-            typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-            html = { "prettierd", "prettier", stop_after_first = true },
-            json = { "prettierd", "prettier", stop_after_first = true },
+
+            -- First check if project has prettier, else use prettierd
+            javascript = { "prettier", "prettierd", stop_after_first = true },
+            javascriptreact = { "prettier", "prettierd", stop_after_first = true },
+            typescript = { "prettier", "prettierd", stop_after_first = true },
+            typescriptreact = { "prettier", "prettierd", stop_after_first = true },
+            html = { "prettier", "prettierd", stop_after_first = true },
+            json = { "prettier", "prettierd", stop_after_first = true },
+            liquid = { "prettier", "prettierd", stop_after_first = true },
+        },
+        formatters = {
+            prettierd = {
+                prepend_args = function()
+                    return {
+                        "--no-semi",
+                        "--single-quote",
+                        "--no-bracket-spacing",
+                        "--print-width",
+                        "80",
+                        "--config-precedence",
+                        "prefer-file",
+                    }
+                end,
+            },
         },
     },
 }
