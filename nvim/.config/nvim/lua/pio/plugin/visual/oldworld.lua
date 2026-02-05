@@ -7,6 +7,6 @@ return {
         oldworld.setup({
             variant = "oled",
         })
-        vim.cmd.colorscheme("oldworld")
+        -- vim.cmd.colorscheme("oldworld")
     end,
 }
