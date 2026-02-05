@@ -7,6 +7,7 @@ local servers = {
     "sqlls",
     "templ",
     "pyright",
+    "markdown-oxide",
 }
 
 local tools = {
@@ -17,8 +18,8 @@ local tools = {
     "isort",
     "black",
     "prettierd",
-    "marksman",
     "protols",
+    "harper-ls",
 }
 
 return {
