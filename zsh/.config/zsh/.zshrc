@@ -51,10 +51,24 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export N_PREFIX="$HOME/3pp/node"
 export NEXT_TELEMETRY_DISABLED=1
 export PNPM_HOME="$HOME/.local/share/pnpm"
-# Flutter
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+# Android/Flutter
 export ANDROID_HOME="$HOME/3pp/android"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export ANDROID_USER_HOME="$XDG_CONFIG_HOME/android"
 export FLUTTER_ROOT="$HOME/3pp/flutter"
+export PUB_CACHE="$XDG_CACHE_HOME/pub"
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+# GnuPG
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+# Java
+export GRADLE_USER_HOME="$XDG_CONFIG_HOME/gradle"
+# Ollama
+export OLLAMA_HOME="$XDG_DATA_HOME/ollama"
+# GTK
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 path+=(
     "$HOME/3pp/bin"
@@ -105,6 +119,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=separator:#ffffff \
   --color=spinner:#50585d \
 "
+
 
 #########################
 # Aliases
