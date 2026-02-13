@@ -51,24 +51,24 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export N_PREFIX="$HOME/3pp/node"
 export NEXT_TELEMETRY_DISABLED=1
 export PNPM_HOME="$HOME/.local/share/pnpm"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 # Android/Flutter
 export ANDROID_HOME="$HOME/3pp/android"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_USER_HOME="$XDG_CONFIG_HOME/android"
+export ANDROID_USER_HOME="$HOME/.config/android"
 export FLUTTER_ROOT="$HOME/3pp/flutter"
 export PUB_CACHE="$XDG_CACHE_HOME/pub"
 # Docker
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export DOCKER_CONFIG="$HOME/.config/docker"
 # GnuPG
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GNUPGHOME="$HOME/.config/gnupg"
 # Java
-export GRADLE_USER_HOME="$XDG_CONFIG_HOME/gradle"
+export GRADLE_USER_HOME="$HOME/.config/gradle"
 # Ollama
 export OLLAMA_HOME="$XDG_DATA_HOME/ollama"
 # GTK
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
 
 path+=(
     "$HOME/3pp/bin"
