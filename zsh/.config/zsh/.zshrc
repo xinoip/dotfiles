@@ -172,7 +172,6 @@ alias gr="git remote"
 # Void aliases
 alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
 alias disable_ssh="sudo rm -rf /var/service/sshd"
-alias xrm="sudo xbps-remove -ROo"
 alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
 alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
 alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
@@ -286,6 +285,14 @@ xsearch() {
 	apt-cache pkgnames "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'apt-cache show {1}' | xargs -ro sudo apt install
     else
 	xbps-query -Rs "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'xbps-query -Rv {2} ' | awk '{print $2}' | xargs -ro xi
+    fi
+}
+
+xrm() {
+    if $PIOBUNTU; then
+	sudo apt-get autoremove $1
+    else
+	sudo xbps-remove -ROo $1 && flatpak uninstall --unused
     fi
 }
 
