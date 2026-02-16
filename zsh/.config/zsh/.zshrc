@@ -170,8 +170,6 @@ alias ga="git add"
 alias gr="git remote"
 
 # Void aliases
-alias enable_ssh="sudo ln -s /etc/sv/sshd /var/service"
-alias disable_ssh="sudo rm -rf /var/service/sshd"
 alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
 alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
 alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
@@ -313,6 +311,20 @@ pio_serve() {
 	python3 -m http.server $1
     else
 	python3 -m http.server 3000
+    fi
+}
+
+pio_toggle_sshd() {
+    if $PIOBUNTU; then
+	echo "Toggling sshd not supported on Ubuntu for now."
+    else
+	if [ -L /var/service/sshd ]; then
+	    echo "Disabling sshd..."
+	    sudo delf /var/service/sshd
+	else
+	    echo "Enabling sshd..."
+	    sudo ln -s /etc/sv/sshd /var/service
+	fi
     fi
 }
 
