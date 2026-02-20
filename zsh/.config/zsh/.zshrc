@@ -82,6 +82,7 @@ path+=(
     "/usr/local/go/bin"
     "$PNPM_HOME"
     "$HOME/3pp/flutter/bin"
+    "$HOME/.opencode/bin"
     # "$HOME/3pp/android"
     # "$HOME/3pp/android/platform-tools"
     # "$HOME/3pp/android/cmdline-tools/latest/bin"
@@ -391,3 +392,4 @@ if ! command -v npm &> /dev/null; then
 elif [[ $(npm config get registry) != "https://registry.npmjs.org/" ]]; then
     echo "Warning: npm registry is not set to default (https://registry.npmjs.org/)" >&2
 fi
+
