@@ -4,9 +4,9 @@ local servers = {
     "lua_ls",
     "gopls",
     "bashls",
-    "sqlls",
     "templ",
     "pyright",
+    "postgres_lsp",
 }
 
 local tools = {
