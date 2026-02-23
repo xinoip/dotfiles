@@ -1,5 +1,6 @@
 return {
     "yetone/avante.nvim",
+    build = "make",
     event = "VeryLazy",
     version = false,
     opts = {
@@ -8,9 +9,5 @@ return {
         behaviour = {
             use_cwd_as_project_root = true,
         },
-    },
-    build = "make",
-    dependencies = {
-        "MunifTanjim/nui.nvim",
     },
 }
