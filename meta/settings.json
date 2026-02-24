@@ -1,0 +1,23 @@
+{
+    // Fonts
+    "terminal.integrated.fontFamily": "Iosevka Nerd Font Mono",
+    "editor.fontFamily": "Iosevka Nerd Font",
+    "editor.fontSize": 20,
+    "editor.fontLigatures": true,
+
+    // Visual
+    "editor.lineNumbers": "relative",
+    "workbench.preferredDarkColorTheme": "Old World Dark",
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": false,
+    "window.zoomLevel": 1,
+    "window.autoDetectColorScheme": true,
+    "workbench.sideBar.location": "right",
+
+    // Infra
+    "update.mode": "none",
+    "telemetry.telemetryLevel": "off",
+
+    // Plugin
+    "go.gopath": "/home/pio/3pp/gopath",
+}
