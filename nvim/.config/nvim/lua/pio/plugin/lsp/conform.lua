@@ -41,13 +41,13 @@ return {
             lua = { "stylua" },
             cmake = { "cmake_format" },
 
-            -- First check if project has prettier, else use prettierd
+            -- First check if project has prettier, else fallback to prettierd or other formatters
             javascript = { "prettier", "prettierd", stop_after_first = true },
             javascriptreact = { "prettier", "prettierd", stop_after_first = true },
             typescript = { "prettier", "prettierd", stop_after_first = true },
             typescriptreact = { "prettier", "prettierd", stop_after_first = true },
             html = { "prettier", "prettierd", stop_after_first = true },
-            json = { "prettier", "prettierd", stop_after_first = true },
+            json = { "prettier", "jq", "prettierd", stop_after_first = true },
             liquid = { "prettier", "prettierd", stop_after_first = true },
         },
         formatters = {

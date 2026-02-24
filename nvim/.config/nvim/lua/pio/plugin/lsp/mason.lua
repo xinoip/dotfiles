@@ -20,6 +20,7 @@ local tools = {
     "protols",
     "harper-ls",
     "markdown-oxide",
+    "jq",
 }
 
 return {
