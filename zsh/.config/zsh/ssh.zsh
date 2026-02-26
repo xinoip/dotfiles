@@ -1,12 +1,19 @@
 #!/bin/zsh
 
+# This script manages ssh-agent for zsh. In order to load keys into the agent, use ~/.ssh/config like following:
+#
+# Host *
+#     AddKeysToAgent yes
+#     IdentityFile ~/.ssh/pio_key
+#
+# AddKeysToAgent already lazily loads the keys into the agent.
+
 SSH_ENV="$HOME/.ssh/pio_env"
 
 function start_ssh_agent {
   ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
   chmod 600 "${SSH_ENV}"
   . "${SSH_ENV}" > /dev/null
-  ssh-add
 }
 
 if [ -f "${SSH_ENV}" ]; then
@@ -17,10 +24,5 @@ if [ -f "${SSH_ENV}" ]; then
   fi
 else
   start_ssh_agent
-fi
-
-if ! ssh-add -l > /dev/null 2>&1; then
-  ssh-add ~/.ssh/pio_key 2>/dev/null
-  ssh-add ~/.ssh/id_ed25519_sk_rk 2>/dev/null
 fi
 
