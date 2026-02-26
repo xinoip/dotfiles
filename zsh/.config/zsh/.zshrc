@@ -141,6 +141,11 @@ alias gbump="git commit --allow-empty -m 'bump' --no-verify"
 alias ga="git add"
 alias gr="git remote"
 
+# Tmux aliases
+alias tlist="tmux list-sessions"
+alias tm="tmux new-session -A -s main"
+alias ta="tmux attach -t"
+
 # Void aliases
 alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
 alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
@@ -151,7 +156,6 @@ alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
 alias python_venv_pip="~/3pp/python-env/bin/pip"
 alias pio_logout="sudo pkill -u pio"
-alias tm="tmux new-session -A -s main"
 
 if $PIOBUNTU; then
     alias xi="sudo apt-get install"
