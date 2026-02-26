@@ -154,8 +154,8 @@ alias ip='ip -c'
 alias history='fc -li 1'
 
 # Git aliases
-alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
-alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpush='git push'
+alias gpull='git pull'
 alias greset="git reset --hard @{u}"
 alias gs="git status -sb"
 alias gc="git commit -v"
