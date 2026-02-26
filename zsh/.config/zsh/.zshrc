@@ -23,7 +23,7 @@ export LC_CTYPE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 if $PIOBUNTU; then
-    export PAGER='batcat'
+    export PAGER=''
 else
     export PAGER='bat'
 fi
