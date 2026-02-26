@@ -24,5 +24,4 @@ zsh-users/zsh-autosuggestions
 #########################
 
 mfaerevaag/wd
-romkatv/powerlevel10k
 # jeffreytse/zsh-vi-mode

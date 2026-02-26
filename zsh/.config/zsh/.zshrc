@@ -207,13 +207,6 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-#########################
-# Theme
-#########################
-
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-~/.config/zsh/greeter.sh
-
 ##########################
 # cd/ls/yazi Setup
 ##########################
@@ -394,3 +387,10 @@ elif [[ $(npm config get registry) != "https://registry.npmjs.org/" ]]; then
     echo "Warning: npm registry is not set to default (https://registry.npmjs.org/)" >&2
 fi
 
+#########################
+# Theme
+#########################
+
+export STARSHIP_CONFIG=~/.config/zsh/starship.toml
+eval "$(starship init zsh)"
+~/.config/zsh/greeter.sh
