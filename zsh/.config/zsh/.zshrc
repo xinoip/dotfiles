@@ -180,6 +180,7 @@ alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
 alias python_venv_pip="~/3pp/python-env/bin/pip"
 alias pio_logout="sudo pkill -u pio"
+alias tm="tmux new-session -A -s main"
 
 if $PIOBUNTU; then
     alias xi="sudo apt-get install"
