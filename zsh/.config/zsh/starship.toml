@@ -1,163 +1,199 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+format = '$all$directory'
+right_format = '$git_branch$git_status$git_state$character$cmd_duration$time'
+
 add_newline = false
 continuation_prompt = '▶▶ '
 
+[time]
+disabled = false
+format = '[$time]($style) '
+
+[package]
+disabled = true
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = '[󰗠](bold green)'
+error_symbol = '[󰅙](bold red)'
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[cmd_duration]
+format = '[$duration]($style) '
+
+[git_status]
+style = "bold yellow"
+conflicted = "󰞇${count} "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count} "
+stashed = "*${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+
 [bun]
-format = "via [$symbol]($style)"
+disabled = true
 
 [buf]
-format = "with [$symbol]($style)"
+disabled = true
 
 [c]
-format = "via [$symbol($name)]($style)"
+disabled = true
 
 [cmake]
-format = "via [$symbol]($style)"
+disabled = true
 
 [cobol]
-format = "via [$symbol]($style)"
+disabled = true
 
 [cpp]
-format = "via [$symbol($name)]($style)"
+disabled = true
 
 [crystal]
-format = "via [$symbol]($style)"
+disabled = true
 
 [daml]
-format = "via [$symbol]($style)"
+disabled = true
 
 [dart]
-format = "via [$symbol]($style)"
+disabled = true
 
 [deno]
-format = "via [$symbol]($style)"
+disabled = true
 
 [dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
+disabled = true
 
 [elixir]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [elm]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [erlang]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [fennel]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [fortran]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [gleam]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [golang]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [gradle]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [haskell]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [haxe]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [helm]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [java]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [julia]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [kotlin]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [lua]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [meson]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [mojo]
-format = 'with [$symbol]($style)'
+disabled = true
 
 [nim]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [nodejs]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
+disabled = true
 
 [odin]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [opa]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [perl]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [php]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [pixi]
-format = 'via [$symbol($environment )]($style)'
+disabled = true
 
 [pulumi]
-format = 'via [$symbol$stack]($style)'
+disabled = true
 
 [purescript]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [python]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [quarto]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [raku]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [red]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [rlang]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [ruby]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [rust]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [scala]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [solidity]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [swift]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [typst]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [vagrant]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [vlang]
-format = 'via [$symbol]($style)'
+disabled = true
 
 [xmake]
-format = "via [$symbol]($style)"
+disabled = true
 
 [zig]
-format = 'via [$symbol]($style)'
+disabled = true
