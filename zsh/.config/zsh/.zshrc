@@ -28,8 +28,6 @@ else
     export PAGER='bat'
 fi
 
-eval "$(dircolors ~/.config/zsh/.dircolors)"
-
 #########################
 # GPG/SSH Configuration
 #########################
@@ -93,34 +91,7 @@ path+=(
 # Miscellaneous Configuration
 #########################
 
-export SUDO_PROMPT=$'\u001B[1m\u001B[47m\u001B[31m[sudo]\u001B[39m\u001B[49m\u001B[22m password for \u001B[1m\u001B[100m\u001B[33m%u@%h\u001B[39m\u001B[49m\u001B[22m: '
 export WGETRC="~/.config/wget/.wgetrc"
-# koda.nvim theme
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=none \
-  --color=bg+:#272727 \
-  --color=bg:#000000 \
-  --color=border:#ffffff \
-  --color=fg:#b0b0b0 \
-  --color=fg+:#ffffff \
-  --color=gutter:#101010 \
-  --color=header:#ffffff \
-  --color=hl+:#d9ba73 \
-  --color=hl:#d9ba73 \
-  --color=info:#50585d \
-  --color=marker:#ff7676 \
-  --color=pointer:#ffffff \
-  --color=prompt:#ffffff \
-  --color=query:#b0b0b0:regular \
-  --color=scrollbar:#b0b0b0 \
-  --color=separator:#ffffff \
-  --color=spinner:#50585d \
-"
-
 
 #########################
 # Aliases
@@ -391,6 +362,4 @@ fi
 # Theme
 #########################
 
-export STARSHIP_CONFIG=~/.config/zsh/starship.toml
-eval "$(starship init zsh)"
-~/.config/zsh/greeter.sh
+source ~/.config/zsh/theme.zsh
