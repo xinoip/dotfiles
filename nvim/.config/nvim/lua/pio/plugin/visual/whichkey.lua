@@ -18,6 +18,6 @@ return {
         },
     },
     config = function()
-        vim.api.nvim_set_hl(0, "WhichKeyNormal", { bg = "#000000" })
+        vim.api.nvim_set_hl(0, "WhichKeyNormal", {})
     end,
 }
