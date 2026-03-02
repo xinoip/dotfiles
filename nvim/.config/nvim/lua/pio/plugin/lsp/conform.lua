@@ -40,6 +40,7 @@ return {
             python = { "isort", "black" },
             lua = { "stylua" },
             cmake = { "cmake_format" },
+            go = { "golines" },
 
             -- First check if project has prettier, else fallback to prettierd or other formatters
             javascript = { "prettier", "prettierd", stop_after_first = true },

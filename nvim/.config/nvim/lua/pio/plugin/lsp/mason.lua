@@ -21,6 +21,8 @@ local tools = {
     "harper-ls",
     "markdown-oxide",
     "jq",
+    "goimports",
+    "golines",
 }
 
 return {
