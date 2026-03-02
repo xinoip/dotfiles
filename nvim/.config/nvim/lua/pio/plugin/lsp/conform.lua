@@ -65,6 +65,13 @@ return {
                     }
                 end,
             },
+            golines = {
+                append_args = function()
+                    return {
+                        "--max-len=120",
+                    }
+                end,
+            },
         },
     },
 }
