@@ -7,6 +7,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
