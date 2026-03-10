@@ -17,7 +17,4 @@ return {
             desc = "Buffer Local Keymaps (which-key)",
         },
     },
-    config = function()
-        vim.api.nvim_set_hl(0, "WhichKeyNormal", {})
-    end,
 }
