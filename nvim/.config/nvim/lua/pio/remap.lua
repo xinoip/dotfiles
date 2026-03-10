@@ -15,14 +15,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
---# Move lines up/down
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
 --# Join lines without moving cursor
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "J", "m`J``")
 
 --# Paste without yanking replaced text
 vim.keymap.set("x", "p", '"_dP')
@@ -38,3 +32,10 @@ vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix" })
 --# Diagnostic navigation
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+
+--# File path: show and yank
+vim.keymap.set("n", "<leader>fp", function()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify(path, vim.log.levels.INFO, { title = "Path copied" })
+end, { desc = "Copy file path" })
