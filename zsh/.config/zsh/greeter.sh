@@ -33,7 +33,7 @@ greet_fetch() {
 }
 
 greet_pokemon() {
-    ./pokemon-colorscripts/pokemon-colorscripts -r --no-title -s
+    ~/.config/zsh/pokemon-colorscripts/pokemon-colorscripts -r --no-title -s
 }
 
 greet() {
