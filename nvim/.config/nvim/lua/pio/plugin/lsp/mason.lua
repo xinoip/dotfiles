@@ -9,6 +9,7 @@ local servers = {
     "postgres_lsp",
     "jsonls",
     "yamlls",
+    "taplo",
 }
 
 local tools = {
@@ -25,6 +26,7 @@ local tools = {
     "jq",
     "goimports",
     "golines",
+    "rumdl",
 }
 
 return {

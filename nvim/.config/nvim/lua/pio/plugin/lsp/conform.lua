@@ -41,6 +41,7 @@ return {
             lua = { "stylua" },
             cmake = { "cmake_format" },
             go = { "golines" },
+            markdown = { "rumdl" },
 
             -- First check if project has prettier, else fallback to prettierd or other formatters
             javascript = { "prettier", "prettierd", stop_after_first = true },
