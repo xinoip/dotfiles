@@ -181,6 +181,7 @@ SAVEHIST=100000
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
+bindkey -r '^l' # Remove clear screen binding, it's useless.
 
 ##########################
 # cd/ls/yazi Setup
@@ -367,3 +368,4 @@ fi
 #########################
 
 source ~/.config/zsh/theme.zsh
+
