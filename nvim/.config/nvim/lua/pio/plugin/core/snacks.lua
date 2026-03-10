@@ -35,6 +35,24 @@ return {
                 easing = "outCubic",
             },
         },
+        dashboard = {
+            enabled = "true",
+            sections = {
+                { section = "header" },
+                { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+                { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+                { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                { section = "startup" },
+                {
+                    section = "terminal",
+                    cmd = "~/.config/zsh/pokemon-colorscripts/pokemon-colorscripts -r --no-title; sleep .1",
+                    random = 10,
+                    pane = 2,
+                    indent = 4,
+                    height = 30,
+                },
+            },
+        },
     },
     keys = {
         {
