@@ -24,7 +24,7 @@ require("lazy").setup({
     spec = {
         { import = "pio.plugin" },
     },
-    install = { colorscheme = { "oldworld" } },
+    install = { colorscheme = { "koda" } },
 
     -- automatically check for plugin updates
     checker = { enabled = true, notify = false },
