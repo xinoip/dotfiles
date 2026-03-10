@@ -4,6 +4,7 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.fillchars = { eob = " " }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -16,6 +17,7 @@ vim.g.have_nerd_font = true
 vim.opt.title = true
 vim.opt.titlestring = "%t - Piovim"
 vim.opt.foldenable = false
+vim.opt.smoothscroll = true
 
 --# Indentation
 vim.opt.breakindent = true
@@ -46,8 +48,12 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.splitkeep = "screen"
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.confirm = true
+vim.opt.virtualedit = "block"
+vim.opt.jumpoptions = "view"
 vim.opt.completeopt = "menuone,noselect"
 vim.g.python3_host_prog = os.getenv("HOME") .. "/3pp/pio-py/bin/python3"
