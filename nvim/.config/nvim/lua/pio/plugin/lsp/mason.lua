@@ -7,6 +7,8 @@ local servers = {
     "templ",
     "pyright",
     "postgres_lsp",
+    "jsonls",
+    "yamlls",
 }
 
 local tools = {
