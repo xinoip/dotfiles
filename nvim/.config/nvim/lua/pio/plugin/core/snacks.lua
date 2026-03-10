@@ -45,7 +45,7 @@ return {
                 { section = "startup" },
                 {
                     section = "terminal",
-                    cmd = "~/.config/zsh/pokemon-colorscripts/pokemon-colorscripts -r --no-title; sleep .1",
+                    cmd = "exec ~/.config/zsh/pokemon-colorscripts/pokemon-colorscripts -r --no-title",
                     random = 10,
                     pane = 2,
                     indent = 4,
