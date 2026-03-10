@@ -11,20 +11,20 @@ return {
         appearance = {
             nerd_font_variant = "mono",
         },
-        -- TODO: check this
         completion = { documentation = { auto_show = true } },
-        -- TODO: lazydev not working
         sources = {
-            -- default = { "lazydev", "lsp", "path", "snippets", "buffer" },
             default = { "lsp", "path", "snippets", "buffer" },
+            per_filetype = {
+                lua = { inherit_defaults = true, "lazydev" },
+            },
+            providers = {
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    score_offset = 100,
+                },
+            },
         },
-        -- providers = {
-        --     lazydev = {
-        --         name = "LazyDev",
-        --         module = "lazydev.integrations.blink",
-        --         score_offset = 100,
-        --     },
-        -- },
         fuzzy = { implementation = "prefer_rust_with_warning" },
     },
     opts_extend = { "sources.default" },
