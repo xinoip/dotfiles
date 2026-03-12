@@ -1,18 +1,3 @@
-[window]
-# blur = true
-# opacity = 1
-dynamic_padding = false
-# decorations = "none"
-# startup_mode = "fullscreen"
-
-[window.padding]
-x = 0
-y = 0
-
-[font]
-normal = { family = "Iosevka NFM", style = "Regular" }
-size = 24
-
 [colors.bright]
 black = "0x32302f"
 blue = "0x7daea3"

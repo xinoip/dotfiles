@@ -1,0 +1,18 @@
+[window]
+dynamic_padding = true
+
+[font]
+normal = { family = "Iosevka NFM", style = "Regular" }
+size = 20
+
+[scrolling]
+history = 100000
+
+[keyboard]
+bindings = [
+    { key = "V", mods = "Control", action = "Paste" },
+    { key = "L", mods = "Control|Shift", chars = "l" },
+]
+
+[general]
+import = ["./koda.toml"]
