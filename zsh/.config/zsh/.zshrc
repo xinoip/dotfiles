@@ -122,6 +122,7 @@ alias lf='yzcd'
 alias du='dust'
 alias df='duf'
 alias ip='ip -c'
+alias ipb='ip -brief'
 alias history='fc -li 1'
 
 # Git aliases
@@ -335,12 +336,6 @@ pio_topdf() {
 	--volume "$(pwd):/data" \
 	--user $(id -u):$(id -g) \
 	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
-}
-
-
-# $1 in file
-pio_watch() {
-    gamescope -w 3440 -h 1440 -r 175 -f --hdr-enabled -- mpv --panscan=1.0 $1
 }
 
 #########################
