@@ -147,11 +147,6 @@ alias tlist="tmux list-sessions"
 alias tm="tmux new-session -A -s main"
 alias ta="tmux attach -t"
 
-# Void aliases
-alias vpn_up="sudo wg-quick up /etc/wireguard/active.conf"
-alias vpn_down="sudo wg-quick down /etc/wireguard/active.conf"
-alias vpn_fix="sudo chown root:root -R /etc/wireguard && sudo chmod 600 -R /etc/wireguard"
-
 # Other aliases
 alias python_venv_setup="python3 -m venv ~/3pp/python-env"
 alias python_venv_activate=". ~/3pp/python-env/bin/activate"
@@ -336,6 +331,10 @@ pio_topdf() {
 	--volume "$(pwd):/data" \
 	--user $(id -u):$(id -g) \
 	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
+}
+
+pio_mullvad() {
+    curl https://i.mullvad.net/connected
 }
 
 #########################
