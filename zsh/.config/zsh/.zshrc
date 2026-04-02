@@ -183,11 +183,11 @@ bindkey -r '^l' # Remove clear screen binding, it's useless.
 # cd/ls/yazi Setup
 ##########################
 
-chpwd() {
+function chpwd() {
     ls
 }
 
-yzcd () {
+function yzcd() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
     if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -201,14 +201,14 @@ yzcd () {
 #########################
 
 # $1 message
-pio_confirm() {
+function pio_confirm() {
     printf "%s" "$1 (y/N) "
     read -q "REPLY?" || return 1
     printf "\n"
     [[ ! $REPLY =~ ^[Nn]$ ]]
 }
 
-pio_nuke() {
+function pio_nuke() {
     # Nuke Antidote
     delf ~/.cache/antidote ~/.config/zsh/.zsh_plugins.zsh \
 	~/.config/zsh/.zcompdump ~/.config/zsh/.zcompdump.zwc \
@@ -226,7 +226,7 @@ pio_nuke() {
     echo "Restart both shell and tmux to see effects."
 }
 
-pio_update() {
+function pio_update() {
     pio_confirm "Update Antidote?" && antidote update && echo "Antidote updated."
 
     if $PIOBUNTU; then
@@ -245,7 +245,7 @@ pio_update() {
     fi
 }
 
-xsearch() {
+function xsearch() {
     if $PIOBUNTU; then
 	apt-cache pkgnames "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'apt-cache show {1}' | xargs -ro sudo apt install
     else
@@ -253,7 +253,7 @@ xsearch() {
     fi
 }
 
-xrm() {
+function xrm() {
     if $PIOBUNTU; then
 	sudo apt-get autoremove $1
     else
@@ -261,7 +261,7 @@ xrm() {
     fi
 }
 
-xhold() {
+function xhold() {
     if [ -n "$1" ]; then
 	sudo xbps-pkgdb -m hold $1
     else
@@ -269,11 +269,11 @@ xhold() {
     fi
 }
 
-xunhold() {
+function xunhold() {
     sudo xbps-pkgdb -m unhold $1
 }
 
-pio_serve() {
+function pio_serve() {
     if [ -n "$1" ]; then
 	python3 -m http.server $1
     else
@@ -281,7 +281,7 @@ pio_serve() {
     fi
 }
 
-pio_toggle_sshd() {
+function pio_toggle_sshd() {
     if $PIOBUNTU; then
 	echo "Toggling sshd not supported on Ubuntu for now."
     else
@@ -295,7 +295,7 @@ pio_toggle_sshd() {
     fi
 }
 
-docker_prune_all() {
+function docker_prune_all() {
     docker container prune
     docker volume prune -a
     docker image prune -a
@@ -305,26 +305,26 @@ docker_prune_all() {
 # $1 folder to be encrypted and uploaded
 # $2 gdrive target
 # $3 password
-encrypt_and_upload() {
+function encrypt_and_upload() {
 	7z a -mhe=on -p$3 $2 $1 
 	gdrive files upload $2 
 }
 
 # $1 in
 # $2 pass
-pio_encrypt() {
+function pio_encrypt() {
     setopt NO_HIST
     7z a -mhe=on -p$2 $1.7z $1
     unsetopt NO_HIST
 }
 
 # $1 in
-pio_compress() {
+function pio_compress() {
     tar -cJf $1.tar.xz $1
 }
 
 # $1 in
-pio_topdf() {
+function pio_topdf() {
     echo "Converting $1"
 
     docker run --rm \
@@ -333,7 +333,7 @@ pio_topdf() {
 	pandoc/extra "$1" -o "$1.pdf" --template eisvogel --listings
 }
 
-pio_mullvad() {
+function pio_mullvad() {
     curl https://i.mullvad.net/connected
 }
 
