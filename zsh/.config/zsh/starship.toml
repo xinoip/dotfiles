@@ -6,6 +6,12 @@ right_format = '$git_branch$git_status$git_state$character$cmd_duration$time'
 add_newline = false
 continuation_prompt = '▶▶ '
 
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
 [time]
 disabled = false
 format = '[$time]($style) '
@@ -27,17 +33,18 @@ format = '[$symbol$branch(:$remote_branch)]($style) '
 format = '[$duration]($style) '
 
 [git_status]
+format = '[($conflicted )($ahead_behind )($stashed )($modified )($staged )($renamed )($deleted )($untracked )]($style)'
 style = "bold yellow"
-conflicted = "󰞇${count} "
+conflicted = "󰞇${count}"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-untracked = "?${count} "
-stashed = "*${count} "
-modified = "!${count} "
-staged = "+${count} "
-renamed = "»${count} "
-deleted = "✘${count} "
+untracked = "?${count}"
+stashed = "*${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = ">${count}"
+deleted = "x${count}"
 
 [bun]
 disabled = true
