@@ -1,8 +1,6 @@
--- These are my custom commands. They all start with "Pio"
-
--- Toggle all animations on/off
+-- TODO: currently broken
 vim.g.pio_animate = false
-vim.api.nvim_create_user_command("PioAnimate", function()
+Pio.create_cmd("PioAnimate", "Toggle animations", function()
     local smear = require("smear_cursor")
     vim.g.pio_animate = not vim.g.pio_animate
 
@@ -15,15 +13,10 @@ vim.api.nvim_create_user_command("PioAnimate", function()
     end
 
     vim.notify("Animations: " .. (vim.g.pio_animate and "on" or "off"))
-end, {
-    desc = "Toggle animations",
-})
+end)
 
--- Toggle format on save
 vim.g.pio_format = true
-vim.api.nvim_create_user_command("PioFormat", function()
+Pio.create_cmd("PioFormat", "Toggle format on save", function()
     vim.g.pio_format = not vim.g.pio_format
     vim.notify("Format on save: " .. (vim.g.pio_format and "on" or "off"))
-end, {
-    desc = "Disable format on save",
-})
+end)

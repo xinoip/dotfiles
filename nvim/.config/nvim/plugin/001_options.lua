@@ -1,4 +1,4 @@
---# Visual
+-- Visual
 vim.wo.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
@@ -19,7 +19,7 @@ vim.opt.titlestring = "%t - Piovim"
 vim.opt.foldenable = false
 vim.opt.smoothscroll = true
 
---# Indentation
+-- Indentation
 vim.opt.breakindent = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -27,22 +27,22 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
---# Clipboard setup
+-- Clipboard setup
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus"
 end)
 
---# History
+-- History
 vim.opt.undodir = os.getenv("HOME") .. "/.cache/vim_undodir"
 vim.opt.undofile = true
 
---# Searching
+-- Searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
---# Tweak
+-- Tweak
 vim.opt.mouse = "a"
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
@@ -55,5 +55,5 @@ vim.opt.backup = false
 vim.opt.confirm = true
 vim.opt.virtualedit = "block"
 vim.opt.jumpoptions = "view"
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,fuzzy,nosort,noinsert"
 vim.g.python3_host_prog = os.getenv("HOME") .. "/3pp/pio-py/bin/python3"
