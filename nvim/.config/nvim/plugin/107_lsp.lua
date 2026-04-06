@@ -86,3 +86,53 @@ Pio.create_autocmd("Pio LSP Attach", "LspAttach", "*", nil, on_attach)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, MiniCompletion.get_lsp_capabilities())
 vim.lsp.config("*", { capabilities = capabilities })
+
+-- Eagerly load LSP workspace-wide when launching Neovim on a project folder.
+Pio.create_autocmd("Eagerly load LSP for workspace", "VimEnter", "*", nil, function()
+    local cwd = vim.uv.cwd()
+    if not cwd then
+        return
+    end
+
+    local markers = {
+        { name = "lua_ls", files = { ".luarc.json", "init.lua", ".luarc.jsonc" }, dummy = ".init.lua" },
+        { name = "gopls", files = { "go.mod", "go.sum" }, dummy = "main.go" },
+        {
+            name = "pyright",
+            files = { "pyproject.toml", "setup.py", "requirements.txt", "venv", ".venv" },
+            dummy = "main.py",
+        },
+        { name = "clangd", files = { "CMakeLists.txt", "Makefile", "configure.ac" }, dummy = "main.c" },
+    }
+
+    for _, marker in ipairs(markers) do
+        for _, file in ipairs(marker.files) do
+            if vim.uv.fs_stat(cwd .. "/" .. file) then
+                local config = vim.lsp.config[marker.name]
+                if config and config.cmd then
+                    -- Avoid 'file' URI errors for oil.nvim/netrw buffers.
+                    local is_file = vim.bo.buftype == "" and vim.fn.expand("%"):match("^%w+://") == nil
+
+                    if is_file then
+                        vim.lsp.start({
+                            name = marker.name,
+                            cmd = config.cmd,
+                            root_dir = cwd,
+                        })
+                    else
+                        -- Dummy scratch buffer to force-start the LSP.
+                        local temp_buf = vim.api.nvim_create_buf(false, true)
+                        vim.api.nvim_buf_set_name(temp_buf, cwd .. "/" .. marker.dummy)
+                        vim.lsp.start({
+                            name = marker.name,
+                            cmd = config.cmd,
+                            root_dir = cwd,
+                        }, { bufnr = temp_buf })
+                        vim.api.nvim_buf_delete(temp_buf, { force = true })
+                    end
+                    return
+                end
+            end
+        end
+    end
+end)
