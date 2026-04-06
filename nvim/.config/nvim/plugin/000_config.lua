@@ -43,8 +43,10 @@ Pio.create_keymap = function(desc, mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-Pio.create_cmd = function(name, desc, callback)
-    vim.api.nvim_create_user_command(name, callback, { desc = desc })
+Pio.create_cmd = function(name, desc, callback, opts)
+    opts = opts or {}
+    opts.desc = desc
+    vim.api.nvim_create_user_command(name, callback, opts)
 end
 
 Pio.on_pack_change = function(plugin_name, kinds, callback, desc)
