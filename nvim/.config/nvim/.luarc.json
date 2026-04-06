@@ -1,0 +1,10 @@
+{
+  "diagnostics": {
+    "globals": [
+      "vim",
+      "Pio",
+      "Snacks",
+      "MiniCompletion"
+    ]
+  }
+}
