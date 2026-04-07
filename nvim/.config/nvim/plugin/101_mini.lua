@@ -14,14 +14,14 @@ require("mini.surround").setup({
 })
 
 -- Navigation
-require("mini.jump2d").setup({
-    mappings = {
-        start_jumping = "s",
-    },
-    view = {
-        dim = true,
-    },
-})
+-- require("mini.jump2d").setup({
+--     mappings = {
+--         start_jumping = "s",
+--     },
+--     view = {
+--         dim = true,
+--     },
+-- })
 -- require("mini.pick").setup()
 
 -- General
@@ -38,7 +38,7 @@ require("mini.basics").setup({
         relnum_in_visual_mode = true,
     },
 })
-require("mini.notify").setup()
+-- require("mini.notify").setup()
 
 -- Appearance
 require("mini.icons").setup()
