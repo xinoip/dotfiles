@@ -18,7 +18,12 @@ local on_attach_lsp_keymaps = function(ev)
 
     map("<leader>r", vim.lsp.buf.rename, "Rename")
     map("<leader>.", vim.lsp.buf.code_action, "Action")
-    map("K", vim.lsp.buf.hover, "Info")
+    map("K", function()
+        vim.lsp.buf.hover({
+            border = "rounded",
+            max_width = 80,
+        })
+    end, "Info")
     map("<leader>d", vim.diagnostic.open_float, "Line Diagnostics")
     -- take a look at Snacks keymaps for more LSP keymaps
 end

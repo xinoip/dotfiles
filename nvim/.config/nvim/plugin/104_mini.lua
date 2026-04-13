@@ -12,6 +12,12 @@ require("mini.surround").setup({
         replace = "mr",
     },
 })
+require("mini.snippets").setup({
+    mappings = {
+        jump_next = "<Tab>",
+        jump_prev = "<S-Tab>",
+    },
+})
 
 -- Appearance
 require("mini.icons").setup()
