@@ -103,3 +103,4 @@ require("mini.completion").setup({
         process_items = process_items,
     },
 })
+MiniIcons.tweak_lsp_kind()

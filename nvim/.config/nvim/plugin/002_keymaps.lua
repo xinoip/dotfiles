@@ -30,6 +30,20 @@ remap("Move up in insert", "i", "<M-k>", "<Up>")
 remap("Move right in insert", "i", "<M-l>", "<Right>")
 remap("Move left in command", "c", "<M-h>", "<Left>", { silent = false })
 remap("Move right in command", "c", "<M-l>", "<Right>", { silent = false })
+map("Next completion", "i", "<Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { expr = true })
+map("Prev completion", "i", "<S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', { expr = true })
+
+-- Enter Action
+_G.cr_action = function()
+    -- If the completion popup menu is visible, cancel it with <C-e> (\5)
+    -- and then insert a newline (\r)
+    if vim.fn.pumvisible() ~= 0 then
+        return "\5\r"
+    end
+
+    return "\r"
+end
+map("Enter action", "i", "<CR>", "v:lua.cr_action()", { expr = true })
 
 -- Visual
 map("Clear search highlight", "n", "<Esc>", "<cmd>nohlsearch<CR>")
