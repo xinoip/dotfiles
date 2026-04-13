@@ -53,6 +53,7 @@ map("Indent left and stay in visual mode", "v", "<", "<gv")
 map("Indent right and stay in visual mode", "v", ">", ">gv")
 map("Join lines without moving cursor", "n", "J", "m`J``")
 map("Paste without yanking replaced text", "x", "p", '"_dP')
+map("Save and exit insert mode", "i", "<C-s>", "<Esc><cmd>silent write<CR>", { silent = true })
 
 -- Utilities
 map("Copy file path", "n", "<leader>fp", function()
