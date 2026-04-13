@@ -17,6 +17,7 @@ vim.pack.add({
     gh("folke/snacks.nvim"),
     gh("nmac427/guess-indent.nvim"),
     gh("j-hui/fidget.nvim"),
+    gh("lewis6991/gitsigns.nvim"),
 
     -- Control
     gh("stevearc/oil.nvim"),

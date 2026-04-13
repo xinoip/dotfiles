@@ -1,5 +1,6 @@
 require("guess-indent").setup({})
 require("fidget").setup({})
+require("gitsigns").setup()
 
 require("flash").setup({
     modes = {

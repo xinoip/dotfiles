@@ -25,22 +25,22 @@ require("mini.indentscope").setup()
 require("mini.cursorword").setup()
 require("mini.statusline").setup()
 require("mini.trailspace").setup()
-require("mini.diff").setup({
-    view = {
-        -- Valid values: "number", "sign".
-        style = "sign",
-        signs = { add = "┃", change = "┃", delete = "_" },
-    },
-    mappings = {
-        apply = "",
-        reset = "",
-        textobject = "",
-        goto_first = "",
-        goto_prev = "",
-        goto_next = "",
-        goto_last = "",
-    },
-})
+-- require("mini.diff").setup({
+--     view = {
+--         -- Valid values: "number", "sign".
+--         style = "sign",
+--         signs = { add = "┃", change = "┃", delete = "_" },
+--     },
+--     mappings = {
+--         apply = "",
+--         reset = "",
+--         textobject = "",
+--         goto_first = "",
+--         goto_prev = "",
+--         goto_next = "",
+--         goto_last = "",
+--     },
+-- })
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
     highlighters = {
