@@ -51,7 +51,7 @@ Pio.create_cmd("PioPackUpdate", "Update plugins", function()
 end)
 
 Pio.create_cmd("PioPackClean", "Clean plugins", function()
-    vim.iter(vim.pack.get())
+    local inactive_plugins = vim.iter(vim.pack.get())
         :filter(function(x)
             return not x.active
         end)
@@ -59,4 +59,11 @@ Pio.create_cmd("PioPackClean", "Clean plugins", function()
             return x.spec.name
         end)
         :totable()
+
+    if #inactive_plugins > 0 then
+        vim.pack.del(inactive_plugins)
+        vim.notify("Cleaned " .. #inactive_plugins .. " inactive plugin(s).")
+    else
+        vim.notify("No inactive plugins to clean.")
+    end
 end)
