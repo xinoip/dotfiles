@@ -20,7 +20,7 @@ local on_attach_lsp_keymaps = function(ev)
     map("<leader>.", vim.lsp.buf.code_action, "Action")
     map("K", vim.lsp.buf.hover, "Info")
     map("<leader>d", vim.diagnostic.open_float, "Line Diagnostics")
-    map("gd", vim.lsp.buf.definition, "Go to Definition")
+    -- take a look at Snacks keymaps for more LSP keymaps
 end
 
 local on_attach_highlight_under_cursor = function(ev)
