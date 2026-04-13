@@ -23,7 +23,6 @@ require("mini.snippets").setup({
 require("mini.icons").setup()
 require("mini.indentscope").setup()
 require("mini.cursorword").setup()
-require("mini.statusline").setup()
 require("mini.trailspace").setup()
 -- require("mini.diff").setup({
 --     view = {
