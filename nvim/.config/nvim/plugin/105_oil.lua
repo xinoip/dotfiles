@@ -6,6 +6,7 @@ require("oil").setup({
         -- "mtime",
     },
     delete_to_trash = true,
+    watch_for_changes = true,
     view_options = {
         show_hidden = true,
         natural_order = true,
@@ -34,5 +35,3 @@ require("oil").setup({
         ["g\\"] = "actions.toggle_trash",
     },
 })
-
-Pio.create_keymap("Open parent directory", "n", "-", "<CMD>Oil<CR>")

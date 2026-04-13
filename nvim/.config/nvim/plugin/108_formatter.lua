@@ -1,5 +1,4 @@
-local conform = require("conform")
-conform.setup({
+require("conform").setup({
     notify_on_error = false,
     format_on_save = function()
         -- Disable globally
@@ -48,7 +47,3 @@ conform.setup({
         },
     },
 })
-
-Pio.create_keymap("Format buffer", "n", "gq", function()
-    conform.format({ async = true, lsp_fallback = true })
-end)

@@ -79,4 +79,4 @@ local ts_start = function(ev)
     vim.treesitter.start(ev.buf)
 end
 
-Pio.create_autocmd("Start tree-sitter", "FileType", filetypes, nil, ts_start)
+Pio.create_autocmd("Start tree-sitter", "FileType", filetypes, ts_start)

@@ -4,6 +4,8 @@ require("lazydev").setup({
     },
 })
 
+require("flutter-tools").setup({})
+
 -- Set 'omnifunc' to use `MiniCompletion` for LSP buffers.
 local on_attach_mini_completions = function(ev)
     vim.bo[ev.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
@@ -24,22 +26,15 @@ end
 local on_attach_highlight_under_cursor = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-        Pio.create_autocmd_lsp(
-            "LSP Highlight",
-            { "CursorHold", "CursorHoldI" },
-            ev.buf,
-            nil,
-            vim.lsp.buf.document_highlight
-        )
+        Pio.create_autocmd_lsp("LSP Highlight", { "CursorHold", "CursorHoldI" }, ev.buf, vim.lsp.buf.document_highlight)
         Pio.create_autocmd_lsp(
             "LSP Clear Highlight",
             { "CursorMoved", "CursorMovedI" },
             ev.buf,
-            nil,
             vim.lsp.buf.clear_references
         )
 
-        Pio.create_autocmd_lsp("LSP Detach Highlight", "LspDetach", ev.buf, nil, function(event2)
+        Pio.create_autocmd_lsp("LSP Detach Highlight", "LspDetach", ev.buf, function(event2)
             vim.lsp.buf.clear_references()
             Pio.clear_autocmd_lsp(event2.buf)
         end)
@@ -81,7 +76,7 @@ local on_attach = function(ev)
     on_attach_visual()
 end
 
-Pio.create_autocmd("Pio LSP Attach", "LspAttach", "*", nil, on_attach)
+Pio.create_autocmd("Pio LSP Attach", "LspAttach", "*", on_attach)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, MiniCompletion.get_lsp_capabilities())
