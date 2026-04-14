@@ -1,16 +1,19 @@
-require("koda").setup({
-    colors = {
-        bg = "#000000",
-    },
-})
-vim.cmd("colorscheme koda")
+local koda_opts = {}
+local lualine_theme = require("lualine.themes.auto")
 
-local auto_theme = require("lualine.themes.auto")
-auto_theme.normal.c.bg = "#000000"
+if vim.o.background == "dark" then
+    koda_opts.colors.bg = "#000000"
+    lualine_theme.normal.c.bg = "#000000"
+else
+    lualine_theme.normal.c.bg = "#ebebeb"
+end
+
+require("koda").setup(koda_opts)
+vim.cmd("colorscheme koda")
 
 require("lualine").setup({
     options = {
         globalstatus = true,
-        theme = auto_theme,
+        theme = lualine_theme,
     },
 })
