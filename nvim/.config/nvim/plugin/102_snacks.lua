@@ -49,7 +49,3 @@ require("snacks").setup({
         },
     },
 })
-
-Pio.create_autocmd("Disable Mini Completion in Snacks Picker", "FileType", "snacks_picker_input", function(args)
-    vim.b[args.buf].minicompletion_disable = true
-end)

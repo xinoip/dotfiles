@@ -12,12 +12,6 @@ require("mini.surround").setup({
         replace = "mr",
     },
 })
-require("mini.snippets").setup({
-    mappings = {
-        jump_next = "<Tab>",
-        jump_prev = "<S-Tab>",
-    },
-})
 
 -- Appearance
 require("mini.icons").setup()
@@ -91,21 +85,6 @@ miniclue.setup({
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
-    },
-})
-
--- Completion
-local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
-local process_items = function(items, base)
-    return MiniCompletion.default_process_items(items, base, process_items_opts)
-end
-
-require("mini.completion").setup({
-    lsp_completion = {
-        -- `omnifunc` instead of `completefunc`
-        source_func = "omnifunc",
-        auto_setup = false,
-        process_items = process_items,
     },
 })
 MiniIcons.tweak_lsp_kind()

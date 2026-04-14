@@ -6,11 +6,6 @@ require("lazydev").setup({
 
 require("flutter-tools").setup({})
 
--- Set 'omnifunc' to use `MiniCompletion` for LSP buffers.
-local on_attach_mini_completions = function(ev)
-    vim.bo[ev.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
-end
-
 local on_attach_lsp_keymaps = function(ev)
     local map = function(keys, func, desc)
         Pio.create_keymap("LSP: " .. desc, "n", keys, func, { buffer = ev.buf })
@@ -74,7 +69,6 @@ local on_attach_visual = function()
 end
 
 local on_attach = function(ev)
-    on_attach_mini_completions(ev)
     on_attach_lsp_keymaps(ev)
     on_attach_highlight_under_cursor(ev)
     on_attach_toggle_inlay_hints(ev)
@@ -83,8 +77,7 @@ end
 
 Pio.create_autocmd("Pio LSP Attach", "LspAttach", "*", on_attach)
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, MiniCompletion.get_lsp_capabilities())
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 vim.lsp.config("*", { capabilities = capabilities })
 
 -- -- Eagerly load LSP workspace-wide when launching Neovim on a project folder.
