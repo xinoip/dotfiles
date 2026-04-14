@@ -11,18 +11,19 @@
 SSH_ENV="$HOME/.ssh/pio_env"
 
 function start_ssh_agent {
-  ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-  chmod 600 "${SSH_ENV}"
-  . "${SSH_ENV}" > /dev/null
+    ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" >/dev/null
 }
 
 if [ -f "${SSH_ENV}" ]; then
-  . "${SSH_ENV}" > /dev/null
+    . "${SSH_ENV}" >/dev/null
 
-  if ! ps -p ${SSH_AGENT_PID} > /dev/null 2>&1; then
-    start_ssh_agent
-  fi
+    if ! ps -p ${SSH_AGENT_PID} >/dev/null 2>&1; then
+        start_ssh_agent
+    fi
 else
-  start_ssh_agent
+    start_ssh_agent
 fi
 
+export GPG_TTY=$(tty)
