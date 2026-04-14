@@ -9,7 +9,7 @@ require("blink.cmp").setup({
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<esc>"] = { "hide", "fallback" },
+        ["<C-e>"] = { "hide", "fallback" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
     },
 
