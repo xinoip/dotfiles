@@ -25,19 +25,6 @@ require("conform").setup({
         liquid = { "prettier", "prettierd", stop_after_first = true },
     },
     formatters = {
-        prettierd = {
-            prepend_args = function()
-                return {
-                    "--no-semi",
-                    "--single-quote",
-                    "--no-bracket-spacing",
-                    "--print-width",
-                    "80",
-                    "--config-precedence",
-                    "prefer-file",
-                }
-            end,
-        },
         golines = {
             append_args = function()
                 return {
@@ -47,3 +34,8 @@ require("conform").setup({
         },
     },
 })
+
+Pio.create_autocmd("Native line wrap for markdown files", "FileType", "markdown", function()
+    vim.opt_local.textwidth = 80
+    vim.opt_local.formatoptions:append("tcq")
+end)

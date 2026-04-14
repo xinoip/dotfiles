@@ -41,10 +41,12 @@ require("mason-tool-installer").setup({
         -- JS & Frontend
         "prettierd",
         "harper-ls",
-        "markdown-oxide",
         "jq",
         "goimports",
         "golines",
+
+        -- Markdown
+        "markdown-oxide",
         "rumdl",
 
         -- Other
