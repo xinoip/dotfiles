@@ -15,6 +15,9 @@ require("conform").setup({
         go = { "golines" },
         markdown = { "rumdl" },
 
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
+
         -- First check if project has prettier, else fallback to prettierd or other formatters
         javascript = { "prettier", "prettierd", stop_after_first = true },
         javascriptreact = { "prettier", "prettierd", stop_after_first = true },
