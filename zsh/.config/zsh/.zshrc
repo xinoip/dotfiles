@@ -163,12 +163,20 @@ fi
 #########################
 
 export WD_CONFIG=~/.cache/.warprc
+VENDOR_DIR="$HOME/.config/zsh/vendor"
 
-if [ ! -d ~/3pp/antidote ]; then
-    git clone --depth=1 https://github.com/mattmc3/antidote.git ~/3pp/antidote || (echo "Antidote failed to clone" && exit 1)
-fi
-source ~/3pp/antidote/antidote.zsh
-antidote load ~/.config/zsh/.zsh_plugins.txt
+# Zephyr Modules
+for module (color completion compstyle directory editor environment history utility); do
+    source "$VENDOR_DIR/zephyr/plugins/$module/$module.plugin.zsh"
+done
+
+# Core Plugins
+source "$VENDOR_DIR/fzf-tab/fzf-tab.plugin.zsh"
+source "$VENDOR_DIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+source "$VENDOR_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Native WD replacement
+source "$HOME/.config/zsh/wd.zsh"
 
 setopt share_history
 HISTSIZE=100000
@@ -227,8 +235,6 @@ function pio_nuke() {
 }
 
 function pio_update() {
-    pio_confirm "Update Antidote?" && antidote update && echo "Antidote updated."
-
     if $PIOBUNTU; then
 	pio_confirm "Update Ubuntu?" && sudo apt update && sudo apt upgrade && echo "Ubuntu updated."
     else
