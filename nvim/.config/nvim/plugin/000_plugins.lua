@@ -41,6 +41,8 @@ vim.pack.add({
     gh("supermaven-inc/supermaven-nvim"),
 })
 
+vim.cmd.packadd("nvim.undotree")
+
 Pio.create_cmd("PioPackList", "List installed plugins", function()
     vim.pack.update(nil, { offline = true })
 end)
