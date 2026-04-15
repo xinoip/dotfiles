@@ -20,17 +20,27 @@ function _prompt_preexec() {
 
 function _format_duration() {
     local duration=$1
-    if (( duration < 0.001 )); then
+    if ((duration < 0.001)); then
         printf "0ms"
-    elif (( duration < 1 )); then
-        local ms=$(( duration * 1000 ))
+    elif ((duration < 1)); then
+        local ms=$((duration * 1000))
         printf "%.0fms" $ms
-    elif (( duration < 60 )); then
+    elif ((duration < 60)); then
         printf "%.1fs" $duration
     else
-        local m=$(( int(duration / 60) ))
-        local s=$(( duration - (m * 60) ))
-        printf "%dm%.0fs" $m $s
+        # 'local -i' forces integer type, safely casting the float
+        # Adding 0.5 ensures proper rounding before we extract minutes/seconds
+        local -i total_sec=$((duration + 0.5))
+
+        local -i h=$((total_sec / 3600))
+        local -i m=$(((total_sec % 3600) / 60))
+        local -i s=$((total_sec % 60))
+
+        if ((h > 0)); then
+            printf "%dh%dm%ds" $h $m $s
+        else
+            printf "%dm%ds" $m $s
+        fi
     fi
 }
 
@@ -41,7 +51,7 @@ function _prompt_precmd() {
     local duration_str=""
     if [[ -n $__timer ]]; then
         local now=${EPOCHREALTIME}
-        local duration=$(( now - __timer ))
+        local duration=$((now - __timer))
         duration_str="%B%F{yellow}$(_format_duration $duration)%f%b"
         unset __timer
     fi
@@ -61,14 +71,14 @@ function _prompt_precmd() {
 
         # Git Status
         local conflicted=0 ahead=0 behind=0 untracked=0 stashed=0 modified=0 staged=0 renamed=0 deleted=0
-        
+
         local status_out=$(git status --porcelain 2>/dev/null)
-        
+
         while IFS= read -r line; do
             if [[ -z $line ]]; then continue; fi
             local x=${line:0:1}
             local y=${line:1:1}
-            
+
             if [[ $x == "U" || $y == "U" || ($x == "A" && $y == "A") || ($x == "D" && $y == "D") ]]; then
                 conflicted=$((conflicted + 1))
             else
@@ -77,10 +87,10 @@ function _prompt_precmd() {
                 if [[ $x == "R" ]]; then renamed=$((renamed + 1)); fi
                 if [[ $x == "D" || $y == "D" ]]; then deleted=$((deleted + 1)); fi
             fi
-            
+
             if [[ $x == "?" ]]; then untracked=$((untracked + 1)); fi
-        done <<< "$status_out"
-        
+        done <<<"$status_out"
+
         # Ahead/behind count
         local ab_out=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null)
         if [[ -n $ab_out ]]; then
@@ -90,22 +100,24 @@ function _prompt_precmd() {
 
         # Stash count
         stashed=$(git rev-list --walk-reflogs --count refs/stash 2>/dev/null || echo 0)
-        
+
         local status_components=()
-        if (( conflicted > 0 )); then status_components+=("󰞇${conflicted}"); fi
-        
-        if (( ahead > 0 && behind > 0 )); then status_components+=("⇕⇡${ahead}⇣${behind}")
-        elif (( ahead > 0 )); then status_components+=("⇡${ahead}")
-        elif (( behind > 0 )); then status_components+=("⇣${behind}"); fi
-        
-        if (( stashed > 0 )); then status_components+=("*${stashed}"); fi
-        if (( modified > 0 )); then status_components+=("!${modified}"); fi
-        if (( staged > 0 )); then status_components+=("+${staged}"); fi
-        if (( renamed > 0 )); then status_components+=(">${renamed}"); fi
-        if (( deleted > 0 )); then status_components+=("x${deleted}"); fi
-        if (( untracked > 0 )); then status_components+=("?${untracked}"); fi
-        
-        if (( ${#status_components[@]} > 0 )); then
+        if ((conflicted > 0)); then status_components+=("󰞇${conflicted}"); fi
+
+        if ((ahead > 0 && behind > 0)); then
+            status_components+=("⇕⇡${ahead}⇣${behind}")
+        elif ((ahead > 0)); then
+            status_components+=("⇡${ahead}")
+        elif ((behind > 0)); then status_components+=("⇣${behind}"); fi
+
+        if ((stashed > 0)); then status_components+=("*${stashed}"); fi
+        if ((modified > 0)); then status_components+=("!${modified}"); fi
+        if ((staged > 0)); then status_components+=("+${staged}"); fi
+        if ((renamed > 0)); then status_components+=(">${renamed}"); fi
+        if ((deleted > 0)); then status_components+=("x${deleted}"); fi
+        if ((untracked > 0)); then status_components+=("?${untracked}"); fi
+
+        if ((${#status_components[@]} > 0)); then
             local git_status_joined=${(j: :)status_components}
             git_status_str="%B%F{yellow}[${git_status_joined}]%f%b"
         fi
@@ -123,15 +135,15 @@ function _prompt_precmd() {
         elif [[ -f "$git_dir/BISECT_LOG" ]]; then
             git_state_str="%B%F{yellow}(BISECTING)%f%b"
         fi
-        
+
     fi
-    
+
     # Character (Success/Error)
     local character="%(?.%B%F{green}󰗠%f%b.%B%F{red}󰅙%f%b)"
-    
+
     # Time
     local time_str="%B%F{yellow}[%D{%T}]%f%b"
-    
+
     # Assemble right prompt: $git_branch$git_status$git_state$character$cmd_duration$time
     local rprompt_parts=()
     if [[ -n $git_branch_str ]]; then
@@ -140,11 +152,11 @@ function _prompt_precmd() {
         [[ -n $git_state_str ]] && combined_git="${combined_git}${git_state_str}"
         rprompt_parts+=("${combined_git}")
     fi
-    
+
     rprompt_parts+=("${character}")
     [[ -n $duration_str ]] && rprompt_parts+=("${duration_str}")
     rprompt_parts+=("${time_str}")
-    
+
     RPROMPT="${(j: :)rprompt_parts}"
 }
 
