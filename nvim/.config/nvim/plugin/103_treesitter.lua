@@ -4,6 +4,7 @@ end
 
 Pio.on_pack_change("nvim-treesitter", { "update" }, ts_update, ":TSUpdate")
 
+-- TODO: create auto_install feature and reduce this list
 local parsers = {
     "vimdoc",
     "markdown",
@@ -57,6 +58,7 @@ local parsers = {
     "yaml",
     "yang",
     "zsh",
+    "tmux",
 }
 
 local isnt_installed = function(lang)
