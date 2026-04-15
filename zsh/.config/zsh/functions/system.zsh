@@ -1,16 +1,6 @@
 #!/bin/zsh
 
 function pio_nuke() {
-    # Nuke Antidote
-    delf ~/.cache/antidote ~/.config/zsh/.zsh_plugins.zsh \
-        ~/.config/zsh/.zcompdump ~/.config/zsh/.zcompdump.zwc \
-        ~/3pp/antidote
-    echo "Antidote nuked."
-
-    # Nuke Tmux
-    delf ~/.config/tmux/plugins
-    echo "Tmux nuked."
-
     # Nuke Neovim
     delf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
     echo "Neovim nuked."
