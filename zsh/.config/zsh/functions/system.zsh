@@ -66,3 +66,46 @@ function pio_toggle_sshd() {
         fi
     fi
 }
+
+function pio_status() {
+    local repos=(
+        "$HOME/dotfiles"
+        "$HOME/repo/notes"
+        "$HOME/3pp/void-packages"
+        "$HOME/sync/vault"
+    )
+
+    for repo in "${repos[@]}"; do
+        local reponame=${repo##*/}
+        local uncommitted=$(git -C "$repo" status --porcelain)
+        local branch_status=$(git -C "$repo" status -sb)
+
+        local needs_commit=false
+        local needs_push=false
+
+        [[ -n "$uncommitted" ]] && needs_commit=true
+        [[ "$branch_status" == *"ahead"* ]] && needs_push=true
+
+        if ! $needs_commit && ! $needs_push; then
+            echo "✅ $reponame"
+        else
+            echo "⚠️ $reponame"
+        fi
+    done
+
+    local tmp_dir="$HOME/tmp"
+    local tmp_dirname=${tmp_dir##*/}
+
+    if [[ -d "$tmp_dir" ]]; then
+        local tmp_items=("$tmp_dir"/*(ND))
+        local tmp_count=${#tmp_items[@]}
+
+        if ((tmp_count > 0)); then
+            echo "⚠️ $tmp_dirname ($tmp_count)"
+        else
+            echo "✅ $tmp_dirname"
+        fi
+    else
+        echo "❌ $tmp_dir."
+    fi
+}
