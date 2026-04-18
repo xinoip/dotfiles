@@ -93,19 +93,24 @@ function pio_status() {
         fi
     done
 
-    local tmp_dir="$HOME/tmp"
-    local tmp_dirname=${tmp_dir##*/}
+    local dirs=(
+        "$HOME/tmp"
+        "$HOME/download"
+    )
 
-    if [[ -d "$tmp_dir" ]]; then
-        local tmp_items=("$tmp_dir"/*(ND))
-        local tmp_count=${#tmp_items[@]}
+    for dir in "${dirs[@]}"; do
+        local dir_name=${dir##*/}
+        if [[ -d "$dir" ]]; then
+            local items=("$dir"/*(ND))
+            local count=${#items[@]}
 
-        if ((tmp_count > 0)); then
-            echo "⚠️ $tmp_dirname ($tmp_count)"
+            if ((count > 0)); then
+                echo "⚠️ $dir_name ($count)"
+            else
+                echo "✅ $dir_name"
+            fi
         else
-            echo "✅ $tmp_dirname"
+            echo "❌ $dir_name"
         fi
-    else
-        echo "❌ $tmp_dir."
-    fi
+    done
 }
