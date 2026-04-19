@@ -113,4 +113,12 @@ function pio_status() {
             echo "❌ $dir_name"
         fi
     done
+
+    local update_count=$(xbps-install -unM | wc -l)
+
+    if [ $update_count -gt 0 ]; then
+        echo "⚠️ updates ($update_count)"
+    else
+        echo "✅ updates"
+    fi
 }
