@@ -15,3 +15,4 @@ alias gprune="git remote prune origin"
 alias gbump="git commit --allow-empty -m 'bump' --no-verify"
 alias ga="git add"
 alias gr="git remote"
+alias gac='git add -A && git commit -m "auto: $(date)"'
