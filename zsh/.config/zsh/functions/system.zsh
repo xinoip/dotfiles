@@ -94,12 +94,15 @@ function pio_status() {
     done
 
     local dirs=(
-        "$HOME/tmp"
-        "$HOME/download"
+        "$HOME/tmp:tmp"
+        "$HOME/download:download"
+        "$HOME/.local/share/Trash/files:trash"
     )
 
-    for dir in "${dirs[@]}"; do
-        local dir_name=${dir##*/}
+    for entry in "${dirs[@]}"; do
+        local dir="${entry%:*}"
+        local dir_name="${entry##*:}"
+
         if [[ -d "$dir" ]]; then
             local items=("$dir"/*(ND))
             local count=${#items[@]}
