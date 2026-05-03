@@ -13,3 +13,4 @@ source ~/.config/zsh/functions/wd.zsh
 source ~/.config/zsh/functions/greet.zsh
 source ~/.config/zsh/functions/theme.zsh
 source ~/.config/zsh/functions/prompt.zsh
+source ~/.config/zsh/functions/todo.zsh
