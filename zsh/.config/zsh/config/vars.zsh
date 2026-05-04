@@ -44,4 +44,5 @@ path+=(
     "$PNPM_HOME"
     "$HOME/3pp/flutter/bin"
     "$HOME/.opencode/bin"
+    "$HOME/.local/share/pnpm/bin"
 )
