@@ -10,6 +10,11 @@
 
 SSH_ENV="$HOME/.ssh/pio_env"
 
+if [ ! -f "$SSH_ENV" ]; then
+    mkdir -p "$HOME/.ssh"
+    touch "$SSH_ENV"
+fi
+
 function start_ssh_agent {
     ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
     chmod 600 "${SSH_ENV}"
