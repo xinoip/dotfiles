@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+readonly actual_rm=$(which rm)
 alias del='trash'
-alias delf='/usr/bin/rm -rf'
+alias delf='${actual_rm} -f'
 alias rm="echo 'use del'"
