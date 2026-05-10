@@ -36,9 +36,6 @@ vim.pack.add({
     gh("saghen/blink.cmp"),
     gh("rafamadriz/friendly-snippets"),
     gh("nvim-flutter/flutter-tools.nvim"),
-
-    -- AI
-    gh("supermaven-inc/supermaven-nvim"),
 })
 
 vim.cmd.packadd("nvim.undotree")

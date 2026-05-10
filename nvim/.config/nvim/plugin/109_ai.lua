@@ -1,5 +1,3 @@
-require("supermaven-nvim").setup({})
-
 local copy_context = function()
     local bufnr = vim.api.nvim_get_current_buf()
     local filename = vim.api.nvim_buf_get_name(bufnr)
