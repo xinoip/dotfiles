@@ -1,7 +1,7 @@
 [user]
 name = xinoip
 email = xinoip@proton.me
-signingkey = 99FDB5BF547333E3
+signingkey = A8C00B865EF9DEF563BADBC1DDCC8BD49F26441B
 
 [init]
 defaultBranch = main
