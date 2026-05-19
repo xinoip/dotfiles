@@ -29,6 +29,7 @@ require("mason-tool-installer").setup({
         { "protols", condition = is_go_installed },
         { "gofumpt", condition = is_go_installed },
         { "golines", condition = is_go_installed },
+        { "goimports", condition = is_go_installed },
         { "gomodifytags", condition = is_go_installed },
         { "gotests", condition = is_go_installed },
         { "golangci-lint", condition = is_go_installed },
@@ -42,8 +43,7 @@ require("mason-tool-installer").setup({
         "prettierd",
         "harper-ls",
         "jq",
-        "goimports",
-        "golines",
+        "typescript-language-server",
 
         -- Markdown
         "markdown-oxide",
