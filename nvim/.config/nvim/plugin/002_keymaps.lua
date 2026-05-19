@@ -134,3 +134,9 @@ end)
 map("Toggle Diagnostics", "n", "<leader>ud", function()
     Snacks.toggle.diagnostics():toggle()
 end)
+
+vim.g.pio_format = true
+map("Toggle Auto Format", "n", "<leader>uf", function()
+    vim.g.pio_format = not vim.g.pio_format
+    vim.notify("Format on save: " .. (vim.g.pio_format and "on" or "off"))
+end)
