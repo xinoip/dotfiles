@@ -1,0 +1,57 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "permission": {
+    "read": {
+      "~/.ssh/**": "deny",
+      "~/.gnupg/**": "deny",
+      ".env*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*.p12": "deny",
+      "*.jks": "deny",
+      "*credentials*": "deny"
+    },
+    "edit": {
+      "~/.ssh/**": "deny",
+      "~/.gnupg/**": "deny",
+    },
+    "bash": {
+      "rm *credentials*": "deny",
+      "rm *.env*": "deny"
+    }
+  },
+  "model": "opencode-go/deepseek-v4-flash",
+  "default_agent": "build",
+  "instructions": [
+    "./prompts/general.md",
+  ],
+  "agent": {
+    "build": {
+      "description": "Primary coding agent that delegates command execution to @executor",
+      "model": "opencode-go/kimi-k2.6",
+      "permission": {
+        "bash": "deny"
+      },
+      "prompt": "{file:./prompts/coder.md}"
+    },
+    "plan": {
+      "description": "Structured implementation planning",
+      "model": "github-copilot/gpt-5.4",
+      "prompt": "{file:./prompts/planner.md}"
+    },
+    "explore": {
+      "description": "Fast codebase exploration",
+      "model": "opencode-go/deepseek-v4-flash",
+      "variant": "max",
+      "prompt": "{file:./prompts/explorer.md}"
+    },
+    "executor": {
+      "description": "Default execution subagent for bash commands, tests, builds, and validation",
+      "model": "opencode-go/deepseek-v4-flash",
+      "mode": "subagent",
+      "prompt": "{file:./prompts/executor.md}"
+    },
+  },
+  "plugin": []
+}
