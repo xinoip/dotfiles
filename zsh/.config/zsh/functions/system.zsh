@@ -82,11 +82,13 @@ function pio_status() {
 
         local needs_commit=false
         local needs_push=false
+        local needs_pull=false
 
         [[ -n "$uncommitted" ]] && needs_commit=true
         [[ "$branch_status" == *"ahead"* ]] && needs_push=true
+        [[ "$branch_status" == *"behind"* ]] && needs_pull=true
 
-        if ! $needs_commit && ! $needs_push; then
+        if ! $needs_commit && ! $needs_push && ! $needs_pull; then
             echo "✅ $reponame"
         else
             echo "⚠️ $reponame"
