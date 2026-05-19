@@ -18,4 +18,38 @@ require("lualine").setup({
         globalstatus = true,
         theme = lualine_theme,
     },
+    sections = {
+        lualine_x = {
+            {
+                function()
+                    return "Wrap \u{eb80} "
+                end,
+                cond = function()
+                    return vim.bo.filetype ~= "" and vim.wo.wrap
+                end,
+                color = { fg = "#a6e3a1" },
+            },
+            {
+                function()
+                    return "Diagnostics \u{f03a} "
+                end,
+                cond = function()
+                    return vim.bo.filetype ~= "" and not vim.diagnostic.is_enabled()
+                end,
+                color = { fg = "#f38ba8" },
+            },
+            {
+                function()
+                    return "Auto Format \u{f0265} "
+                end,
+                cond = function()
+                    return not vim.g.pio_format
+                end,
+                color = { fg = "#f38ba8" },
+            },
+            "encoding",
+            "fileformat",
+            "filetype",
+        },
+    },
 })
