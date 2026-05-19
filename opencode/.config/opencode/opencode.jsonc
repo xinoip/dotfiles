@@ -37,7 +37,7 @@
     },
     "plan": {
       "description": "Structured implementation planning",
-      "model": "github-copilot/gpt-5.4",
+      "model": "opencode-go/kimi-k2.6",
       "prompt": "{file:./prompts/planner.md}"
     },
     "explore": {
