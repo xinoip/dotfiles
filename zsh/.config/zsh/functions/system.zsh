@@ -126,4 +126,16 @@ function pio_status() {
     else
         echo "✅ updates"
     fi
+
+    local todo_file="$HOME/.cache/.pio_todo_list"
+    local todo_count=0
+    if [[ -f "$todo_file" ]]; then
+        todo_count=$(wc -l <"$todo_file")
+    fi
+
+    if [ $todo_count -gt 0 ]; then
+        echo "⚠️ todos ($todo_count)"
+    else
+        echo "✅ todos"
+    fi
 }
