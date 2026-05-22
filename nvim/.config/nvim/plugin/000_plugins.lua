@@ -34,6 +34,7 @@ vim.pack.add({
     gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
     gh("stevearc/conform.nvim"),
     gh("folke/lazydev.nvim"),
+    gh("saghen/blink.lib"),
     gh("saghen/blink.cmp"),
     gh("rafamadriz/friendly-snippets"),
     gh("nvim-flutter/flutter-tools.nvim"),

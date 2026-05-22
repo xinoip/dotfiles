@@ -43,17 +43,6 @@ require("blink.cmp").setup({
 })
 
 Pio.create_cmd("PioBuildBlink", "Build blink.cmp with cargo/rust", function()
-    local path = vim.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
     vim.notify("Building blink.cmp...", vim.log.levels.INFO)
-    vim.system({ "cargo", "build", "--release" }, { cwd = path }, function(obj)
-        if obj.code ~= 0 then
-            vim.schedule(function()
-                vim.notify("Failed to build blink.cmp: " .. obj.stderr, vim.log.levels.ERROR)
-            end)
-        else
-            vim.schedule(function()
-                vim.notify("Successfully built blink.cmp", vim.log.levels.INFO)
-            end)
-        end
-    end)
+    require("blink.cmp").build():wait(60000)
 end)
