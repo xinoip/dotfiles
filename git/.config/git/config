@@ -66,3 +66,5 @@ sort = version:refname
 [commit]
 gpgsign = true
 
+[includeIf "gitdir:~/work/"]
+       path = ~/work/.gitconfig-work
