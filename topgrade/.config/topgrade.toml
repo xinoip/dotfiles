@@ -1,0 +1,4 @@
+[misc]
+disable = ["git_repos"]
+notify_end = "never"
+no_self_update = true
