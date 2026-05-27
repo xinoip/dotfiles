@@ -40,7 +40,7 @@ vim.pack.add({
     gh("nvim-flutter/flutter-tools.nvim"),
 
     -- AI
-    gh("milanglacier/minuet-ai.nvim"),
+    gh("supermaven-inc/supermaven-nvim"),
 })
 
 vim.cmd.packadd("nvim.undotree")
