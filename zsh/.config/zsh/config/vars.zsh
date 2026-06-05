@@ -29,7 +29,7 @@ export OLLAMA_HOME="$XDG_DATA_HOME/ollama"
 # GTK
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
 # Wget
-export WGETRC="~/.config/wget/.wgetrc"
+export WGETRC="$HOME/.config/wget/.wgetrc"
 
 path+=(
     "$HOME/3pp/bin"
