@@ -12,12 +12,11 @@ function pio_update() {
     if $PIOBUNTU; then
         pio_confirm "Update Ubuntu?" && sudo apt update && sudo apt upgrade && echo "Ubuntu updated."
     else
-        pio_confirm "Update Void?" && xi -Su && echo "Void updated."
-
-        pio_confirm "Update Void packages?" && cd ~/3pp/void-packages && git pull upstream master && xi -Su &&
-            echo "Void packages updated."
-
-        pio_confirm "Bump Void packages?" && ~/3pp/void-packages/personal/bump.sh && echo "Void packages bumped."
+        pio_confirm "Update Void?" &&
+            xi -Su &&
+            cd $HOME/3pp/void-packages &&
+            ./personal/update.sh &&
+            echo "Void updated."
     fi
 
     if [[ -f /usr/bin/flatpak ]]; then

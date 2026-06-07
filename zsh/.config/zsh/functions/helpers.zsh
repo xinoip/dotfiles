@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-# $1 message
-function pio_confirm() {
-    printf "%s" "$1 (y/N) "
-    read -q "REPLY?" || return 1
+pio_confirm() {
+    local -r MSG="$1"
+    read -q "?$MSG (y/N) "
+    local ok=$?
     printf "\n"
-    [[ ! $REPLY =~ ^[Nn]$ ]]
+    return $ok
 }
