@@ -75,6 +75,8 @@ function pio_status() {
     )
 
     for repo in "${repos[@]}"; do
+        git -C "$repo" fetch --all
+
         local reponame=${repo##*/}
         local uncommitted=$(git -C "$repo" status --porcelain)
         local branch_status=$(git -C "$repo" status -sb)
