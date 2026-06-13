@@ -11,13 +11,13 @@ export N_PREFIX="$HOME/3pp/node"
 export NEXT_TELEMETRY_DISABLED=1
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_CACHE="$HOME/.cache/npm"
 # Android/Flutter
 export ANDROID_HOME="$HOME/3pp/android"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_USER_HOME="$HOME/.config/android"
 export FLUTTER_ROOT="$HOME/3pp/flutter"
-export PUB_CACHE="$XDG_CACHE_HOME/pub"
+export PUB_CACHE="$HOME/.cache/pub"
 # Docker
 export DOCKER_CONFIG="$HOME/.config/docker"
 # GnuPG
@@ -25,7 +25,7 @@ export GNUPGHOME="$HOME/.config/gnupg"
 # Java
 export GRADLE_USER_HOME="$HOME/.config/gradle"
 # Ollama
-export OLLAMA_HOME="$XDG_DATA_HOME/ollama"
+export OLLAMA_HOME="$HOME/.local/share/ollama"
 # GTK
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
 # Wget
