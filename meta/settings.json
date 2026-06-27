@@ -1,23 +1,76 @@
+// These settings are aimed at minimal keyboard usage and maximum mouse
+// utility since I only use VSCode to view and debug code, not to edit with it.
 {
     // Fonts
-    "terminal.integrated.fontFamily": "Iosevka Nerd Font Mono",
-    "editor.fontFamily": "Iosevka Nerd Font",
+    "terminal.integrated.fontFamily": "Iosevka Term",
+    "editor.fontFamily": "Iosevka",
     "editor.fontSize": 20,
+    // "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
 
     // Visual
-    "editor.lineNumbers": "relative",
-    "workbench.preferredDarkColorTheme": "Old World Dark",
-    "window.titleBarStyle": "custom",
+    "window.titleBarStyle": "native",
+    "window.customTitleBarVisibility": "never",
+    "window.menuBarVisibility": "hidden",
     "window.commandCenter": false,
-    "window.zoomLevel": 1,
-    "window.autoDetectColorScheme": true,
+    "window.autoDetectColorScheme": false,
     "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.panel.defaultLocation": "right",
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 120,
+    "editor.minimap.showSlider": "always",
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "editor.cursorBlinking": "smooth",
+    "window.zoomLevel": 0.5,
+    "workbench.layoutControl.enabled": false,
+
+    // Force Gruvbox to be True OLED Black
+    "workbench.colorCustomizations": {
+        "[Gruvbox Dark Hard]": {
+            "editor.background": "#000000",
+            "sideBar.background": "#000000",
+            "activityBar.background": "#000000",
+            "activityBar.border": "#000000", // Removes the dividing line
+            "statusBar.background": "#000000",
+            "statusBar.noFolderBackground": "#000000",
+            "statusBar.debuggingBackground": "#000000", // Stops it from turning bright orange
+            "statusBar.border": "#000000",
+            "terminal.background": "#000000",
+            "panel.background": "#000000",
+            "tab.activeBackground": "#000000",
+            "tab.inactiveBackground": "#080808",
+            "editorGroupHeader.tabsBackground": "#000000",
+            "diffEditor.insertedTextBackground": "#283b4d44", // Keeps diffs readable on black
+            "diffEditor.removedTextBackground": "#5a2b3444"
+        }
+    },
 
     // Infra
     "update.mode": "none",
     "telemetry.telemetryLevel": "off",
+    "chat.disableAIFeatures": true,
 
     // Plugin
     "go.gopath": "/home/pio/3pp/gopath",
+
+    // Behavior
+    "editor.stickyScroll.enabled": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+
+    
+
+    // Diff/Git
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.wordWrap": "on",
+    "scm.defaultViewMode": "tree",
+    "git.enableCommitSigning": true,
+
+    // Debug
+    "debug.inlineValues": "on",
+    "debug.toolBarLocation": "docked",
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "git.openRepositoryInParentFolders": "always",
 }
