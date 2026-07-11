@@ -12,7 +12,7 @@ require("conform").setup({
         python = { "isort", "black" },
         lua = { "stylua" },
         cmake = { "cmake_format" },
-        go = { "golines" },
+        -- go = { "gofmt" },
         markdown = { "rumdl" },
 
         bash = { "shfmt" },
