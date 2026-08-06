@@ -17,6 +17,7 @@ export ANDROID_HOME="$HOME/3pp/android"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export ANDROID_USER_HOME="$HOME/.config/android"
 export FLUTTER_ROOT="$HOME/3pp/flutter"
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 export PUB_CACHE="$HOME/.cache/pub"
 # Docker
 export DOCKER_CONFIG="$HOME/.config/docker"
