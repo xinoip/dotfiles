@@ -5,6 +5,9 @@
   "share": "disabled",
   "formatter": true,
   "lsp": true,
+  "plugin": [
+    "@mohak34/opencode-notifier@latest"
+  ],
   "agent": {
     "build": {
       "model": "openai/gpt-5.6-luna",
