@@ -100,6 +100,7 @@ function pio_status() {
         "$HOME/tmp:tmp"
         "$HOME/download:download"
         "$HOME/.local/share/Trash/files:trash"
+        "$(xdg-user-dir DESKTOP):desktop"
     )
 
     for entry in "${dirs[@]}"; do
