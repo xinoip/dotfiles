@@ -37,8 +37,6 @@ renames = true
 
 [delta]
 features = decorations
-dark = true
-syntax-theme = gruvbox-dark
 side-by-side = true
 line-numbers = true
 line-numbers-left-format = "{nm:>4}┊"
