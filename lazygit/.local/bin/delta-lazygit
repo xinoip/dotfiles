@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# AI GENERATED
+# Since delta dark/light detection doesn't work when it's run from inside of
+# lazygit (because lazygit uses piped output of delta), this script checks the
+# colorscheme from KDE and invokes delta with correct dark/ligh flag.
+
+set -e
+
+if command -v plasma-apply-colorscheme >/dev/null 2>&1 &&
+  plasma-apply-colorscheme -l 2>/dev/null | grep -Eq '^ \*.*[Ll]ight|^ \*.*[Dd]ark'; then
+  scheme=$(plasma-apply-colorscheme -l 2>/dev/null | sed -n 's/^ \*//p')
+  case "$scheme" in
+  *[Ll]ight*) exec delta --light --paging=never "$@" ;;
+  *[Dd]ark*) exec delta --dark --paging=never "$@" ;;
+  esac
+fi
+
+exec delta --dark --paging=never "$@"
