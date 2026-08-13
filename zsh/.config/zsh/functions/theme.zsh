@@ -80,6 +80,7 @@ function detect_theme() {
 function setup_theme() {
     local initial_fzf_default_opts="$FZF_DEFAULT_OPTS"
     local theme=$(detect_theme)
+    export PIO_THEME=$theme
     if [[ "$theme" == "light" ]]; then
         export FZF_DEFAULT_OPTS="$initial_fzf_default_opts \
       --highlight-line \
