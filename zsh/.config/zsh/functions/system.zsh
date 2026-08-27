@@ -140,4 +140,51 @@ function pio_status() {
     else
         echo "✅ todos"
     fi
+
+    local mullvad_connected=false
+    if command -v mullvad &>/dev/null; then
+        local mullvad_status
+        mullvad_status=$(mullvad status 2>/dev/null)
+
+        case "$mullvad_status" in
+        Connected*)
+            echo "✅ mullvad (connected)"
+            mullvad_connected=true
+            ;;
+        Disconnected*)
+            echo "⚠️ mullvad (disconnected)"
+            ;;
+        Connecting* | Disconnecting*)
+            echo "⚠️ mullvad (${${mullvad_status%%$'\n'*}:l})"
+            ;;
+        *)
+            echo "❌ mullvad (not running)"
+            ;;
+        esac
+    else
+        echo "❌ mullvad (not installed)"
+    fi
+
+    local ufw_active=false
+    if command -v ufw &>/dev/null; then
+        local ufw_status
+        ufw_status=$(sudo ufw status 2>/dev/null)
+
+        if [[ "$ufw_status" == *"Status: active"* ]]; then
+            echo "✅ ufw (active)"
+            ufw_active=true
+        elif [[ "$ufw_status" == *"Status: inactive"* ]]; then
+            echo "⚠️ ufw (inactive)"
+        else
+            echo "❌ ufw (unable to check)"
+        fi
+    else
+        echo "❌ ufw (not installed)"
+    fi
+
+    if $mullvad_connected && $ufw_active; then
+        echo "🛡️ safe"
+    else
+        echo "🚨 unsafe"
+    fi
 }
