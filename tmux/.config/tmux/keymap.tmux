@@ -21,3 +21,5 @@ bind-key b set-option status
 bind-key Left swap-window -t -1 \; select-window -t -1
 bind-key Right swap-window -t +1 \; select-window -t +1
 bind-key C-s capture-pane -S - -E - \; save-buffer "~/last_tmux.log"\; display-message "Copied whole buffer to ~/last_tmux.log!"
+
+bind-key 3 split-window -h \; split-window -h \; select-layout even-horizontal
