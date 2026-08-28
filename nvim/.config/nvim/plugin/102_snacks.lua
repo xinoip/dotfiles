@@ -1,4 +1,23 @@
 require("snacks").setup({
+    styles = {
+        zen = {
+            enter = true,
+            fixbuf = false,
+            minimal = true,
+            width = 160,
+            height = 0,
+            backdrop = { transparent = false },
+            keys = { q = false },
+            zindex = 40,
+            wo = {
+                winhighlight = "NormalFloat:Normal",
+            },
+            w = {
+                snacks_main = true,
+            },
+        },
+    },
+
     bigfile = { enabled = true },
     explorer = { enabled = true },
     image = { enabled = true },
@@ -14,6 +33,25 @@ require("snacks").setup({
             },
         },
         sources = { explorer = { layout = { layout = { width = 0.2 } } } },
+    },
+    zen = {
+        enabled = true,
+        toggles = {
+            dim = false,
+            git_signs = true,
+            mini_diff_signs = true,
+            diagnostics = true,
+            inlay_hints = true,
+        },
+        center = true,
+        show = {
+            statusline = true, -- TODO: Center it.
+            tabline = false,
+        },
+
+        win = {
+            style = "zen",
+        },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
