@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-function todo() {
+todo() {
     local todo_file="$HOME/.cache/.pio_todo_list"
     [[ -f "$todo_file" ]] || touch "$todo_file"
 

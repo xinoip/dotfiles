@@ -1,14 +1,59 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-function pio_nuke() {
-    # Nuke Neovim
-    delf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
-    echo "Neovim nuked."
-
-    echo "Restart both shell and tmux to see effects."
+pio_confirm() {
+    local -r MSG="$1"
+    read -q "?$MSG (y/N) "
+    local ok=$?
+    printf "\n"
+    return $ok
 }
 
-function pio_update() {
+docker_prune_all() {
+    docker container prune
+    docker volume prune -a
+    docker image prune -a
+    docker network prune
+}
+
+# thx to https://piechowski.io/post/git-commands-before-reading-code/ and AI for slop emojis
+pio_git_stats() {
+    echo "========================================="
+    echo "       GIT REPOSITORY AT A GLANCE        "
+    echo "========================================="
+
+    echo -e "\n🔥 WHAT CHANGES THE MOST (Top 20 high-churn files in the last year):"
+    git log --format=format: --name-only --since="1 year ago" | awk NF | sort | uniq -c | sort -nr | head -20
+
+    echo -e "\n👷 WHO BUILT THIS (Contributors ranked by commit count):"
+    git shortlog -sn --no-merges
+
+    echo -e "\n🐛 WHERE BUGS CLUSTER (Top 20 files matching fix/bug/broken):"
+    git log -i -E --grep="fix|bug|broken" --name-only --format='' | awk NF | sort | uniq -c | sort -nr | head -20
+
+    echo -e "\n📈 IS THIS PROJECT ACCELERATING OR DYING? (Commits per month):"
+    git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c
+
+    echo -e "\n🚨 HOW OFTEN IS THE TEAM FIREFIGHTING? (Revert/hotfix/rollback in the last year):"
+    git log --oneline --since="1 year ago" | grep -iE 'revert|hotfix|emergency|rollback' || echo "(No firefighting commits found)"
+
+    echo -e "\n========================================="
+}
+
+note() {
+    local note_file
+    note_file="$HOME/tmp/note_$(date +%Y%m%d%H%M%S).md"
+    $EDITOR "$note_file"
+}
+
+pio_serve() {
+    if [ -n "$1" ]; then
+        python3 -m http.server "$1"
+    else
+        python3 -m http.server 3000
+    fi
+}
+
+pio_update() {
     if $PIOBUNTU; then
         pio_confirm "Update Ubuntu?" && sudo apt update && sudo apt upgrade && echo "Ubuntu updated."
     else
@@ -24,7 +69,7 @@ function pio_update() {
     fi
 }
 
-function xsearch() {
+xsearch() {
     if $PIOBUNTU; then
         apt-cache pkgnames "$1" | sort -u | fzf --preview-window='bottom:45%:wrap' --preview 'apt-cache show {1}' | xargs -ro sudo apt install
     else
@@ -32,7 +77,7 @@ function xsearch() {
     fi
 }
 
-function xrm() {
+xrm() {
     if $PIOBUNTU; then
         sudo apt-get autoremove $1
     else
@@ -40,7 +85,7 @@ function xrm() {
     fi
 }
 
-function xhold() {
+xhold() {
     if [ -n "$1" ]; then
         sudo xbps-pkgdb -m hold $1
     else
@@ -48,11 +93,11 @@ function xhold() {
     fi
 }
 
-function xunhold() {
+xunhold() {
     sudo xbps-pkgdb -m unhold $1
 }
 
-function pio_toggle_sshd() {
+pio_toggle_sshd() {
     if $PIOBUNTU; then
         echo "Toggling sshd not supported on Ubuntu for now."
     else
@@ -66,7 +111,7 @@ function pio_toggle_sshd() {
     fi
 }
 
-function pio_status() {
+pio_status() {
     local repos=(
         "$HOME/dotfiles"
         "$HOME/repo/notes"

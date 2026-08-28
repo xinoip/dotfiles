@@ -1,8 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 function pio_greet_user_art() {
     local colorscripts=~/.config/zsh/assets/colorscripts
-    local random_art=$(/usr/bin/ls -p "$colorscripts" | grep -v / | shuf -n 1)
+    local random_art
+    random_art=$(/usr/bin/ls -p "$colorscripts" | grep -v / | shuf -n 1)
     "$colorscripts"/"$random_art"
 }
 

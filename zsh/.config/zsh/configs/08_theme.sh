@@ -1,10 +1,12 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-function detect_theme() {
+detect_theme() {
     # KDE Plasma
     if command -v plasma-apply-colorscheme &>/dev/null; then
-        local theme_list=$(plasma-apply-colorscheme -l 2>/dev/null)
-        local current_theme=$(echo "$theme_list" | grep -E '\*.*current' | sed 's/\*//g' | awk '{print $1}')
+        local theme_list
+        theme_list=$(plasma-apply-colorscheme -l 2>/dev/null)
+        local current_theme
+        current_theme=$(echo "$theme_list" | grep -E '\*.*current' | sed 's/\*//g' | awk '{print $1}')
 
         if [[ "$current_theme" =~ [Ll]ight ]]; then
             echo "light"
@@ -19,67 +21,10 @@ function detect_theme() {
     echo "dark"
 }
 
-# function fzf_with_theme() {
-#     local initial_fzf_default_opts="$FZF_DEFAULT_OPTS"
-#     local theme=$(detect_theme)
-#     if [[ "$theme" == "light" ]]; then
-#         export FZF_DEFAULT_OPTS="$initial_fzf_default_opts \
-#       --highlight-line \
-#       --info=inline-right \
-#       --ansi \
-#       --layout=reverse \
-#       --border=none \
-#       --color=bg+:#ebebeb \
-#       --color=bg:#faf9f5 \
-#       --color=border:#000000 \
-#       --color=fg:#3d3d3d \
-#       --color=fg+:#000000 \
-#       --color=gutter:#faf9f5 \
-#       --color=header:#000000 \
-#       --color=hl+:#b07700 \
-#       --color=hl:#b07700 \
-#       --color=info:#969ba5 \
-#       --color=marker:#ca0043 \
-#       --color=pointer:#000000 \
-#       --color=prompt:#000000 \
-#       --color=query:#101010:regular \
-#       --color=scrollbar:#000000 \
-#       --color=separator:#000000 \
-#       --color=spinner:#969ba5 \
-#       "
-#     else
-#         export FZF_DEFAULT_OPTS="$initial_fzf_default_opts \
-#       --highlight-line \
-#       --info=inline-right \
-#       --ansi \
-#       --layout=reverse \
-#       --border=none \
-#       --color=bg+:#272727 \
-#       --color=bg:#000000 \
-#       --color=border:#ffffff \
-#       --color=fg:#b0b0b0 \
-#       --color=fg+:#ffffff \
-#       --color=gutter:#101010 \
-#       --color=header:#ffffff \
-#       --color=hl+:#d9ba73 \
-#       --color=hl:#d9ba73 \
-#       --color=info:#50585d \
-#       --color=marker:#ff7676 \
-#       --color=pointer:#ffffff \
-#       --color=prompt:#ffffff \
-#       --color=query:#b0b0b0:regular \
-#       --color=scrollbar:#b0b0b0 \
-#       --color=separator:#ffffff \
-#       --color=spinner:#50585d \
-#       "
-#     fi
-#     # fzf "$@"
-# }
-# # alias fzf=fzf_with_theme
-
-function setup_theme() {
+setup_theme() {
     local initial_fzf_default_opts="$FZF_DEFAULT_OPTS"
-    local theme=$(detect_theme)
+    local theme
+    theme=$(detect_theme)
     export PIO_THEME=$theme
     if [[ "$theme" == "light" ]]; then
         export FZF_DEFAULT_OPTS="$initial_fzf_default_opts \
