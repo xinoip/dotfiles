@@ -39,6 +39,5 @@ require("conform").setup({
 })
 
 Pio.create_autocmd("Native line wrap for markdown files", "FileType", "markdown", function()
-    vim.opt_local.textwidth = 80
     vim.opt_local.formatoptions:append("tcq")
 end)
