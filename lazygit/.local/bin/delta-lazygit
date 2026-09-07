@@ -7,7 +7,7 @@
 set -e
 
 if [[ $PIO_THEME = 'light' ]]; then
-  echo 'light detected!' && exec delta --light --paging=never "$@"
+  exec delta --light --paging=never "$@"
 else
-  echo 'dark detected!' && exec delta --dark --paging=never "$@"
+  exec delta --dark --paging=never "$@"
 fi
