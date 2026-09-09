@@ -16,6 +16,4 @@ set +euo pipefail
 
 . "$ZDOTDIR/configs/12_plugins.sh"
 
-. "$ZDOTDIR/.env"
-
 setup_theme
