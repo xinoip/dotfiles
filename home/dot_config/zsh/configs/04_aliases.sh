@@ -9,7 +9,7 @@ setup() {
     alias tree='lsd --tree'
     alias vim='nvim'
     alias clearf="/usr/bin/clear"
-    alias clear="clear && pio_greet"
+    alias clear="clear && shell-greet"
     alias sudo='sudo '
 
     # Programs

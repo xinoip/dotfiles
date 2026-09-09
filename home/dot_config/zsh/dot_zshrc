@@ -6,7 +6,6 @@ set -euo pipefail
 . "$ZDOTDIR/configs/04_aliases.sh"
 . "$ZDOTDIR/configs/05_hooks.sh"
 . "$ZDOTDIR/configs/06_functions.sh"
-. "$ZDOTDIR/configs/07_greeters.sh"
 . "$ZDOTDIR/configs/08_theme.sh"
 . "$ZDOTDIR/configs/09_todo.sh"
 . "$ZDOTDIR/configs/10_warpdir.sh"
