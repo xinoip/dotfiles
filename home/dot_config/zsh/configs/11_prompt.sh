@@ -1,8 +1,6 @@
 #!/bin/zsh
 
-# AI GENERATED
-
-# Pure Zsh Implementation of the configured Starship Prompt
+# Zsh prompt with a single Git status query per refresh.
 
 autoload -Uz add-zsh-hook
 zmodload zsh/datetime
@@ -61,45 +59,40 @@ function _prompt_precmd() {
     local git_status_str=""
     local git_state_str=""
 
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        local branch=$(git branch --show-current 2>/dev/null)
-        if [[ -z $branch ]]; then
-            branch=$(git rev-parse --short HEAD 2>/dev/null)
-        fi
-        # Starship bold purple color for branch
-        git_branch_str="%B%F{magenta}[ ${branch}]%f%b"
-
-        # Git Status
+    local status_out
+    if status_out=$(git --no-optional-locks status --porcelain=v2 --branch --show-stash 2>/dev/null); then
+        local branch="" line x y ab_out
         local conflicted=0 ahead=0 behind=0 untracked=0 stashed=0 modified=0 staged=0 renamed=0 deleted=0
 
-        local status_out=$(git status --porcelain 2>/dev/null)
-
+        # Porcelain v2 includes branch, divergence and stash counts alongside files.
+        # Only inspect record prefixes; filenames may contain spaces or escapes.
         while IFS= read -r line; do
-            if [[ -z $line ]]; then continue; fi
-            local x=${line:0:1}
-            local y=${line:1:1}
-
-            if [[ $x == "U" || $y == "U" || ($x == "A" && $y == "A") || ($x == "D" && $y == "D") ]]; then
-                conflicted=$((conflicted + 1))
-            else
-                if [[ $x == "M" || $y == "M" ]]; then modified=$((modified + 1)); fi
-                if [[ $x == "A" || $x == "C" ]]; then staged=$((staged + 1)); fi
-                if [[ $x == "R" ]]; then renamed=$((renamed + 1)); fi
-                if [[ $x == "D" || $y == "D" ]]; then deleted=$((deleted + 1)); fi
-            fi
-
-            if [[ $x == "?" ]]; then untracked=$((untracked + 1)); fi
+            case "$line" in
+                '# branch.head '*) branch=${line#\# branch.head } ;;
+                '# branch.ab '*)
+                    ab_out=${line#\# branch.ab }
+                    ahead=${${ab_out%% *}#+}
+                    behind=${${ab_out##* }#-}
+                    ;;
+                '# stash '*) stashed=${line#\# stash } ;;
+                'u '*) conflicted=$((conflicted + 1)) ;;
+                '? '*) untracked=$((untracked + 1)) ;;
+                '1 '*|'2 '*)
+                    x=${line[3]}
+                    y=${line[4]}
+                    if [[ $x == M || $y == M ]]; then modified=$((modified + 1)); fi
+                    if [[ $x == A || $x == C ]]; then staged=$((staged + 1)); fi
+                    if [[ $x == R ]]; then renamed=$((renamed + 1)); fi
+                    if [[ $x == D || $y == D ]]; then deleted=$((deleted + 1)); fi
+                    ;;
+            esac
         done <<<"$status_out"
 
-        # Ahead/behind count
-        local ab_out=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null)
-        if [[ -n $ab_out ]]; then
-            ahead=$(echo $ab_out | awk '{print $1}')
-            behind=$(echo $ab_out | awk '{print $2}')
+        if [[ $branch == '(detached)' ]]; then
+            branch=$(git rev-parse --short HEAD 2>/dev/null)
         fi
-
-        # Stash count
-        stashed=$(git rev-list --walk-reflogs --count refs/stash 2>/dev/null || echo 0)
+        # A literal percent in a branch name must not become a prompt escape.
+        git_branch_str="%B%F{magenta}[ ${branch//\%/%%}]%f%b"
 
         local status_components=()
         if ((conflicted > 0)); then status_components+=("󰞇${conflicted}"); fi
