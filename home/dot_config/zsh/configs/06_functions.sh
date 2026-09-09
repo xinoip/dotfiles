@@ -113,7 +113,7 @@ pio_toggle_sshd() {
 
 pio_status() {
     local repos=(
-        "$HOME/dotfiles"
+        "$HOME/.local/share/chezmoi"
         "$HOME/repo/notes"
         "$HOME/3pp/void-packages"
         "$HOME/sync/vault"
