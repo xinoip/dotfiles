@@ -176,9 +176,13 @@ pio_listeners() {
 
 pio_status() {
     if ! ssh-add -l &>/dev/null; then
-        ssh-add || return 1
+        echo "🔑 ssh-add"
+        ssh-add "$HOME/.ssh/personal/yubikey" || return 1
     fi
-    sudo -v || return 1
+    if [[ $EUID -ne 0 ]]; then
+        echo "🔑 sudo"
+        sudo -v || return 1
+    fi
 
     local -x GIT_TERMINAL_PROMPT=0
     local -x GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh} -o BatchMode=yes"
