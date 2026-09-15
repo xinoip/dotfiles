@@ -15,7 +15,7 @@
     "window.commandCenter": false,
     "window.autoDetectColorScheme": false,
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorTheme": "Gruvbox Light Hard",
     "workbench.panel.defaultLocation": "right",
     "editor.minimap.enabled": true,
     "editor.minimap.maxColumn": 120,
@@ -73,4 +73,17 @@
     "debug.toolBarLocation": "docked",
     "debug.internalConsoleOptions": "openOnSessionStart",
     "git.openRepositoryInParentFolders": "always",
+    "makefile.configureOnOpen": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+    "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
 }
