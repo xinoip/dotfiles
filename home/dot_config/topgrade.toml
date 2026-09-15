@@ -1,4 +1,4 @@
 [misc]
-disable = ["git_repos"]
+disable = ["git_repos", "chezmoi", "containers"]
 notify_end = "never"
 no_self_update = true
