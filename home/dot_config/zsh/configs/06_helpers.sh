@@ -35,7 +35,7 @@ pio_void_toggle_service() {
     if [[ -L "/var/service/$service" ]]; then
         echo "Disabling $service..."
         sudo sv down "/var/service/$service" &&
-            sudo rm -- "/var/service/$service"
+            sudo delf -- "/var/service/$service"
     elif [[ -e "/var/service/$service" ]]; then
         echo "Cannot toggle $service: /var/service/$service is not a symlink." >&2
         return 1
