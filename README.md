@@ -1,9 +1,9 @@
+<div align="center">
+
 # dotfiles
 
-Personal dotfiles targeting [void](https://voidlinux.org/).
+**zsh · neovim · chezmoi · etc.**
 
-Uses `chezmoi`.
+[void](https://voidlinux.org/) btw.
 
----
-
-`neovim` btw.
+</div>
