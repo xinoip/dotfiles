@@ -1,68 +1,80 @@
 [user]
-name = xinoip
-email = xinoip@proton.me
-signingkey = A8C00B865EF9DEF563BADBC1DDCC8BD49F26441B
+name=xinoip
+email=xinoip@proton.me
+signingkey=A8C00B865EF9DEF563BADBC1DDCC8BD49F26441B
 
 [init]
-defaultBranch = main
-
-[pull]
-rebase = true
-
-[push]
-default = simple
-autoSetupRemote = true
-followTags = true
-
-[fetch]
-all = true
-
-[core]
-pager = delta
-
-[interactive]
-diffFilter = delta --color-only
-
-[delta]
-navigate = true
-
-[merge]
-conflictstyle = diff3
-
-[diff]
-algorithm = histogram
-colorMoved = plain
-mnemonicPrefix = true
-renames = true
-
-[delta]
-features = decorations
-side-by-side = true
-line-numbers = true
-line-numbers-left-format = "{nm:>4}┊"
-line-numbers-right-format = "{np:>4}│"
-line-numbers-left-style = blue
-line-numbers-right-style = blue
-keep-plus-minus-markers = false
-commit-decoration-style = blue ol
-commit-style = raw
-file-style = omit
-hunk-header-decoration-style = blue box
-hunk-header-file-style = red
-hunk-header-line-number-style = "#067a00"
-hunk-header-style = file line-number syntax
-
-[column]
-ui = auto
+defaultBranch=main
 
 [branch]
-sort = -committerdate
+sort=-committerdate
+
+[checkout]
+defaultRemote=origin
+
+[fetch]
+prune=true
+
+[pull]
+rebase=true
+
+[push]
+default=simple
+autoSetupRemote=true
+followTags=true
+
+[fetch]
+all=true
+
+[core]
+pager=delta
+editor=nvim
+
+[interactive]
+diffFilter=delta --color-only
+
+[delta]
+navigate=true
+
+[merge]
+conflictstyle=zdiff3
+
+[diff]
+algorithm=histogram
+colorMoved=plain
+mnemonicPrefix=true
+renames=true
+
+[delta]
+features=decorations
+side-by-side=true
+line-numbers=true
+line-numbers-left-format="{nm:>4}┊"
+line-numbers-right-format="{np:>4}│"
+line-numbers-left-style=blue
+line-numbers-right-style=blue
+keep-plus-minus-markers=false
+commit-decoration-style=blue ol
+commit-style=raw
+file-style=omit
+hunk-header-decoration-style=blue box
+hunk-header-file-style=red
+hunk-header-line-number-style="#067a00"
+hunk-header-style=file line-number syntax
+
+[column]
+ui=auto
+
+[branch]
+sort=-committerdate
 
 [tag]
-sort = version:refname
+gpgsign=true
+sort=version:refname
 
 [commit]
-gpgsign = true
+gpgsign=true
+verbose=true
 
 [includeIf "gitdir:~/work/"]
-       path = ~/.config/git/config.work
+path=~/.config/git/config.work
