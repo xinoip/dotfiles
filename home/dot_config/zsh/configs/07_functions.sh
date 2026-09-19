@@ -232,17 +232,27 @@ pio_status() {
             local needs_commit=false
             local needs_push=false
             local needs_pull=false
+            local needs_apply=false
+
+            if [[ "$repo" == "$HOME/.local/share/chezmoi" ]]; then
+                local chezmoi_status=""
+                if ! chezmoi_status=$(chezmoi status 2>/dev/null); then
+                    report+=("❔ $reponame (unable to check unapplied changes)")
+                    continue
+                fi
+                [[ -n "$chezmoi_status" ]] && needs_apply=true
+            fi
 
             [[ -n "$uncommitted" ]] && needs_commit=true
             [[ "$branch_status" == *"ahead"* ]] && needs_push=true
             [[ "$branch_status" == *"behind"* ]] && needs_pull=true
 
             if ! $fetch_ok; then
-                report+=("⚠️ $reponame (fetch failed)")
-            elif ! $needs_commit && ! $needs_push && ! $needs_pull; then
+                report+=("🚧 $reponame (fetch failed)")
+            elif ! $needs_commit && ! $needs_push && ! $needs_pull && ! $needs_apply; then
                 report+=("✅ $reponame")
             else
-                report+=("⚠️ $reponame")
+                report+=("🚧 $reponame")
             fi
         done
 
@@ -261,9 +271,13 @@ pio_status() {
             if [[ -d "$dir" ]]; then
                 local items=("$dir"/*(ND))
                 local count=${#items[@]}
+                # KDE creates this metadata file even on an empty desktop.
+                if [[ "$dir_name" == desktop && -f "$dir/.directory" ]]; then
+                    ((count -= 1))
+                fi
 
                 if ((count > 0)); then
-                    report+=("⚠️ $dir_name ($count)")
+                    report+=("🚧 $dir_name ($count)")
                 else
                     report+=("✅ $dir_name")
                 fi
@@ -278,7 +292,7 @@ pio_status() {
             report+=("❔ updates (unable to check)")
         elif [[ -n "$updates" ]]; then
             update_count=$(print -r -- "$updates" | wc -l)
-            report+=("⚠️ updates ($update_count)")
+            report+=("🚧 updates ($update_count)")
         else
             report+=("✅ updates")
         fi
@@ -290,7 +304,7 @@ pio_status() {
         fi
 
         if [ $todo_count -gt 0 ]; then
-            report+=("⚠️ todos ($todo_count)")
+            report+=("🚧 todos ($todo_count)")
         else
             report+=("✅ todos")
         fi
@@ -332,7 +346,7 @@ pio_status() {
             local tailscale_result=0
             pgrep -x tailscaled &>/dev/null || tailscale_result=$?
             case "$tailscale_result" in
-            0) report+=("⚠️ tailscale (running)") ;;
+            0) report+=("🚧 tailscale (running)") ;;
             1) report+=("✅ tailscale (not running)") ;;
             *) report+=("❔ tailscale (unable to check)") ;;
             esac
@@ -360,9 +374,9 @@ pio_status() {
         if ((security_failures > 0)); then
             report+=("🚨 unsafe ($security_failures failed, $security_warnings warnings)")
         elif ((security_warnings > 0)); then
-            report+=("⚠️ caution ($security_warnings warnings)")
+            report+=("🚧 caution ($security_warnings warnings)")
         else
-            report+=("🛡️ safe")
+            report+=("🔐 safe")
         fi
     } always {
         if [[ -n "$spinner_pid" ]]; then
