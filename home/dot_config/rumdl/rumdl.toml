@@ -1,0 +1,11 @@
+[global]
+flavor = "obsidian"
+
+[MD013]
+line-length = 80
+reflow = true
+reflow-mode = "normalize"
+code-blocks = false
+tables = false
+headings = false
+strict = false

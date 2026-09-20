@@ -40,6 +40,8 @@ require("conform").setup({
     },
 })
 
-Pio.create_autocmd("Native line wrap for markdown files", "FileType", "markdown", function()
-    vim.opt_local.formatoptions:append("tcq")
+Pio.create_autocmd("Disable native Markdown wrapping", "FileType", "markdown", function()
+    vim.opt_local.textwidth = 0
+    vim.opt_local.wrapmargin = 0
+    vim.opt_local.formatoptions:remove({ "t", "c", "a" })
 end)
