@@ -309,7 +309,7 @@ pio_status() {
             report+=("✅ updates")
         fi
 
-        local todo_file="$HOME/.cache/.pio_todo_list"
+        local todo_file="$PIO_TODO_FILE"
         local todo_count=0
         if [[ -f "$todo_file" ]]; then
             todo_count=$(wc -l <"$todo_file")

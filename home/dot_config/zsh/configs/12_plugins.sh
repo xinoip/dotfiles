@@ -6,6 +6,7 @@ zstyle ':zephyr:plugin:completion' immediate yes
 zstyle ':zephyr:plugin:completion' use-cache yes
 
 . "$ZDOTDIR/plugins/zephyr/load_zephyr.zsh"
+compdef _pio_todo todo
 . "$ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
 . "$ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 # All widgets are installed before the first prompt, so bind suggestions once.
