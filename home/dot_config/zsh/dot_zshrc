@@ -15,5 +15,6 @@ set -euo pipefail
 set +euo pipefail
 
 . "$ZDOTDIR/configs/12_plugins.sh"
+. "$ZDOTDIR/configs/13_completions.sh"
 
 setup_theme
