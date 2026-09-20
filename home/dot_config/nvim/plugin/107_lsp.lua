@@ -80,6 +80,18 @@ Pio.create_autocmd("Pio LSP Attach", "LspAttach", "*", on_attach)
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 vim.lsp.config("*", { capabilities = capabilities })
 
+vim.lsp.config("harper_ls", {
+    settings = {
+        ["harper-ls"] = {
+            userDictPath = vim.fn.expand("~/vault/.harper-dictionary.txt"),
+            linters = {
+                UseTitleCase = false,
+                GoogleNames = false,
+            },
+        },
+    },
+})
+
 -- -- Eagerly load LSP workspace-wide when launching Neovim on a project folder.
 -- Pio.create_autocmd("Eagerly load LSP for workspace", "VimEnter", "*", nil, function()
 --     local cwd = vim.uv.cwd()
