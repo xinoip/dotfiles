@@ -221,7 +221,6 @@ pio_status() {
 
         local repos=(
             "$HOME/.local/share/chezmoi"
-            "$HOME/repo/notes"
             "$HOME/3pp/void-packages"
             "$HOME/vault"
             "$HOME/brain"
