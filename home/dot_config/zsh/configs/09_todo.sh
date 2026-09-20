@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 todo() {
-    local todo_file="$HOME/.cache/.pio_todo_list"
+    local todo_file="$HOME/vault/.todos"
     [[ -f "$todo_file" ]] || touch "$todo_file"
 
     case "$1" in

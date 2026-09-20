@@ -33,8 +33,19 @@ pio_git_stats() {
 
 pio_note() {
     local note_file
-    note_file="$HOME/tmp/note_$(date +%Y%m%d%H%M%S).md"
+    note_file="$HOME/vault/note_$(date +%Y%m%d%H%M%S).md"
     $EDITOR "$note_file"
+}
+
+pio_prompt() {
+    local name="$1"
+    local prompt_folder="$HOME/brain/sessions/$name"
+
+    mkdir -p "$prompt_folder"
+    cd "$prompt_folder" || return 1
+    touch .gitkeep
+    git init && gac
+    codex
 }
 
 pio_serve() {
@@ -212,7 +223,8 @@ pio_status() {
             "$HOME/.local/share/chezmoi"
             "$HOME/repo/notes"
             "$HOME/3pp/void-packages"
-            "$HOME/sync/vault"
+            "$HOME/vault"
+            "$HOME/brain"
         )
 
         local repo
