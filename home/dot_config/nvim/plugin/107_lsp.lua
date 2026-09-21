@@ -83,7 +83,7 @@ vim.lsp.config("*", { capabilities = capabilities })
 vim.lsp.config("harper_ls", {
     settings = {
         ["harper-ls"] = {
-            userDictPath = vim.fn.expand("~/vault/.harper-dictionary.txt"),
+            userDictPath = vim.fn.expand("~/sync/vault/.harper-dictionary.txt"),
             linters = {
                 UseTitleCase = false,
                 GoogleNames = false,

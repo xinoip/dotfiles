@@ -33,7 +33,7 @@ pio_git_stats() {
 
 pio_note() {
     local note_file
-    note_file="$HOME/vault/note_$(date +%Y%m%d%H%M%S).md"
+    note_file="$HOME/sync/vault/note_$(date +%Y%m%d%H%M%S).md"
     $EDITOR "$note_file"
 }
 
@@ -222,7 +222,7 @@ pio_status() {
         local repos=(
             "$HOME/.local/share/chezmoi"
             "$HOME/3pp/void-packages"
-            "$HOME/vault"
+            "$HOME/sync/vault"
             "$HOME/brain"
         )
 

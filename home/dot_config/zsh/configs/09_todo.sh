@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export PIO_TODO_FILE="${PIO_TODO_FILE:-$HOME/vault/.todos}"
+export PIO_TODO_FILE="${PIO_TODO_FILE:-$HOME/sync/vault/.todos}"
 
 _pio_todo_commit() {
     local action="$1" msg="$2"
