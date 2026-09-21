@@ -39,7 +39,7 @@ pio_note() {
 
 pio_prompt() {
     local name="$1"
-    local prompt_folder="$HOME/brain/sessions/$name"
+    local prompt_folder="$HOME/sync/brain/sessions/$name"
 
     mkdir -p "$prompt_folder"
     cd "$prompt_folder" || return 1
@@ -223,7 +223,7 @@ pio_status() {
             "$HOME/.local/share/chezmoi"
             "$HOME/3pp/void-packages"
             "$HOME/sync/vault"
-            "$HOME/brain"
+            "$HOME/sync/brain"
         )
 
         local repo
