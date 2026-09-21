@@ -39,6 +39,8 @@ vim.pack.add({
     gh("saghen/blink.cmp"),
     gh("rafamadriz/friendly-snippets"),
     gh("nvim-flutter/flutter-tools.nvim"),
+    gh("b0o/schemastore.nvim"),
+    gh("rachartier/tiny-code-action.nvim"),
 
     -- AI
     gh("supermaven-inc/supermaven-nvim"),
