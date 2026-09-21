@@ -10,6 +10,10 @@ setopt prompt_subst
 # Left prompt
 # %3~ truncates the directory path to the last 3 segments, similar to Starship's default.
 PROMPT="%B%F{cyan}%3~%f%b "
+# Show the short hostname only in SSH sessions.
+if [[ -n ${SSH_CONNECTION:-} || -n ${SSH_TTY:-} ]]; then
+    PROMPT="%B%F{yellow}%m%f%b ${PROMPT}"
+fi
 PROMPT2="▶▶ "
 
 function _prompt_preexec() {
