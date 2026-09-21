@@ -53,3 +53,7 @@ require("lualine").setup({
         },
     },
 })
+
+require("smartcolumn").setup({
+    colorcolumn = "120",
+})

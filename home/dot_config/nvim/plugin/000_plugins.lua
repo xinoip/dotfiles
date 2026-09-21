@@ -10,6 +10,7 @@ vim.pack.add({
     -- Theming
     gh("oskarnurm/koda.nvim"),
     gh("nvim-lualine/lualine.nvim"),
+    gh("m4xshen/smartcolumn.nvim"),
 
     -- Core
     gh("nvim-treesitter/nvim-treesitter"),
