@@ -33,7 +33,17 @@ require("blink.cmp").setup({
     },
 
     sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
+        providers = {
+            ripgrep = {
+                module = "blink-ripgrep",
+                name = "Ripgrep",
+                -- see the full configuration below for all available options
+                ---@module "blink-ripgrep"
+                ---@type blink-ripgrep.Options
+                opts = {},
+            },
+        },
     },
 
     appearance = {

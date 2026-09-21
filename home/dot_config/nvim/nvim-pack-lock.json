@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "blink-ripgrep.nvim": {
+      "rev": "0e27566da4f70e61d0c0f2821bb71ae745e71364",
+      "src": "https://github.com/mikavilpas/blink-ripgrep.nvim"
+    },
     "blink.cmp": {
       "rev": "e116ff9c5c1c2ed6bcdb2e0a6e547099876a8116",
       "src": "https://github.com/saghen/blink.cmp"
@@ -96,6 +100,14 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "schemastore.nvim": {
+      "rev": "b73cf982d16ff69e528d2ab269482f11c0825f64",
+      "src": "https://github.com/b0o/schemastore.nvim"
+    },
+    "smartcolumn.nvim": {
+      "rev": "3a760dc239de71264072f829a184aafcf7d4d3e7",
+      "src": "https://github.com/m4xshen/smartcolumn.nvim"
+    },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
@@ -103,6 +115,22 @@
     "supermaven-nvim": {
       "rev": "07d20fce48a5629686aefb0a7cd4b25e33947d50",
       "src": "https://github.com/supermaven-inc/supermaven-nvim"
+    },
+    "tabout.nvim": {
+      "rev": "9a3499480a8e53dcaa665e2836f287e3b7764009",
+      "src": "https://github.com/abecodes/tabout.nvim"
+    },
+    "tiny-cmdline.nvim": {
+      "rev": "d83700b48d8ff5625dbef4029af071db559544e5",
+      "src": "https://github.com/rachartier/tiny-cmdline.nvim"
+    },
+    "tiny-code-action.nvim": {
+      "rev": "0d040ed81f7953118b81cd12681fcdfcac069803",
+      "src": "https://github.com/rachartier/tiny-code-action.nvim"
+    },
+    "tiny-inline-diagnostic.nvim": {
+      "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
+      "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-tmux-navigator": {
       "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",

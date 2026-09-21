@@ -11,6 +11,13 @@ vim.pack.add({
     gh("oskarnurm/koda.nvim"),
     gh("nvim-lualine/lualine.nvim"),
     gh("m4xshen/smartcolumn.nvim"),
+    {
+        src = "https://github.com/rachartier/tiny-cmdline.nvim",
+        config = function()
+            vim.o.cmdheight = 0
+            require("tiny-cmdline").setup()
+        end,
+    },
 
     -- Core
     gh("nvim-treesitter/nvim-treesitter"),
@@ -27,6 +34,7 @@ vim.pack.add({
     gh("MagicDuck/grug-far.nvim"),
     gh("christoomey/vim-tmux-navigator"),
     gh("folke/flash.nvim"),
+    gh("abecodes/tabout.nvim"),
 
     -- LSP
     gh("neovim/nvim-lspconfig"),
@@ -41,6 +49,8 @@ vim.pack.add({
     gh("nvim-flutter/flutter-tools.nvim"),
     gh("b0o/schemastore.nvim"),
     gh("rachartier/tiny-code-action.nvim"),
+    gh("mikavilpas/blink-ripgrep.nvim"),
+    gh("rachartier/tiny-inline-diagnostic.nvim"),
 
     -- AI
     gh("supermaven-inc/supermaven-nvim"),
