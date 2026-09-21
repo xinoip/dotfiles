@@ -210,7 +210,7 @@ pio_status() {
             spinner_pid=$!
         fi
 
-        # Read UFW while the sudo credentials are fresh.
+        # Read UFW and WireGuard while the sudo credentials are fresh.
         local ufw_status=""
         local ufw_checked=false
         if command -v ufw &>/dev/null; then
@@ -219,93 +219,143 @@ pio_status() {
             fi
         fi
 
-        local repos=(
-            "$HOME/.local/share/chezmoi"
-            "$HOME/3pp/void-packages"
-            "$HOME/sync/vault"
-            "$HOME/sync/brain"
-        )
+        local wireguard_state=unknown
+        local wireguard_interfaces=""
+        local active_wireguard=()
+        if command -v wg &>/dev/null &&
+            wireguard_interfaces=$(sudo -n wg show interfaces 2>/dev/null); then
+            wireguard_state=off
+            local wireguard_interface
+            for wireguard_interface in ${=wireguard_interfaces}; do
+                local wireguard_link=""
+                if command -v ip &>/dev/null &&
+                    wireguard_link=$(ip -o link show dev "$wireguard_interface" up 2>/dev/null); then
+                    # An enabled tunnel counts even without recent traffic or handshakes.
+                    [[ -n "$wireguard_link" ]] && active_wireguard+=("$wireguard_interface")
+                else
+                    wireguard_state=unknown
+                fi
+            done
+            ((${#active_wireguard[@]} > 0)) && wireguard_state=on
+        fi
 
-        local repo
-        for repo in "${repos[@]}"; do
-            local reponame=${repo##*/}
-            local fetch_ok=true
-            git -C "$repo" fetch --all --quiet &>/dev/null || fetch_ok=false
+        local is_void=false
+        if [[ -r /etc/os-release ]] && [[ "$(. /etc/os-release; print -r -- "$ID")" == void ]]; then
+            is_void=true
+        fi
 
-            local uncommitted=""
-            local branch_status=""
-            if ! uncommitted=$(git -C "$repo" status --porcelain 2>/dev/null) ||
-                ! branch_status=$(git -C "$repo" status -sb 2>/dev/null); then
-                report+=("❔ $reponame (unable to check)")
-                continue
-            fi
+        local group repo sync_dir entry
+        for group in dotfiles void sync; do
+            local repos=()
+            local dirs=()
+            local issues=()
+            local unable_to_check=false
+            local missing_dir=false
 
-            local needs_commit=false
-            local needs_push=false
-            local needs_pull=false
-            local needs_apply=false
-
-            if [[ "$repo" == "$HOME/.local/share/chezmoi" ]]; then
+            case "$group" in
+            dotfiles)
+                repos=("$HOME/.local/share/chezmoi")
                 local chezmoi_status=""
                 if ! chezmoi_status=$(chezmoi status 2>/dev/null); then
-                    report+=("❔ $reponame (unable to check unapplied changes)")
+                    issues+=("unable to check unapplied changes")
+                    unable_to_check=true
+                elif [[ -n "$chezmoi_status" ]]; then
+                    issues+=("unapplied changes")
+                fi
+                ;;
+            void)
+                $is_void || continue
+                repos=("$HOME/3pp/void-packages")
+                local updates=""
+                if ! updates=$(xbps-install -unM 2>/dev/null); then
+                    issues+=("unable to check updates")
+                    unable_to_check=true
+                elif [[ -n "$updates" ]]; then
+                    local update_lines=("${(@f)updates}")
+                    issues+=("updates (${#update_lines[@]})")
+                fi
+                ;;
+            sync)
+                repos=("$HOME/sync/vault" "$HOME/sync/brain")
+                dirs=(
+                    "$HOME/download:download"
+                    "$HOME/.local/share/Trash/files:trash"
+                    "$(xdg-user-dir DESKTOP 2>/dev/null):desktop"
+                )
+                for sync_dir in sync sync/picture sync/brain sync/vault; do
+                    if [[ ! -d "$HOME/$sync_dir" ]]; then
+                        issues+=("missing ~/$sync_dir")
+                        missing_dir=true
+                    fi
+                done
+                ;;
+            esac
+
+            for repo in "${repos[@]}"; do
+                # Missing sync repositories are already reported as missing folders.
+                if [[ "$group" == sync && ! -d "$repo" ]]; then
                     continue
                 fi
-                [[ -n "$chezmoi_status" ]] && needs_apply=true
-            fi
+                local prefix="${repo##*/} "
+                [[ "$group" == dotfiles ]] && prefix=""
+                local fetch_ok=true
+                git -C "$repo" fetch --all --quiet &>/dev/null || fetch_ok=false
 
-            [[ -n "$uncommitted" ]] && needs_commit=true
-            [[ "$branch_status" == *"ahead"* ]] && needs_push=true
-            [[ "$branch_status" == *"behind"* ]] && needs_pull=true
-
-            if ! $fetch_ok; then
-                report+=("🚧 $reponame (fetch failed)")
-            elif ! $needs_commit && ! $needs_push && ! $needs_pull && ! $needs_apply; then
-                report+=("✅ $reponame")
-            else
-                report+=("🚧 $reponame")
-            fi
-        done
-
-        local dirs=(
-            "$HOME/tmp:tmp"
-            "$HOME/download:download"
-            "$HOME/.local/share/Trash/files:trash"
-            "$(xdg-user-dir DESKTOP 2>/dev/null):desktop"
-        )
-
-        local entry
-        for entry in "${dirs[@]}"; do
-            local dir="${entry%:*}"
-            local dir_name="${entry##*:}"
-
-            if [[ -d "$dir" ]]; then
-                local items=("$dir"/*(ND))
-                local count=${#items[@]}
-                # KDE creates this metadata file even on an empty desktop.
-                if [[ "$dir_name" == desktop && -f "$dir/.directory" ]]; then
-                    ((count -= 1))
+                local uncommitted=""
+                local branch_status=""
+                if ! uncommitted=$(git -C "$repo" status --porcelain 2>/dev/null) ||
+                    ! branch_status=$(git -C "$repo" status -sb 2>/dev/null); then
+                    issues+=("${prefix}unable to check git")
+                    unable_to_check=true
+                    continue
                 fi
 
-                if ((count > 0)); then
-                    report+=("🚧 $dir_name ($count)")
+                $fetch_ok || issues+=("${prefix}fetch failed")
+                [[ -n "$uncommitted" ]] && issues+=("${prefix}git changes")
+                branch_status="${branch_status%%$'\n'*}"
+                [[ "$branch_status" == *'[ahead '* ]] && issues+=("${prefix}needs push")
+                if [[ "$branch_status" == *'[behind '* || "$branch_status" == *', behind '* ]]; then
+                    issues+=("${prefix}needs pull")
+                fi
+            done
+
+            for entry in "${dirs[@]}"; do
+                local dir="${entry%:*}"
+                local dir_name="${entry##*:}"
+
+                if [[ -d "$dir" ]]; then
+                    local items=("$dir"/*(ND))
+                    local count=${#items[@]}
+                    # KDE creates this metadata file even on an empty desktop.
+                    if [[ "$dir_name" == desktop && -f "$dir/.directory" ]]; then
+                        ((count -= 1))
+                    fi
+                    ((count > 0)) && issues+=("$dir_name ($count)")
                 else
-                    report+=("✅ $dir_name")
+                    issues+=("missing $dir_name folder")
+                    missing_dir=true
                 fi
+            done
+
+            if ((${#issues[@]} == 0)); then
+                report+=("✅ $group")
             else
-                report+=("❌ $dir_name")
+                local emoji="🚧"
+                $unable_to_check && emoji="❔"
+                $missing_dir && emoji="❌"
+                report+=("$emoji $group: ${(j:; :)issues}")
             fi
         done
 
-        local updates
-        local update_count=0
-        if ! updates=$(xbps-install -unM 2>/dev/null); then
-            report+=("❔ updates (unable to check)")
-        elif [[ -n "$updates" ]]; then
-            update_count=$(print -r -- "$updates" | wc -l)
-            report+=("🚧 updates ($update_count)")
+        if [[ -d "$HOME/tmp" ]]; then
+            local tmp_items=("$HOME/tmp"/*(ND))
+            if ((${#tmp_items[@]} > 0)); then
+                report+=("🚧 tmp (${#tmp_items[@]})")
+            else
+                report+=("✅ tmp")
+            fi
         else
-            report+=("✅ updates")
+            report+=("❌ tmp")
         fi
 
         local todo_file="$PIO_TODO_FILE"
@@ -320,75 +370,95 @@ pio_status() {
             report+=("✅ todos")
         fi
 
-        local -i security_failures=0
-        local -i security_warnings=0
-        local mullvad_ok=false
-        local mullvad_status
-        if command -v mullvad &>/dev/null &&
-            mullvad_status=$(mullvad status 2>/dev/null) &&
-            [[ "$mullvad_status" == Connected* ]]; then
-            mullvad_ok=true
-        fi
-
-        if $mullvad_ok; then
-            report+=("✅ mullvad")
-        else
-            report+=("❌ mullvad")
-            ((security_failures += 1))
-        fi
-
-        if ! command -v ufw &>/dev/null; then
-            report+=("❌ ufw")
-            ((security_failures += 1))
-        elif ! $ufw_checked; then
-            report+=("❌ ufw")
-            ((security_warnings += 1))
-        elif [[ "$ufw_status" == *"Status: active"* ]]; then
-            report+=("✅ ufw")
-        elif [[ "$ufw_status" == *"Status: inactive"* ]]; then
-            report+=("❌ ufw")
-            ((security_failures += 1))
-        else
-            report+=("❌ ufw")
-            ((security_warnings += 1))
-        fi
-
-        if command -v pgrep &>/dev/null; then
-            local tailscale_result=0
-            pgrep -x tailscaled &>/dev/null || tailscale_result=$?
-            case "$tailscale_result" in
-            0) report+=("🚧 tailscale (running)") ;;
-            1) report+=("✅ tailscale (not running)") ;;
-            *) report+=("❔ tailscale (unable to check)") ;;
+        local mullvad_state=unknown
+        local mullvad_status=""
+        if command -v mullvad &>/dev/null && mullvad_status=$(mullvad status 2>/dev/null); then
+            case "$mullvad_status" in
+            Connected*) mullvad_state=on ;;
+            Disconnected* | Connecting* | Disconnecting*) mullvad_state=off ;;
             esac
-        else
-            report+=("❔ tailscale (pgrep not installed)")
         fi
 
-        local ssh_server_running=false
-        if command -v pgrep &>/dev/null && { pgrep -x sshd &>/dev/null || pgrep -x dropbear &>/dev/null; }; then
-            ssh_server_running=true
-        elif command -v ss &>/dev/null && [[ -n "$(ss -H -ltn 'sport = :22' 2>/dev/null)" ]]; then
-            ssh_server_running=true
+        local ufw_state=unknown
+        if $ufw_checked; then
+            case "$ufw_status" in
+            *"Status: active"*) ufw_state=on ;;
+            *"Status: inactive"*) ufw_state=off ;;
+            esac
         fi
 
-        if $ssh_server_running; then
-            report+=("❌ ssh server (running)")
-            ((security_failures += 1))
-        elif command -v pgrep &>/dev/null || command -v ss &>/dev/null; then
-            report+=("✅ ssh server (not running)")
-        else
-            report+=("❔ ssh server (unable to check)")
-            ((security_warnings += 1))
+        local -A service_states=(tailscaled unknown sshd unknown dropbear unknown)
+        local service
+        if command -v pgrep &>/dev/null; then
+            for service in tailscaled sshd dropbear; do
+                local service_result=0
+                pgrep -x "$service" &>/dev/null || service_result=$?
+                case "$service_result" in
+                0) service_states[$service]=on ;;
+                1) service_states[$service]=off ;;
+                esac
+            done
         fi
 
-        if ((security_failures > 0)); then
-            report+=("🚨 unsafe ($security_failures failed, $security_warnings warnings)")
-        elif ((security_warnings > 0)); then
-            report+=("🚧 caution ($security_warnings warnings)")
-        else
-            report+=("🔐 safe")
+        local tailscale_state="${service_states[tailscaled]}"
+        local ssh_state=unknown
+        if [[ "${service_states[sshd]}" == on || "${service_states[dropbear]}" == on ]]; then
+            ssh_state=on
+        elif [[ "${service_states[sshd]}" == off && "${service_states[dropbear]}" == off ]]; then
+            ssh_state=off
         fi
+        if [[ "$ssh_state" != on ]] && command -v ss &>/dev/null; then
+            local ssh_listeners=""
+            if ssh_listeners=$(ss -H -ltn 'sport = :22' 2>/dev/null) && [[ -n "$ssh_listeners" ]]; then
+                ssh_state=on
+            fi
+            # An empty port 22 cannot rule out SSH on another port if pgrep failed.
+        fi
+
+        local security_details=()
+        case "$ufw_state" in
+        off) security_details+=("UFW off") ;;
+        unknown) security_details+=("UFW status unknown") ;;
+        esac
+        case "$mullvad_state" in
+        off) security_details+=("Mullvad not connected") ;;
+        unknown) security_details+=("Mullvad status unknown") ;;
+        esac
+        case "$tailscale_state" in
+        on) security_details+=("Tailscale running") ;;
+        unknown) security_details+=("Tailscale status unknown") ;;
+        esac
+        case "$ssh_state" in
+        on) security_details+=("SSH running") ;;
+        unknown) security_details+=("SSH status unknown") ;;
+        esac
+        case "$wireguard_state" in
+        on) security_details+=("WireGuard active: ${(j:, :)active_wireguard}") ;;
+        unknown) security_details+=("WireGuard status unknown") ;;
+        esac
+
+        # Prioritize known concerns, then incomplete checks, then the desired baseline.
+        local security_emoji="🛡️"
+        local security_level="baseline met"
+        if [[ "$wireguard_state" == on ||
+            ( "$ufw_state" == off && ( "$tailscale_state" == on || "$ssh_state" == on ) ) ]]; then
+            security_emoji="🚨"
+            security_level="review exposure"
+        elif [[ "$ufw_state" == off || "$mullvad_state" == off ]]; then
+            security_emoji="🚧"
+            security_level="reduced protection"
+        elif [[ "$ufw_state" == unknown || "$mullvad_state" == unknown ||
+            "$tailscale_state" == unknown || "$ssh_state" == unknown || "$wireguard_state" == unknown ]]; then
+            security_emoji="❔"
+            security_level="incomplete checks"
+        elif [[ "$tailscale_state" == on || "$ssh_state" == on ]]; then
+            security_emoji="👀"
+            security_level="remote services"
+        fi
+
+        local security_line="$security_emoji Security: $security_level"
+        ((${#security_details[@]} > 0)) && security_line+=" (${(j:; :)security_details})"
+        report+=("$security_line")
     } always {
         if [[ -n "$spinner_pid" ]]; then
             kill "$spinner_pid" 2>/dev/null
