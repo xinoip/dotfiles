@@ -1,0 +1,17 @@
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+writable_roots = ["/home/pio/sync/brain"]
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "context-used",
+  "weekly-limit",
+  "current-dir",
+  "git-branch",
+]
