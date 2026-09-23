@@ -227,6 +227,8 @@ pio_status() {
             wireguard_state=off
             local wireguard_interface
             for wireguard_interface in ${=wireguard_interfaces}; do
+                # Mullvad's tunnel is part of the expected secure baseline.
+                [[ "$wireguard_interface" == wg0-mullvad ]] && continue
                 local wireguard_link=""
                 if command -v ip &>/dev/null &&
                     wireguard_link=$(ip -o link show dev "$wireguard_interface" up 2>/dev/null); then
@@ -438,7 +440,7 @@ pio_status() {
         esac
 
         # Prioritize known concerns, then incomplete checks, then the desired baseline.
-        local security_emoji="🛡️"
+        local security_emoji="🔒"
         local security_level="baseline met"
         if [[ "$wireguard_state" == on ||
             ( "$ufw_state" == off && ( "$tailscale_state" == on || "$ssh_state" == on ) ) ]]; then
