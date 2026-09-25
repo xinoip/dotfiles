@@ -4,11 +4,11 @@ set -g status-style "default"
 set -g status-justify centre
 
 # Left
-set -g status-left-length 20
-set -g status-left "#{?client_prefix,#[reverse] #S #[noreverse], #S }"
+set -g status-left-length 60
+set -g status-left " #h |#{?client_prefix,#[reverse] #S #[noreverse], #S }"
 
 # Right
-set -g status-right ""
+set -g status-right " %H:%M "
 
 # Middle
 set -wg automatic-rename on
