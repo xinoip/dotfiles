@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-# Initialize once through Zephyr, before fzf-tab wraps completion widgets.
-# Refresh the completion cache every 20 hours; run_compinit -f forces a refresh.
 zstyle ':zephyr:plugin:completion' immediate yes
 zstyle ':zephyr:plugin:completion' use-cache yes
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent honor-existing yes
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent lifetime 4h
+zstyle :omz:plugins:ssh-agent quiet yes
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 . "$ZDOTDIR/plugins/zephyr/load_zephyr.zsh"
 . "$ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
 . "$ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-# All widgets are installed before the first prompt, so bind suggestions once.
-# After adding widgets interactively, run _zsh_autosuggest_start to rebind them.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 . "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+. "$ZDOTDIR/plugins/omz-ssh-agent/ssh-agent.plugin.zsh"
 
 # Override history settings of Zephyr
 setopt share_history

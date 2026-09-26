@@ -2,7 +2,6 @@ set -euo pipefail
 
 . "$ZDOTDIR/configs/01_exports.sh"
 . "$ZDOTDIR/configs/02_path.sh"
-. "$ZDOTDIR/configs/03_ssh_agent.sh"
 . "$ZDOTDIR/configs/04_aliases.sh"
 . "$ZDOTDIR/configs/05_hooks.sh"
 . "$ZDOTDIR/configs/06_helpers.sh"
