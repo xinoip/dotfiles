@@ -25,3 +25,16 @@ there, regardless of the current project.
 - This is a git repository and it won't ever use Git LFS. Keep files small. Do
   not keep large archives, binaries, build trees, bulk logs, or exhaustive
   copies of temporary workspaces.
+
+## Project Specific Brain
+
+Project specific notes should always be kept under the working directory of
+Codex CLI. Follow conventions for projects if they exist. If there are no
+conventions defined, use following guidelines:
+
+- Create a folder `docs/agents`. Keep project specific notes here.
+- Never commit or git ignore this folder.
+- Keep project specific memories, decisions, facts, and notes here.
+- Aim to make project context independent so that other developers can use these
+  notes to work on the project with their AI agents, without any previous chat
+  history or context.
