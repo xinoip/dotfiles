@@ -76,5 +76,5 @@ sort=version:refname
 gpgsign=true
 verbose=true
 
-[includeIf "gitdir:~/work/repo/sv"]
+[includeIf "gitdir:~/work/repo/sv/**"]
 path=~/.config/git/config.work
