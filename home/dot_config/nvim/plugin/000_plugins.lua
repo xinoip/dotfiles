@@ -28,6 +28,7 @@ vim.pack.add({
     gh("j-hui/fidget.nvim"),
     gh("lewis6991/gitsigns.nvim"),
     gh("OXY2DEV/markview.nvim"),
+    gh("stevearc/quicker.nvim"),
 
     -- Control
     gh("stevearc/oil.nvim"),
@@ -87,3 +88,5 @@ Pio.create_cmd("PioPackClean", "Clean plugins", function()
         vim.notify("No inactive plugins to clean.")
     end
 end)
+
+require("quicker").setup()
