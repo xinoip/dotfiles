@@ -22,5 +22,4 @@ bind-key Left swap-window -t -1 \; select-window -t -1
 bind-key Right swap-window -t +1 \; select-window -t +1
 bind-key C-s capture-pane -S - -E - \; save-buffer "~/last_tmux.log"\; display-message "Copied whole buffer to ~/last_tmux.log!"
 
-# TODO: this loses current working directory
-bind-key 3 split-window -h \; split-window -h \; select-layout even-horizontal
+bind-key 3 split-window -h -c '#{pane_current_path}' \; split-window -h -c '#{pane_current_path}' \; select-layout even-horizontal
