@@ -7,7 +7,6 @@
     "editor.fontSize": 20,
     // "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
-
     // Visual
     "window.titleBarStyle": "native",
     "window.customTitleBarVisibility": "never",
@@ -15,7 +14,7 @@
     "window.commandCenter": false,
     "window.autoDetectColorScheme": false,
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Gruvbox Light Hard",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.panel.defaultLocation": "right",
     "editor.minimap.enabled": true,
     "editor.minimap.maxColumn": 120,
@@ -25,7 +24,6 @@
     "editor.cursorBlinking": "smooth",
     "window.zoomLevel": 0.5,
     "workbench.layoutControl.enabled": false,
-
     // Force Gruvbox to be True OLED Black
     "workbench.colorCustomizations": {
         "[Gruvbox Dark Hard]": {
@@ -46,28 +44,21 @@
             "diffEditor.removedTextBackground": "#5a2b3444"
         }
     },
-
     // Infra
     "update.mode": "none",
     "telemetry.telemetryLevel": "off",
     "chat.disableAIFeatures": true,
-
     // Plugin
     "go.gopath": "/home/pio/3pp/gopath",
-
     // Behavior
     "editor.stickyScroll.enabled": true,
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
-
-    
-
     // Diff/Git
     "diffEditor.renderSideBySide": true,
     "diffEditor.wordWrap": "on",
     "scm.defaultViewMode": "tree",
     "git.enableCommitSigning": true,
-
     // Debug
     "debug.inlineValues": "on",
     "debug.toolBarLocation": "docked",
