@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Tailscale
+Comment=Tailscale system tray
+Exec=tailscale systray
+Icon=tailscale
+Terminal=false
+Categories=Network;
