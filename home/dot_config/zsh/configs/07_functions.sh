@@ -227,8 +227,7 @@ pio_status() {
             wireguard_state=off
             local wireguard_interface
             for wireguard_interface in ${=wireguard_interfaces}; do
-                # Mullvad's tunnel is part of the expected secure baseline.
-                [[ "$wireguard_interface" == wg0-mullvad ]] && continue
+                # Tailscale uses userspace WireGuard; review any kernel tunnels.
                 local wireguard_link=""
                 if command -v ip &>/dev/null &&
                     wireguard_link=$(ip -o link show dev "$wireguard_interface" up 2>/dev/null); then
@@ -374,12 +373,12 @@ pio_status() {
 
         local mullvad_state=unknown
         local mullvad_status=""
-        if command -v mullvad &>/dev/null && mullvad_status=$(mullvad status 2>/dev/null); then
-            case "$mullvad_status" in
-            Connected*) mullvad_state=on ;;
-            Disconnected* | Connecting* | Disconnecting*) mullvad_state=off ;;
-            esac
-        fi
+        local mullvad_result=0
+        mullvad_status=$(pio_helper_mullvad_status) || mullvad_result=$?
+        case "$mullvad_result" in
+        0) mullvad_state=on ;;
+        1) mullvad_state=off ;;
+        esac
 
         local ufw_state=unknown
         if $ufw_checked; then
@@ -422,12 +421,10 @@ pio_status() {
         off) security_details+=("UFW off") ;;
         unknown) security_details+=("UFW status unknown") ;;
         esac
-        case "$mullvad_state" in
-        off) security_details+=("Mullvad not connected") ;;
-        unknown) security_details+=("Mullvad status unknown") ;;
-        esac
+        security_details+=("$mullvad_status")
         case "$tailscale_state" in
         on) security_details+=("Tailscale running") ;;
+        off) security_details+=("Tailscale not running") ;;
         unknown) security_details+=("Tailscale status unknown") ;;
         esac
         case "$ssh_state" in
@@ -446,14 +443,14 @@ pio_status() {
             ( "$ufw_state" == off && ( "$tailscale_state" == on || "$ssh_state" == on ) ) ]]; then
             security_emoji="🚨"
             security_level="review exposure"
-        elif [[ "$ufw_state" == off || "$mullvad_state" == off ]]; then
+        elif [[ "$ufw_state" == off || "$mullvad_state" == off || "$tailscale_state" == off ]]; then
             security_emoji="🚧"
             security_level="reduced protection"
         elif [[ "$ufw_state" == unknown || "$mullvad_state" == unknown ||
             "$tailscale_state" == unknown || "$ssh_state" == unknown || "$wireguard_state" == unknown ]]; then
             security_emoji="❔"
             security_level="incomplete checks"
-        elif [[ "$tailscale_state" == on || "$ssh_state" == on ]]; then
+        elif [[ "$ssh_state" == on ]]; then
             security_emoji="👀"
             security_level="remote services"
         fi
@@ -461,6 +458,7 @@ pio_status() {
         local security_line="$security_emoji Security: $security_level"
         ((${#security_details[@]} > 0)) && security_line+=" (${(j:; :)security_details})"
         report+=("$security_line")
+        report+=("ℹ️ Privacy probes cover current shell traffic; browser/WebRTC and VPN disconnect protection are not tested.")
     } always {
         if [[ -n "$spinner_pid" ]]; then
             kill "$spinner_pid" 2>/dev/null
