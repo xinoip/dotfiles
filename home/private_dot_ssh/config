@@ -1,5 +1,6 @@
 Include ~/.ssh/config.local
 Include ~/.ssh/config.work
+Include ~/.ssh/config.vm
 
 Host *
     AddKeysToAgent yes
