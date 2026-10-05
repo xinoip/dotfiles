@@ -87,6 +87,7 @@ vim.lsp.config("harper_ls", {
             linters = {
                 UseTitleCase = false,
                 GoogleNames = false,
+                PhrasalVerbAsCompoundNoun = false,
             },
         },
     },
