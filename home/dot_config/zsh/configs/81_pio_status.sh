@@ -245,21 +245,9 @@ pio_helper_check_tailscale() {
 
 # Check SSH daemon status.
 pio_helper_check_sshd() {
-    pio_helper_check_command pgrep || return 1
-
-    local service_result=0
-    pgrep -x sshd &>/dev/null || service_result=$?
-    case "$service_result" in
-        0)
-            print -r -- "👀 SSH daemon is running"
-            ;;
-        1)
-            ;;
-        *)
-            print -r -- "❔ Unable to check SSH status"
-            return 1
-            ;;
-    esac
+    if [[ -d "/var/service/sshd" ]]; then
+        print -r -- "👀 SSH daemon is running"
+    fi
 }
 
 # Ultimate system status checker.
