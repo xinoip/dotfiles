@@ -287,6 +287,7 @@ pio_status() {
     report+=("$(pio_helper_spin "Checking picture folder" pio_helper_check_folder_exists "$HOME/sync/picture")")
     report+=("$(pio_helper_spin "Checking vault folder" pio_helper_check_folder_exists "$HOME/sync/vault")")
     report+=("$(pio_helper_spin "Checking brain folder" pio_helper_check_folder_exists "$HOME/sync/brain")")
+    report+=("$(pio_helper_spin "Checking startpage folder" pio_helper_check_folder_exists "$HOME/sync/startpage")")
 
     report+=("$(pio_helper_spin "Checking vault" pio_helper_check_git_status "$HOME/sync/vault")")
     report+=("$(pio_helper_spin "Checking brain" pio_helper_check_git_status "$HOME/sync/brain")")
