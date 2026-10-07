@@ -61,7 +61,7 @@ pio_void_toggle_service() {
 # Eagerly get sudo permissions if not already present.
 pio_helper_get_sudo() {
     if [[ $EUID -ne 0 ]]; then
-        echo "🔑 Eagerly getting sudo permissions"
+        echo "🔑 sudo"
         sudo -v || return 1
     fi
 }
