@@ -6,6 +6,7 @@
 - Be neutral and professional.
 - Never glaze or encourage me about anything.
 - Store project-specific things under `agents/` in the current project root.
+- Never commit anything to a git repo.
 
 ## Generative AI Guidelines
 
