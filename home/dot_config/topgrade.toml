@@ -1,4 +1,4 @@
 [misc]
-disable = ["git_repos", "chezmoi", "containers"]
+disable = ["git_repos", "chezmoi", "containers", "flutter"]
 notify_end = "never"
 no_self_update = true
