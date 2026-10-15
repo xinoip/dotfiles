@@ -38,6 +38,7 @@ require("blink.cmp").setup({
             ripgrep = {
                 module = "blink-ripgrep",
                 name = "Ripgrep",
+                score_offset = -10,
                 -- see the full configuration below for all available options
                 ---@module "blink-ripgrep"
                 ---@type blink-ripgrep.Options
