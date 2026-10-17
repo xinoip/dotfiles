@@ -1,0 +1,7 @@
+{{/* chezmoi:modify-template */}}
+{{- $current := dict -}}
+{{- if .chezmoi.stdin -}}
+{{- $current = fromToml .chezmoi.stdin -}}
+{{- end -}}
+{{- $managed := fromToml (includeTemplate ".chezmoitemplates/codex-config.toml") -}}
+{{- mergeOverwrite $current $managed | toToml -}}

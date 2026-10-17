@@ -5,9 +5,6 @@ approvals_reviewer = "auto_review"
 sandbox_mode = "workspace-write"
 check_for_update_on_startup = false
 
-[sandbox_workspace_write]
-writable_roots = ["/home/pio/sync/brain"]
-
 [tui]
 status_line = [
   "model-with-reasoning",
