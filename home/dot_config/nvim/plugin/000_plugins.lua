@@ -31,6 +31,7 @@ vim.pack.add({
     gh("stevearc/quicker.nvim"),
 
     -- Control
+    gh("Bekaboo/dropbar.nvim"),
     gh("stevearc/oil.nvim"),
     gh("MagicDuck/grug-far.nvim"),
     gh("christoomey/vim-tmux-navigator"),
