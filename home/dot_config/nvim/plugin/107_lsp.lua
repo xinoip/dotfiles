@@ -89,6 +89,7 @@ vim.lsp.config("harper_ls", {
                 GoogleNames = false,
                 PhrasalVerbAsCompoundNoun = false,
                 OrthographicConsistency = false,
+                MissingPreposition = false,
             },
         },
     },
