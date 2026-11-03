@@ -52,9 +52,6 @@ vim.pack.add({
     gh("rachartier/tiny-code-action.nvim"),
     gh("mikavilpas/blink-ripgrep.nvim"),
     gh("rachartier/tiny-inline-diagnostic.nvim"),
-
-    -- AI
-    gh("supermaven-inc/supermaven-nvim"),
 })
 
 vim.cmd.packadd("nvim.undotree")
