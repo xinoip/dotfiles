@@ -1,6 +1,17 @@
 require("guess-indent").setup({})
 require("fidget").setup({})
-require("gitsigns").setup()
+local git_signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▁" },
+    topdelete = { text = "▔" },
+    changedelete = { text = "▎" },
+    untracked = { text = "┆" },
+}
+require("gitsigns").setup({
+    signs = git_signs,
+    signs_staged = vim.deepcopy(git_signs),
+})
 
 require("flash").setup({
     modes = {

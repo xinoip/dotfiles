@@ -1,4 +1,14 @@
-local koda_opts = {}
+local koda_opts = {
+    on_highlights = function(hl, colors)
+        -- Keep the gutter pitch black in dark mode for the OLED display.
+        hl.SignColumn = { bg = colors.bg }
+        hl.CursorLineSign = { bg = colors.bg }
+        hl.FoldColumn = { fg = colors.comment, bg = colors.bg }
+        hl.CursorLineFold = { fg = colors.fg, bg = colors.bg }
+        hl.LineNr = { fg = require("koda").blend(colors.fg, colors.bg, 0.68), bg = colors.bg }
+        hl.CursorLineNr = { fg = colors.fg, bg = colors.bg, bold = true }
+    end,
+}
 local lualine_theme = require("lualine.themes.auto")
 
 if vim.o.background == "dark" then
