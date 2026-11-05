@@ -58,6 +58,7 @@ local on_attach_visual = function()
     local severity = vim.diagnostic.severity
     vim.diagnostic.config({
         signs = {
+            severity = { min = severity.WARN },
             text = {
                 [severity.ERROR] = " ",
                 [severity.WARN] = " ",
