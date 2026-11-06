@@ -5,11 +5,9 @@ approvals_reviewer = "auto_review"
 sandbox_mode = "workspace-write"
 check_for_update_on_startup = false
 
-[tui]
 status_line = [
   "model-with-reasoning",
   "context-used",
   "weekly-limit",
-  "current-dir",
-  "git-branch",
+  "thread-name",
 ]
