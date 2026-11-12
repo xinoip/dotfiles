@@ -46,6 +46,8 @@ setup() {
     alias ga="git add"
     alias gr="git remote"
     alias gac='git add -A && git commit -m "auto: $(date)"'
+    alias gwlog='git worktree list'
+    alias gwprune='git worktree prune'
 
     # Misc
     alias pio_copy='xclip -selection clipboard'

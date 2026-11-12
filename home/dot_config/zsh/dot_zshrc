@@ -13,6 +13,7 @@ set -euo pipefail
 . "$ZDOTDIR/configs/84_goodies.sh"
 . "$ZDOTDIR/configs/85_todo.sh"
 . "$ZDOTDIR/configs/86_warpdir.sh"
+. "$ZDOTDIR/configs/87_git.sh"
 
 set +euo pipefail
 

@@ -2,3 +2,4 @@
 
 compdef _pio_todo todo
 compdef _pio_wd wd
+compdef _gwnew gwnew
