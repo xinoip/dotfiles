@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+# adb ignores ANDROID_USER_HOME and always uses $HOME/.android.
+# Keep a private home inside the preferences directory, with .android -> ..
+# so keys and pairing data live directly in ANDROID_USER_HOME.
+android_user_home=${ANDROID_USER_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}/android}
+case "$android_user_home" in
+    /*) ;;
+    *) printf '%s\n' 'adb: ANDROID_USER_HOME must be an absolute path' >&2; exit 1 ;;
+esac
+adb_home="$android_user_home/.adb-home"
+adb_umask=$(umask)
+umask 077
+mkdir -p "$adb_home"
+if [ ! -L "$adb_home/.android" ]; then
+    ln -sT .. "$adb_home/.android" 2>/dev/null || [ -L "$adb_home/.android" ]
+fi
+if [ "$(readlink "$adb_home/.android")" != .. ]; then
+    printf '%s\n' 'adb: unexpected .adb-home/.android symlink target' >&2
+    exit 1
+fi
+
+umask "$adb_umask"
+
+# Use the distribution binary explicitly to avoid calling this wrapper again.
+exec env HOME="$adb_home" ANDROID_USER_HOME="$android_user_home" /usr/bin/adb "$@"

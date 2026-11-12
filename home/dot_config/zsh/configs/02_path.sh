@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 setup() {
+    # Local wrappers must take precedence over distribution executables.
+    path=("$HOME/.local/bin" "${path[@]}")
     path+=(
         "$HOME/3pp/bin"
         "$HOME/3pp/nvim/bin"
-        "$HOME/.local/bin"
         "$HOME/3pp/cargo/bin"
         "$GOPATH/bin"
         "$NPM_PACKAGES/bin"
