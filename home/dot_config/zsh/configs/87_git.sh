@@ -18,7 +18,7 @@ gwnew() {
     local root
     root=$(git rev-parse --show-toplevel) || return
 
-    local gwpath="${root:h}/${branch//\//-}"
+    local gwpath="${root:h}/${root:t}-${branch//\//-}"
 
     if git show-ref --verify --quiet "refs/heads/$branch"; then
         # Existing local branch
