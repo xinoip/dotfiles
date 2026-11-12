@@ -1,0 +1,8 @@
+# SDDM starts a Zsh login shell before launching Plasma.
+export GNUPGHOME="$HOME/.config/gnupg"
+
+# Model storage for Ollama, including launches from the desktop session.
+export OLLAMA_MODELS="${XDG_DATA_HOME:-$HOME/.local/share}/ollama/models"
+
+# GTK 2 settings for Plasma and applications launched from the desktop.
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
