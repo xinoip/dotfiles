@@ -52,6 +52,8 @@ setup() {
     export GNUPGHOME="$HOME/.config/gnupg"
     # Java
     export GRADLE_USER_HOME="$HOME/.config/gradle"
+    # Codex
+    export CODEX_HOME="$HOME/.local/share/codex"
     # Ollama
     export OLLAMA_HOME="$HOME/.local/share/ollama"
     # GTK
