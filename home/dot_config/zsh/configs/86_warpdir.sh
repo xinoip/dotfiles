@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-export PIO_WD_FILE="${PIO_WD_FILE:-$HOME/sync/vault/.warp_dirs}"
-
 _pio_wd_commit() {
     local action="$1" name="$2"
     local file="${PIO_WD_FILE:A}"
