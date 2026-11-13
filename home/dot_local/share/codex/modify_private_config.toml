@@ -3,5 +3,7 @@
 {{- if .chezmoi.stdin -}}
 {{- $current = fromToml .chezmoi.stdin -}}
 {{- end -}}
+{{/* Remove the legacy top-level key; Codex expects tui.status_line. */}}
+{{- $_ := unset $current "status_line" -}}
 {{- $managed := fromToml (includeTemplate ".chezmoitemplates/codex-config.toml") -}}
 {{- mergeOverwrite $current $managed | toToml -}}
