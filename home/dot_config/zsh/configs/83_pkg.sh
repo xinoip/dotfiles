@@ -43,11 +43,11 @@ pio_update() {
     if $PIOBUNTU; then
         pio_helper_confirm "Update Ubuntu?" && sudo apt update && sudo apt upgrade && echo "Ubuntu updated."
     else
-        pio_helper_confirm "Update Void?" &&
-            xi -Su &&
+        pio_helper_confirm "Update Void?" && xi -Su && echo "Void updated."
+        pio_helper_confirm "Update void-packages?" &&
             cd "$HOME/3pp/void-packages" &&
-            ./personal/update.sh &&
-            echo "Void updated."
+            make -C pionix update-void-packages &&
+            echo "Void packages updated. Repository may need push."
     fi
 
     if [[ -f /usr/bin/flatpak ]]; then
